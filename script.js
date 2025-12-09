@@ -22,28 +22,43 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Intersection Observer for fade-in animations
+// Using smaller threshold and margins for better mobile support
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.05,
+    rootMargin: '0px 0px -20px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-visible');
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
+            // Unobserve after animation to improve performance
+            observer.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
 // Add fade-in animation to elements
 const addFadeInAnimation = () => {
-    const elements = document.querySelectorAll('.feature-card, .step, .benefit, .trust-item');
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const elements = document.querySelectorAll('.feature-card, .step, .solution-card, .testimonial-card, .pricing-card');
 
     elements.forEach((el, index) => {
+        if (prefersReducedMotion) {
+            // Skip animations for users who prefer reduced motion
+            el.style.opacity = '1';
+            return;
+        }
+
         el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        el.style.transform = 'translateY(20px)';
+        // Limit stagger delay to avoid long waits on mobile
+        const delay = Math.min(index * 0.08, 0.4);
+        el.style.transition = `opacity 0.5s ease ${delay}s, transform 0.5s ease ${delay}s`;
         observer.observe(el);
     });
 };
@@ -102,17 +117,62 @@ const animateStats = () => {
     stats.forEach(stat => observerStats.observe(stat));
 };
 
-// Mobile menu toggle (if you add a mobile menu button later)
+// Mobile menu toggle
 const addMobileMenuToggle = () => {
-    const navLinks = document.querySelector('.nav-links');
-
-    // Check if mobile menu button exists
+    const mobileNav = document.getElementById('mobile-nav');
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    if (mobileMenuBtn && navLinks) {
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    }
+
+    if (!mobileMenuBtn || !mobileNav) return;
+
+    const closeMenu = () => {
+        mobileNav.classList.remove('active');
+        mobileMenuBtn.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    };
+
+    const openMenu = () => {
+        mobileNav.classList.add('active');
+        mobileMenuBtn.classList.add('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+    };
+
+    // Toggle menu on button click
+    mobileMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (mobileNav.classList.contains('active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    // Close menu when clicking a link
+    mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    // Close menu when clicking the overlay background
+    mobileNav.addEventListener('click', (e) => {
+        if (e.target === mobileNav) {
+            closeMenu();
+        }
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+
+    // Close menu on window resize (if transitioning to desktop)
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
+            closeMenu();
+        }
+    });
 };
 
 // Placeholder image hover effect
