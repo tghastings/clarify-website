@@ -148,33 +148,43 @@ const addMobileMenuToggle = () => {
         }
     });
 
-    // Close menu when clicking a link with delayed scroll to allow menu to close
-    mobileNav.querySelectorAll('a[href^="#"]').forEach(link => {
+    // Close menu when clicking any navigation link
+    mobileNav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
 
-            // Don't prevent default for # only links
-            if (href === '#') return;
+            // Don't handle # only links, mailto links, or external links
+            if (!href || href === '#' || href.startsWith('mailto:') || href.startsWith('http')) {
+                return;
+            }
 
-            e.preventDefault();
-            e.stopPropagation();
+            // For hash links on the same page
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                e.stopPropagation();
 
-            // Close the menu first
-            closeMenu();
+                // Close the menu first
+                closeMenu();
 
-            // Wait for menu close animation and layout to settle before scrolling
-            setTimeout(() => {
-                const target = document.querySelector(href);
-                if (target) {
-                    const navHeight = document.querySelector('.navbar').offsetHeight;
-                    const targetPosition = target.offsetTop - navHeight - 20;
+                // Wait for menu close animation and layout to settle before scrolling
+                setTimeout(() => {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const navHeight = document.querySelector('.navbar').offsetHeight;
+                        const targetPosition = target.offsetTop - navHeight - 20;
 
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            }, 450); // Wait slightly longer than the 0.4s menu transition
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }, 450); // Wait slightly longer than the 0.4s menu transition
+            }
+            // For cross-page navigation (like index.html#features from privacy.html)
+            else {
+                // Just close the menu and let the browser handle the navigation
+                closeMenu();
+            }
         });
     });
 
