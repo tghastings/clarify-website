@@ -193,12 +193,84 @@ const addPlaceholderEffects = () => {
     });
 };
 
+// Early Access Modal
+const addModalFunctionality = () => {
+    const modal = document.getElementById('early-access-modal');
+    const closeBtn = modal?.querySelector('.modal-close');
+    const copyBtn = document.getElementById('copy-email-btn');
+
+    if (!modal) return;
+
+    // Find all "Request Early Access" buttons (exclude the one inside the modal)
+    const openModalBtns = document.querySelectorAll('a[href*="mailto:hello@clarify.re"]');
+
+    const openModal = (e) => {
+        // Don't intercept the mailto link inside the modal
+        if (e.target.closest('.modal')) return;
+
+        e.preventDefault();
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    // Open modal when clicking any mailto link (except inside modal)
+    openModalBtns.forEach(btn => {
+        btn.addEventListener('click', openModal);
+    });
+
+    // Close modal
+    closeBtn?.addEventListener('click', closeModal);
+
+    // Close on overlay click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    // Copy email functionality
+    copyBtn?.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText('hello@clarify.re');
+            copyBtn.classList.add('copied');
+            setTimeout(() => {
+                copyBtn.classList.remove('copied');
+            }, 2000);
+        } catch (err) {
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = 'hello@clarify.re';
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            copyBtn.classList.add('copied');
+            setTimeout(() => {
+                copyBtn.classList.remove('copied');
+            }, 2000);
+        }
+    });
+};
+
 // Initialize all features when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     addFadeInAnimation();
     animateStats();
     addMobileMenuToggle();
     addPlaceholderEffects();
+    addModalFunctionality();
 });
 
 // Add smooth reveal on page load
