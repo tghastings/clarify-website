@@ -45,7 +45,7 @@ const addFadeInAnimation = () => {
     // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const elements = document.querySelectorAll('.feature-card, .step, .solution-card, .testimonial-card, .pricing-card');
+    const elements = document.querySelectorAll('.feature-card, .step, .solution-card, .testimonial-card, .pricing-card, .portal-feature');
 
     elements.forEach((el, index) => {
         if (prefersReducedMotion) {
@@ -299,6 +299,70 @@ const addModalFunctionality = () => {
     });
 };
 
+// Client Portal Demo Tab Switching
+const addPortalTabFunctionality = () => {
+    const portalNavBtns = document.querySelectorAll('.portal-nav-btn');
+    const portalTabs = document.querySelectorAll('.portal-tab');
+
+    if (portalNavBtns.length === 0) return;
+
+    portalNavBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.getAttribute('data-tab');
+
+            // Remove active class from all buttons and tabs
+            portalNavBtns.forEach(b => b.classList.remove('active'));
+            portalTabs.forEach(t => t.classList.remove('active'));
+
+            // Add active class to clicked button and corresponding tab
+            btn.classList.add('active');
+            const targetTab = document.getElementById(`portal-${tabId}`);
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+        });
+    });
+
+    // Auto-cycle through tabs for demo effect (optional - every 5 seconds)
+    let currentTabIndex = 0;
+    const tabNames = ['dashboard', 'documents', 'calendar', 'tasks', 'team'];
+
+    const autoCycleInterval = setInterval(() => {
+        // Check if user has manually interacted
+        const portalDemo = document.querySelector('.portal-demo');
+        if (portalDemo && portalDemo.dataset.userInteracted === 'true') {
+            clearInterval(autoCycleInterval);
+            return;
+        }
+
+        // Check if portal is in viewport
+        const portalWindow = document.querySelector('.portal-window');
+        if (!portalWindow) return;
+
+        const rect = portalWindow.getBoundingClientRect();
+        const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isInViewport) {
+            currentTabIndex = (currentTabIndex + 1) % tabNames.length;
+            const tabName = tabNames[currentTabIndex];
+            const btn = document.querySelector(`.portal-nav-btn[data-tab="${tabName}"]`);
+            if (btn) {
+                btn.click();
+            }
+        }
+    }, 5000);
+
+    // Stop auto-cycling when user interacts with tabs
+    portalNavBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const portalDemo = document.querySelector('.portal-demo');
+            if (portalDemo) {
+                portalDemo.dataset.userInteracted = 'true';
+            }
+        });
+    });
+};
+
 // Initialize all features when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     addFadeInAnimation();
@@ -306,6 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addMobileMenuToggle();
     addPlaceholderEffects();
     addModalFunctionality();
+    addPortalTabFunctionality();
 });
 
 // Add smooth reveal on page load
