@@ -21,6 +21,27 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Handle hash scroll on page load (for cross-page navigation)
+const handleHashScroll = () => {
+    if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+            // Small delay to ensure page is fully rendered
+            setTimeout(() => {
+                const navHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = target.offsetTop - navHeight - 20;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }, 100);
+        }
+    }
+};
+
+// Run on page load
+window.addEventListener('load', handleHashScroll);
+
 // Intersection Observer for fade-in animations
 // Using smaller threshold and margins for better mobile support
 const observerOptions = {
