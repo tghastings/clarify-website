@@ -1597,7 +1597,7 @@
     <div class="celebration" id="celebration"></div>
 
     <!-- Narration Audio -->
-    <audio id="narrationAudio" preload="auto">
+    <audio id="narrationAudio" preload="metadata" playsinline>
         <source src="audio/client_portal_demo.wav" type="audio/wav">
     </audio>
 
@@ -1659,24 +1659,36 @@
                 const audio = this.elements.narrationAudio;
 
                 // Check if already loaded
-                if (audio.readyState >= 4) {
+                if (audio.readyState >= 3) {
                     this.onAudioReady();
                     return;
                 }
 
-                // Wait for audio to be ready
-                audio.addEventListener('canplaythrough', () => this.onAudioReady(), { once: true });
+                // On mobile, audio often won't preload until user interaction
+                // So we use a timeout fallback and enable the button anyway
+                const loadTimeout = setTimeout(() => {
+                    this.onAudioReady();
+                }, 3000);
+
+                // Wait for audio to be ready (works on desktop)
+                audio.addEventListener('canplay', () => {
+                    clearTimeout(loadTimeout);
+                    this.onAudioReady();
+                }, { once: true });
 
                 // Handle loading error
                 audio.addEventListener('error', () => {
-                    this.elements.startBtnText.textContent = 'Start Demo (No Audio)';
+                    clearTimeout(loadTimeout);
+                    this.elements.startBtnText.textContent = 'Start Demo';
                     this.elements.startBtn.disabled = false;
+                    this.audioAvailable = false;
                 }, { once: true });
             }
 
             onAudioReady() {
                 this.elements.startBtnText.textContent = 'Start Demo';
                 this.elements.startBtn.disabled = false;
+                this.audioAvailable = true;
             }
 
             async start() {
@@ -1684,9 +1696,15 @@
                 this.isRunning = true;
                 this.elements.startBtn.disabled = true;
 
-                // Start narration audio
-                this.elements.narrationAudio.currentTime = 0;
-                this.elements.narrationAudio.play().catch(e => console.log('Audio autoplay blocked:', e));
+                // Start narration audio (user interaction enables playback on mobile)
+                try {
+                    this.elements.narrationAudio.currentTime = 0;
+                    await this.elements.narrationAudio.play();
+                    this.audioPlaying = true;
+                } catch (e) {
+                    console.log('Audio playback failed:', e);
+                    this.audioPlaying = false;
+                }
 
                 // Intro pause - narrator introduces the demo (~5 sec)
                 await this.delay(5000);
@@ -1815,8 +1833,14 @@
 
             waitForAudioEnd() {
                 return new Promise(resolve => {
+                    // If audio isn't playing (failed on mobile or error), resolve immediately
+                    if (!this.audioPlaying) {
+                        resolve();
+                        return;
+                    }
+
                     const audio = this.elements.narrationAudio;
-                    if (audio.ended || audio.paused) {
+                    if (audio.ended) {
                         resolve();
                     } else {
                         audio.addEventListener('ended', resolve, { once: true });
@@ -1871,6 +1895,7 @@
 
             reset() {
                 this.isRunning = false;
+                this.audioPlaying = false;
                 this.elements.startBtn.disabled = false;
                 this.elements.startBtnText.textContent = 'Start Demo';
 
