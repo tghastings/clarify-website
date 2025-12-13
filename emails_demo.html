@@ -204,9 +204,29 @@
             box-shadow: 0 4px 14px rgba(255, 37, 189, 0.4);
         }
 
-        .btn-primary:hover {
+        .btn-primary:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 37, 189, 0.5);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.7;
+            cursor: wait;
+        }
+
+        #playIcon { display: none; }
+        #loadingIcon { display: block; }
+
+        .btn-primary:not(:disabled) #playIcon { display: block; }
+        .btn-primary:not(:disabled) #loadingIcon { display: none; }
+
+        .spin {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .btn-secondary {
@@ -1327,11 +1347,14 @@
             <p>See how Clarify.RE automatically processes incoming contracts, extracts data with AI, and checks for compliance issues.</p>
 
             <div class="demo-controls">
-                <button class="btn btn-primary" id="startDemo">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <button class="btn btn-primary" id="startDemo" disabled>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" id="playIcon">
                         <path d="M6 4L16 10L6 16V4Z" fill="currentColor"/>
                     </svg>
-                    Start Demo
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" id="loadingIcon" class="spin">
+                        <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="40" stroke-dashoffset="10"/>
+                    </svg>
+                    <span id="startBtnText">Loading Audio...</span>
                 </button>
                 <button class="btn btn-secondary" id="resetDemo">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
@@ -1667,14 +1690,21 @@
     <!-- Celebration Effect -->
     <div class="celebration" id="celebration"></div>
 
+    <!-- Narration Audio -->
+    <audio id="narrationAudio" preload="metadata" playsinline>
+        <source src="audio/email_to_transaction.wav" type="audio/wav">
+    </audio>
+
     <script>
         // Demo Animation Controller
         class EmailDemo {
             constructor() {
                 this.currentStep = 0;
                 this.isRunning = false;
+                this.audioPlaying = false;
                 this.elements = {
                     startBtn: document.getElementById('startDemo'),
+                    startBtnText: document.getElementById('startBtnText'),
                     resetBtn: document.getElementById('resetDemo'),
                     emailPanel: document.getElementById('emailPanel'),
                     resultsPanel: document.getElementById('resultsPanel'),
@@ -1687,6 +1717,7 @@
                     dashboardPreview: document.getElementById('dashboardPreview'),
                     particles: document.getElementById('particles'),
                     celebration: document.getElementById('celebration'),
+                    narrationAudio: document.getElementById('narrationAudio'),
                     steps: [
                         document.getElementById('step1'),
                         document.getElementById('step2'),
@@ -1707,6 +1738,7 @@
                 };
 
                 this.bindEvents();
+                this.initAudioLoading();
             }
 
             bindEvents() {
@@ -1714,104 +1746,177 @@
                 this.elements.resetBtn.addEventListener('click', () => this.reset());
             }
 
+            initAudioLoading() {
+                const audio = this.elements.narrationAudio;
+
+                // Check if already loaded
+                if (audio.readyState >= 3) {
+                    this.onAudioReady();
+                    return;
+                }
+
+                // On mobile, audio often won't preload until user interaction
+                // So we use a timeout fallback and enable the button anyway
+                const loadTimeout = setTimeout(() => {
+                    this.onAudioReady();
+                }, 3000);
+
+                // Wait for audio to be ready (works on desktop)
+                audio.addEventListener('canplay', () => {
+                    clearTimeout(loadTimeout);
+                    this.onAudioReady();
+                }, { once: true });
+
+                // Handle loading error
+                audio.addEventListener('error', () => {
+                    clearTimeout(loadTimeout);
+                    this.elements.startBtnText.textContent = 'Start Demo';
+                    this.elements.startBtn.disabled = false;
+                    this.audioAvailable = false;
+                }, { once: true });
+            }
+
+            onAudioReady() {
+                this.elements.startBtnText.textContent = 'Start Demo';
+                this.elements.startBtn.disabled = false;
+                this.audioAvailable = true;
+            }
+
             async start() {
                 if (this.isRunning) return;
                 this.isRunning = true;
                 this.elements.startBtn.disabled = true;
 
-                await this.step1_emailReceived();
-                await this.delay(800);
-                await this.step2_aiParsing();
-                await this.delay(800);
-                await this.step3_complianceCheck();
-                await this.delay(800);
-                await this.step4_dashboardReady();
+                // Start narration audio (user interaction enables playback on mobile)
+                try {
+                    this.elements.narrationAudio.currentTime = 0;
+                    await this.elements.narrationAudio.play();
+                    this.audioPlaying = true;
+                } catch (e) {
+                    console.log('Audio playback failed:', e);
+                    this.audioPlaying = false;
+                }
+
+                // Intro pause - narrator introduces the demo (~8 sec)
+                await this.delay(8000);
+
+                await this.step1_emailReceived();  // ~14 sec (8-22)
+                await this.delay(1000);
+                await this.step2_aiParsing();      // ~20 sec (22-42)
+                await this.delay(1000);
+                await this.step3_complianceCheck(); // ~20 sec (42-62)
+                await this.delay(1000);
+                await this.step4_dashboardReady();  // ~13 sec (62-75)
 
                 this.isRunning = false;
                 this.elements.startBtn.disabled = false;
             }
 
             async step1_emailReceived() {
+                // ~14 seconds for this step (narration: 8-22 sec)
                 this.updateStatus('Receiving email from eContracts...', 10);
                 this.activateStep(0);
 
-                await this.delay(300);
+                await this.delay(2000);
                 this.elements.emailPanel.classList.add('visible');
 
-                await this.delay(500);
+                await this.delay(3000);
                 this.elements.document.classList.add('visible');
-                this.updateStatus('Email received - extracting attachment...', 25);
+                this.updateStatus('Email received - extracting documents...', 20);
 
-                await this.delay(800);
+                await this.delay(4000);
+                this.updateStatus('Contract, disclosures, and attachments detected...', 25);
+
+                await this.delay(4000);
                 this.activateArrow(0);
             }
 
             async step2_aiParsing() {
+                // ~20 seconds for this step (narration: 22-42 sec)
                 this.activateStep(1);
-                this.updateStatus('AI parsing contract document...', 35);
+                this.updateStatus('AI parsing contract document...', 30);
 
                 this.elements.document.classList.add('scanning');
                 this.elements.scanLine.classList.add('active');
 
-                await this.delay(500);
+                await this.delay(2000);
                 this.elements.aiRings.classList.add('visible');
                 this.elements.aiLabels.classList.add('visible');
 
-                // Animate data extraction
+                // Animate data extraction with longer delays
                 const dataItems = this.elements.dataItems;
                 for (let i = 0; i < dataItems.length; i++) {
-                    await this.delay(200);
+                    await this.delay(2000);
                     dataItems[i].classList.add('visible', 'highlight');
-                    this.updateStatus(`Extracting: ${dataItems[i].querySelector('.data-key').textContent}...`, 35 + (i * 8));
+                    this.updateStatus(`Extracting: ${dataItems[i].querySelector('.data-key').textContent}...`, 30 + (i * 5));
                     this.createParticle();
                 }
 
-                await this.delay(500);
+                await this.delay(2000);
                 this.elements.resultsPanel.classList.add('visible');
-                this.updateStatus('Data extraction complete', 60);
+                this.updateStatus('Data extraction complete', 55);
 
-                await this.delay(300);
+                await this.delay(1500);
                 this.elements.scanLine.classList.remove('active');
                 this.elements.document.classList.remove('scanning');
                 this.activateArrow(1);
             }
 
             async step3_complianceCheck() {
+                // ~20 seconds for this step (narration: 42-62 sec)
                 this.activateStep(2);
-                this.updateStatus('Running dual AI compliance check...', 70);
+                this.updateStatus('Running dual AI compliance check...', 60);
 
-                await this.delay(1000);
-                this.updateStatus('Claude analyzing contract terms...', 75);
+                await this.delay(3000);
+                this.updateStatus('Claude analyzing contract terms...', 65);
 
-                await this.delay(800);
-                this.updateStatus('ChatGPT verifying findings...', 82);
+                await this.delay(4000);
+                this.updateStatus('ChatGPT verifying findings...', 72);
 
-                await this.delay(800);
+                await this.delay(4000);
 
                 // Show findings
                 this.elements.findings[0].classList.add('visible');
-                this.updateStatus('Issue found: Inspection deadline missing', 88);
+                this.updateStatus('Issue found: Inspection deadline missing', 80);
                 this.createParticle();
 
-                await this.delay(600);
+                await this.delay(4000);
                 this.elements.findings[1].classList.add('visible');
-                this.updateStatus('Verification complete: Signatures validated', 95);
+                this.updateStatus('Verification complete: Signatures validated', 88);
 
-                await this.delay(500);
+                await this.delay(3000);
                 this.activateArrow(2);
             }
 
             async step4_dashboardReady() {
+                // ~13 seconds for this step (narration: 62-75 sec)
                 this.activateStep(3);
-                this.updateStatus('Creating transaction in dashboard...', 98);
+                this.updateStatus('Creating transaction in dashboard...', 92);
 
-                await this.delay(800);
+                await this.delay(3000);
                 this.elements.dashboardPreview.classList.add('visible');
                 this.updateStatus('Transaction ready for review!', 100);
 
-                // Celebration
-                await this.delay(300);
+                // Wait for audio to finish before celebrating
+                await this.waitForAudioEnd();
                 this.celebrate();
+            }
+
+            waitForAudioEnd() {
+                return new Promise(resolve => {
+                    // If audio isn't playing (failed on mobile or error), resolve immediately
+                    if (!this.audioPlaying) {
+                        resolve();
+                        return;
+                    }
+
+                    const audio = this.elements.narrationAudio;
+                    if (audio.ended) {
+                        resolve();
+                    } else {
+                        audio.addEventListener('ended', resolve, { once: true });
+                    }
+                });
             }
 
             activateStep(index) {
@@ -1874,7 +1979,13 @@
 
             reset() {
                 this.isRunning = false;
+                this.audioPlaying = false;
                 this.elements.startBtn.disabled = false;
+                this.elements.startBtnText.textContent = 'Start Demo';
+
+                // Stop and reset narration audio
+                this.elements.narrationAudio.pause();
+                this.elements.narrationAudio.currentTime = 0;
 
                 // Reset visibility
                 this.elements.emailPanel.classList.remove('visible');
