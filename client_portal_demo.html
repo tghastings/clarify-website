@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarify.RE - Client Portal Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           CSS Variables - Dark Mode Theme
+           ======================================== */
+        :root {
+            --color-primary: #ff25bd;
+            --color-primary-dark: #e01ba6;
+            --color-primary-light: #ff5cd0;
+            --color-secondary: #3b82f6;
+            --color-accent: #34d399;
+            --color-accent-light: #6ee7b7;
+            --color-warning: #f59e0b;
+            --color-error: #ef4444;
+
+            --color-white: #0a0a0f;
+            --color-gray-50: #0f0f14;
+            --color-gray-100: #151519;
+            --color-gray-200: #1e1e24;
+            --color-gray-300: #2a2a32;
+            --color-gray-400: #52525b;
+            --color-gray-500: #71717a;
+            --color-gray-600: #a1a1aa;
+            --color-gray-700: #d4d4d8;
+            --color-gray-800: #e4e4e7;
+            --color-gray-900: #fafafa;
+
+            --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #ff25bd 100%);
+            --gradient-dark: linear-gradient(135deg, #0f0f14 0%, #0a0a0f 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-2xl: 32px;
+            --radius-full: 9999px;
+
+            --shadow-glow: 0 0 40px rgba(255, 37, 189, 0.3);
+            --shadow-glow-blue: 0 0 40px rgba(59, 130, 246, 0.3);
+            --shadow-glow-green: 0 0 40px rgba(52, 211, 153, 0.3);
+        }
+
+        /* Reset & Base */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-gray-700);
+            background-color: var(--color-white);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ========================================
+           Navigation
+           ======================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-gray-200);
+            padding: 1rem 2rem;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--color-gray-900);
+        }
+
+        .logo-accent {
+            color: var(--color-primary);
+        }
+
+        /* ========================================
+           Main Demo Container
+           ======================================== */
+        .demo-container {
+            padding-top: 80px;
+            min-height: 100vh;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(255, 37, 189, 0.1) 0%, transparent 50%),
+                var(--color-white);
+        }
+
+        .demo-header {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .demo-header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--color-gray-900);
+            margin-bottom: 1rem;
+        }
+
+        .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .demo-header p {
+            font-size: 1.125rem;
+            color: var(--color-gray-600);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Control Buttons */
+        .demo-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            border-radius: var(--radius-lg);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(255, 37, 189, 0.4);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 37, 189, 0.5);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.7;
+            cursor: wait;
+        }
+
+        #playIcon { display: none; }
+        #loadingIcon { display: block; }
+
+        .btn-primary:not(:disabled) #playIcon { display: block; }
+        .btn-primary:not(:disabled) #loadingIcon { display: none; }
+
+        .spin {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--color-gray-700);
+            border: 1px solid var(--color-gray-300);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--color-gray-400);
+        }
+
+        /* ========================================
+           Animation Stage
+           ======================================== */
+        .animation-stage {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* Flow Diagram */
+        .flow-container {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr 80px 1fr 80px 1fr;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .flow-step {
+            background: var(--color-gray-100);
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-xl);
+            padding: 1.5rem;
+            text-align: center;
+            opacity: 0.4;
+            transform: scale(0.95);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .flow-step.active {
+            opacity: 1;
+            transform: scale(1);
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .flow-step.completed {
+            opacity: 1;
+            transform: scale(1);
+            border-color: var(--color-accent);
+        }
+
+        .flow-step-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1rem;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flow-step-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+
+        .flow-step h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-step p {
+            font-size: 0.8125rem;
+            color: var(--color-gray-500);
+        }
+
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-gray-400);
+            opacity: 0.3;
+            transition: all 0.5s ease;
+        }
+
+        .flow-arrow.active {
+            opacity: 1;
+            color: var(--color-primary);
+        }
+
+        .flow-arrow svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .flow-arrow.active svg {
+            animation: arrowPulse 1s infinite;
+        }
+
+        @keyframes arrowPulse {
+            0%, 100% { transform: translateX(0); opacity: 1; }
+            50% { transform: translateX(5px); opacity: 0.7; }
+        }
+
+        /* ========================================
+           Scene Container
+           ======================================== */
+        .scene-container {
+            position: relative;
+            min-height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 2rem;
+            perspective: 1000px;
+        }
+
+        /* Device Frames */
+        .device-frame {
+            background: var(--color-gray-100);
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .device-frame.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .device-frame.laptop {
+            width: 500px;
+        }
+
+        .device-frame.phone {
+            width: 280px;
+        }
+
+        .device-header {
+            background: var(--color-gray-200);
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--color-gray-300);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .device-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .device-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--color-gray-400);
+        }
+
+        .device-dots span:first-child { background: #ef4444; }
+        .device-dots span:nth-child(2) { background: #f59e0b; }
+        .device-dots span:last-child { background: #22c55e; }
+
+        .device-title {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--color-gray-500);
+        }
+
+        .device-content {
+            padding: 1.25rem;
+            min-height: 400px;
+        }
+
+        /* ========================================
+           Agent Dashboard Scene
+           ======================================== */
+        .agent-dashboard {
+            width: 100%;
+        }
+
+        .dashboard-nav {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-gray-300);
+        }
+
+        .nav-item {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--color-gray-500);
+            padding: 0.5rem 0.75rem;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item.active {
+            background: var(--color-gray-200);
+            color: var(--color-gray-900);
+        }
+
+        .client-card {
+            background: var(--color-gray-200);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .client-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .client-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        .client-info h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-gray-900);
+        }
+
+        .client-info p {
+            font-size: 0.75rem;
+            color: var(--color-gray-500);
+        }
+
+        .client-property {
+            font-size: 0.75rem;
+            color: var(--color-gray-600);
+            margin-bottom: 0.75rem;
+        }
+
+        .invite-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .invite-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 37, 189, 0.3);
+        }
+
+        .invite-btn svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .invite-btn.sent {
+            background: var(--color-accent);
+        }
+
+        /* Invite Modal */
+        .invite-modal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: var(--color-gray-100);
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-xl);
+            padding: 1.5rem;
+            width: 320px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 100;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .invite-modal.visible {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .modal-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+        }
+
+        .modal-subtitle {
+            font-size: 0.75rem;
+            color: var(--color-gray-500);
+        }
+
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--color-gray-500);
+            margin-bottom: 0.375rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.625rem 0.875rem;
+            background: var(--color-gray-200);
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-md);
+            font-size: 0.8125rem;
+            color: var(--color-gray-900);
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus {
+            border-color: var(--color-primary);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 0.625rem 1rem;
+            border-radius: var(--radius-md);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .modal-btn.cancel {
+            background: var(--color-gray-200);
+            color: var(--color-gray-600);
+        }
+
+        .modal-btn.send {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        /* ========================================
+           Email Scene
+           ======================================== */
+        .email-inbox {
+            width: 100%;
+        }
+
+        .inbox-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .inbox-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+        }
+
+        .unread-badge {
+            background: var(--color-primary);
+            color: white;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-full);
+        }
+
+        .email-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .email-item {
+            background: var(--color-gray-200);
+            border-radius: var(--radius-md);
+            padding: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .email-item:hover {
+            border-color: var(--color-gray-400);
+        }
+
+        .email-item.unread {
+            border-left: 3px solid var(--color-primary);
+        }
+
+        .email-item.highlight {
+            animation: emailHighlight 1s ease;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 20px rgba(255, 37, 189, 0.2);
+        }
+
+        @keyframes emailHighlight {
+            0% { transform: translateX(-20px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        .email-sender {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--color-gray-900);
+            margin-bottom: 0.25rem;
+        }
+
+        .email-subject {
+            font-size: 0.75rem;
+            color: var(--color-gray-600);
+            margin-bottom: 0.25rem;
+        }
+
+        .email-preview {
+            font-size: 0.6875rem;
+            color: var(--color-gray-500);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .email-time {
+            font-size: 0.625rem;
+            color: var(--color-gray-500);
+            float: right;
+        }
+
+        /* Invitation Email Expanded */
+        .invitation-email {
+            background: var(--color-gray-200);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .invitation-email.visible {
+            opacity: 1;
+            max-height: 400px;
+            margin-top: 1rem;
+        }
+
+        .invitation-header {
+            background: var(--gradient-primary);
+            margin: -1rem -1rem 1rem -1rem;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .invitation-logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .invitation-title {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .invitation-body {
+            text-align: center;
+            padding: 0.5rem 0;
+        }
+
+        .invitation-greeting {
+            font-size: 0.875rem;
+            color: var(--color-gray-700);
+            margin-bottom: 0.75rem;
+        }
+
+        .invitation-message {
+            font-size: 0.75rem;
+            color: var(--color-gray-600);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .invitation-property {
+            background: var(--color-gray-100);
+            border-radius: var(--radius-md);
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .invitation-property-address {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-gray-900);
+        }
+
+        .invitation-property-price {
+            font-size: 0.75rem;
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .invitation-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: var(--radius-md);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .invitation-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 37, 189, 0.4);
+        }
+
+        /* ========================================
+           Client Portal Scene
+           ======================================== */
+        .client-portal {
+            width: 100%;
+        }
+
+        .portal-welcome {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-gray-300);
+        }
+
+        .portal-welcome h2 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+            margin-bottom: 0.25rem;
+        }
+
+        .portal-welcome p {
+            font-size: 0.75rem;
+            color: var(--color-gray-500);
+        }
+
+        .portal-property-card {
+            background: var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .property-image {
+            height: 100px;
+            background: linear-gradient(135deg, var(--color-gray-300) 0%, var(--color-gray-400) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .property-image svg {
+            width: 40px;
+            height: 40px;
+            color: var(--color-gray-500);
+        }
+
+        .property-status-badge {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            background: rgba(52, 211, 153, 0.9);
+            color: white;
+            font-size: 0.625rem;
+            font-weight: 700;
+            border-radius: var(--radius-full);
+            text-transform: uppercase;
+        }
+
+        .property-details {
+            padding: 1rem;
+        }
+
+        .property-address {
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+            margin-bottom: 0.25rem;
+        }
+
+        .property-meta {
+            font-size: 0.75rem;
+            color: var(--color-gray-500);
+            margin-bottom: 0.75rem;
+        }
+
+        .property-price {
+            font-size: 1.25rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Timeline */
+        .portal-timeline {
+            margin-bottom: 1rem;
+        }
+
+        .timeline-title {
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: var(--color-gray-500);
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.625rem 0.75rem;
+            background: var(--color-gray-200);
+            border-radius: var(--radius-md);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.4s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .timeline-icon.completed {
+            background: rgba(52, 211, 153, 0.15);
+            color: var(--color-accent);
+        }
+
+        .timeline-icon.current {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--color-secondary);
+        }
+
+        .timeline-icon.upcoming {
+            background: var(--color-gray-300);
+            color: var(--color-gray-500);
+        }
+
+        .timeline-icon svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .timeline-text {
+            flex: 1;
+        }
+
+        .timeline-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-gray-900);
+        }
+
+        .timeline-date {
+            font-size: 0.625rem;
+            color: var(--color-gray-500);
+        }
+
+        /* Documents Section */
+        .portal-documents {
+            margin-bottom: 1rem;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+
+        .document-card {
+            background: var(--color-gray-200);
+            border-radius: var(--radius-md);
+            padding: 0.75rem;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.4s ease;
+        }
+
+        .document-card.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .document-icon {
+            width: 32px;
+            height: 32px;
+            margin: 0 auto 0.5rem;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ef4444;
+            font-size: 0.625rem;
+            font-weight: 700;
+        }
+
+        .document-name {
+            font-size: 0.6875rem;
+            font-weight: 500;
+            color: var(--color-gray-700);
+            margin-bottom: 0.25rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .document-status {
+            font-size: 0.5625rem;
+            font-weight: 600;
+            color: var(--color-accent);
+        }
+
+        /* Agent Contact */
+        .agent-contact {
+            background: var(--color-gray-200);
+            border-radius: var(--radius-md);
+            padding: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .agent-avatar {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+
+        .agent-details {
+            flex: 1;
+        }
+
+        .agent-name {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--color-gray-900);
+        }
+
+        .agent-role {
+            font-size: 0.6875rem;
+            color: var(--color-gray-500);
+        }
+
+        .contact-btn {
+            padding: 0.5rem;
+            background: var(--color-gray-300);
+            border-radius: var(--radius-sm);
+            color: var(--color-gray-600);
+            border: none;
+            cursor: pointer;
+        }
+
+        .contact-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ========================================
+           Processing Status
+           ======================================== */
+        .status-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .status-text {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-gray-700);
+            margin-bottom: 0.75rem;
+        }
+
+        .status-bar {
+            width: 280px;
+            height: 6px;
+            background: var(--color-gray-300);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .status-fill {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Timeline Indicator */
+        .timeline-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .timeline-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--color-gray-400);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-dot.active {
+            background: var(--color-primary);
+            box-shadow: 0 0 10px rgba(255, 37, 189, 0.5);
+        }
+
+        .timeline-dot.completed {
+            background: var(--color-accent);
+        }
+
+        /* Celebration */
+        .celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .celebration.active {
+            opacity: 1;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+        }
+
+        .confetti.active {
+            animation: confettiFall 3s ease-out forwards;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                opacity: 1;
+                transform: translateY(-100vh) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .flow-container {
+                display: none;
+            }
+
+            .scene-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .device-frame.laptop,
+            .device-frame.phone {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .demo-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .demo-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Overlay for modals */
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 50;
+        }
+
+        .modal-overlay.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <span class="logo-text">Clarify<span class="logo-accent">.RE</span></span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Demo Container -->
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>Client Portal <span class="gradient-text">Experience</span></h1>
+            <p>See how buyers get invited to track their home purchase in real-time with full transparency.</p>
+
+            <div class="demo-controls">
+                <button class="btn btn-primary" id="startDemo" disabled>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" id="playIcon">
+                        <path d="M6 4L16 10L6 16V4Z" fill="currentColor"/>
+                    </svg>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" id="loadingIcon" class="spin">
+                        <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="40" stroke-dashoffset="10"/>
+                    </svg>
+                    <span id="startBtnText">Loading Audio...</span>
+                </button>
+                <button class="btn btn-secondary" id="resetDemo">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10C17 13.866 13.866 17 10 17"/>
+                        <path d="M3 10L6 7M3 10L6 13"/>
+                    </svg>
+                    Reset
+                </button>
+            </div>
+        </div>
+
+        <div class="animation-stage">
+            <!-- Flow Steps -->
+            <div class="flow-container">
+                <div class="flow-step" id="step1">
+                    <div class="flow-step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="8.5" cy="7" r="4"/>
+                            <line x1="20" y1="8" x2="20" y2="14"/>
+                            <line x1="23" y1="11" x2="17" y2="11"/>
+                        </svg>
+                    </div>
+                    <h3>Agent Invites</h3>
+                    <p>Send Invitation</p>
+                </div>
+
+                <div class="flow-arrow" id="arrow1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+
+                <div class="flow-step" id="step2">
+                    <div class="flow-step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <h3>Email Received</h3>
+                    <p>Client Gets Invite</p>
+                </div>
+
+                <div class="flow-arrow" id="arrow2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+
+                <div class="flow-step" id="step3">
+                    <div class="flow-step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                            <polyline points="10 17 15 12 10 7"/>
+                            <line x1="15" y1="12" x2="3" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3>Client Logs In</h3>
+                    <p>Access Portal</p>
+                </div>
+
+                <div class="flow-arrow" id="arrow3">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+
+                <div class="flow-step" id="step4">
+                    <div class="flow-step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </div>
+                    <h3>View Transaction</h3>
+                    <p>Track Progress</p>
+                </div>
+            </div>
+
+            <!-- Scene Container -->
+            <div class="scene-container">
+                <!-- Modal Overlay -->
+                <div class="modal-overlay" id="modalOverlay"></div>
+
+                <!-- Agent's Laptop -->
+                <div class="device-frame laptop" id="agentDevice">
+                    <div class="device-header">
+                        <div class="device-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <span class="device-title">Agent Dashboard - Clarify.RE</span>
+                    </div>
+                    <div class="device-content">
+                        <div class="agent-dashboard">
+                            <div class="dashboard-nav">
+                                <div class="nav-item active">Transactions</div>
+                                <div class="nav-item">Clients</div>
+                                <div class="nav-item">Tasks</div>
+                            </div>
+
+                            <div class="client-card" id="clientCard">
+                                <div class="client-header">
+                                    <div class="client-avatar">JS</div>
+                                    <div class="client-info">
+                                        <h4>James & Sarah Mitchell</h4>
+                                        <p>Buyer</p>
+                                    </div>
+                                </div>
+                                <div class="client-property">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; vertical-align: middle; margin-right: 4px;">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    </svg>
+                                    1847 Maple Avenue, Springfield IL
+                                </div>
+                                <button class="invite-btn" id="inviteBtn">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
+                                    </svg>
+                                    <span id="inviteBtnText">Invite to Portal</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Invite Modal -->
+                <div class="invite-modal" id="inviteModal">
+                    <div class="modal-header">
+                        <div class="modal-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="modal-title">Invite Client</div>
+                            <div class="modal-subtitle">Send portal access invitation</div>
+                        </div>
+                    </div>
+                    <div class="modal-form">
+                        <div class="form-group">
+                            <label>Client Email</label>
+                            <input type="email" value="james.mitchell@email.com" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Property</label>
+                            <input type="text" value="1847 Maple Avenue, Springfield IL" readonly>
+                        </div>
+                        <div class="modal-actions">
+                            <button class="modal-btn cancel" id="cancelBtn">Cancel</button>
+                            <button class="modal-btn send" id="sendInviteBtn">Send Invite</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client's Phone -->
+                <div class="device-frame phone" id="clientDevice">
+                    <div class="device-header">
+                        <div class="device-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <span class="device-title" id="phoneTitle">Email - Inbox</span>
+                    </div>
+                    <div class="device-content" id="clientContent">
+                        <!-- Email Inbox View -->
+                        <div class="email-inbox" id="emailInbox">
+                            <div class="inbox-header">
+                                <span class="inbox-title">Inbox</span>
+                                <span class="unread-badge" id="unreadBadge">3</span>
+                            </div>
+                            <div class="email-list">
+                                <div class="email-item">
+                                    <span class="email-time">Yesterday</span>
+                                    <div class="email-sender">Amazon</div>
+                                    <div class="email-subject">Your order has shipped</div>
+                                    <div class="email-preview">Your package is on its way...</div>
+                                </div>
+                                <div class="email-item" id="inviteEmail" style="display: none;">
+                                    <span class="email-time">Just now</span>
+                                    <div class="email-sender">Clarify.RE</div>
+                                    <div class="email-subject">You're invited to track your home purchase!</div>
+                                    <div class="email-preview">Sarah Johnson has invited you to...</div>
+                                </div>
+                                <div class="email-item">
+                                    <span class="email-time">2 days ago</span>
+                                    <div class="email-sender">LinkedIn</div>
+                                    <div class="email-subject">New connection request</div>
+                                    <div class="email-preview">John Smith wants to connect...</div>
+                                </div>
+                            </div>
+
+                            <!-- Expanded Invitation Email -->
+                            <div class="invitation-email" id="invitationEmail">
+                                <div class="invitation-header">
+                                    <div class="invitation-logo">Clarify<span style="color: rgba(255,255,255,0.8)">.RE</span></div>
+                                    <div class="invitation-title">You're Invited!</div>
+                                </div>
+                                <div class="invitation-body">
+                                    <div class="invitation-greeting">Hi James,</div>
+                                    <div class="invitation-message">
+                                        Sarah Johnson from Springfield Premier Realty has invited you to track your home purchase in real-time.
+                                    </div>
+                                    <div class="invitation-property">
+                                        <div class="invitation-property-address">1847 Maple Avenue</div>
+                                        <div class="invitation-property-price">$425,000</div>
+                                    </div>
+                                    <a href="#" class="invitation-cta" id="accessPortalBtn">
+                                        Access Your Portal
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Client Portal View (initially hidden) -->
+                        <div class="client-portal" id="clientPortal" style="display: none;">
+                            <div class="portal-welcome">
+                                <h2>Welcome, James!</h2>
+                                <p>Track your home purchase journey</p>
+                            </div>
+
+                            <div class="portal-property-card">
+                                <div class="property-image">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                        <polyline points="9 22 9 12 15 12 15 22"/>
+                                    </svg>
+                                    <div class="property-status-badge">Under Contract</div>
+                                </div>
+                                <div class="property-details">
+                                    <div class="property-address">1847 Maple Avenue</div>
+                                    <div class="property-meta">Springfield, IL 62701 • 3 bed, 2 bath</div>
+                                    <div class="property-price">$425,000</div>
+                                </div>
+                            </div>
+
+                            <div class="portal-timeline">
+                                <div class="timeline-title">Transaction Timeline</div>
+                                <div class="timeline-items" id="timelineItems">
+                                    <div class="timeline-item" data-delay="0">
+                                        <div class="timeline-icon completed">
+                                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </div>
+                                        <div class="timeline-text">
+                                            <div class="timeline-label">Offer Accepted</div>
+                                            <div class="timeline-date">Completed Dec 5</div>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item" data-delay="100">
+                                        <div class="timeline-icon completed">
+                                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </div>
+                                        <div class="timeline-text">
+                                            <div class="timeline-label">Earnest Money Deposited</div>
+                                            <div class="timeline-date">Completed Dec 7</div>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item" data-delay="200">
+                                        <div class="timeline-icon current">
+                                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </div>
+                                        <div class="timeline-text">
+                                            <div class="timeline-label">Inspection Period</div>
+                                            <div class="timeline-date">Due Dec 15</div>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item" data-delay="300">
+                                        <div class="timeline-icon upcoming">
+                                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </div>
+                                        <div class="timeline-text">
+                                            <div class="timeline-label">Appraisal</div>
+                                            <div class="timeline-date">Scheduled Dec 18</div>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item" data-delay="400">
+                                        <div class="timeline-icon upcoming">
+                                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="timeline-text">
+                                            <div class="timeline-label">Closing Day!</div>
+                                            <div class="timeline-date">Jan 10, 2025</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="portal-documents">
+                                <div class="timeline-title">Your Documents</div>
+                                <div class="documents-grid" id="documentsGrid">
+                                    <div class="document-card" data-delay="0">
+                                        <div class="document-icon">PDF</div>
+                                        <div class="document-name">Purchase Contract</div>
+                                        <div class="document-status">Signed</div>
+                                    </div>
+                                    <div class="document-card" data-delay="100">
+                                        <div class="document-icon">PDF</div>
+                                        <div class="document-name">Inspection Report</div>
+                                        <div class="document-status">Ready to View</div>
+                                    </div>
+                                    <div class="document-card" data-delay="200">
+                                        <div class="document-icon">PDF</div>
+                                        <div class="document-name">Disclosure Form</div>
+                                        <div class="document-status">Signed</div>
+                                    </div>
+                                    <div class="document-card" data-delay="300">
+                                        <div class="document-icon">PDF</div>
+                                        <div class="document-name">Title Commitment</div>
+                                        <div class="document-status">Pending</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="agent-contact">
+                                <div class="agent-avatar">SJ</div>
+                                <div class="agent-details">
+                                    <div class="agent-name">Sarah Johnson</div>
+                                    <div class="agent-role">Your Agent</div>
+                                </div>
+                                <button class="contact-btn">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status -->
+            <div class="status-container">
+                <div class="status-text" id="statusText">Click "Start Demo" to begin</div>
+                <div class="status-bar">
+                    <div class="status-fill" id="statusFill"></div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline-indicator" id="timeline">
+                <div class="timeline-dot" data-step="1"></div>
+                <div class="timeline-dot" data-step="2"></div>
+                <div class="timeline-dot" data-step="3"></div>
+                <div class="timeline-dot" data-step="4"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Celebration -->
+    <div class="celebration" id="celebration"></div>
+
+    <!-- Narration Audio -->
+    <audio id="narrationAudio" preload="auto">
+        <source src="audio/client_portal_demo.wav" type="audio/wav">
+    </audio>
+
+    <script>
+        // Client Portal Demo Controller
+        class ClientPortalDemo {
+            constructor() {
+                this.currentStep = 0;
+                this.isRunning = false;
+                this.elements = {
+                    startBtn: document.getElementById('startDemo'),
+                    resetBtn: document.getElementById('resetDemo'),
+                    agentDevice: document.getElementById('agentDevice'),
+                    clientDevice: document.getElementById('clientDevice'),
+                    inviteBtn: document.getElementById('inviteBtn'),
+                    inviteBtnText: document.getElementById('inviteBtnText'),
+                    inviteModal: document.getElementById('inviteModal'),
+                    modalOverlay: document.getElementById('modalOverlay'),
+                    cancelBtn: document.getElementById('cancelBtn'),
+                    sendInviteBtn: document.getElementById('sendInviteBtn'),
+                    inviteEmail: document.getElementById('inviteEmail'),
+                    invitationEmail: document.getElementById('invitationEmail'),
+                    accessPortalBtn: document.getElementById('accessPortalBtn'),
+                    emailInbox: document.getElementById('emailInbox'),
+                    clientPortal: document.getElementById('clientPortal'),
+                    phoneTitle: document.getElementById('phoneTitle'),
+                    unreadBadge: document.getElementById('unreadBadge'),
+                    statusText: document.getElementById('statusText'),
+                    statusFill: document.getElementById('statusFill'),
+                    celebration: document.getElementById('celebration'),
+                    steps: [
+                        document.getElementById('step1'),
+                        document.getElementById('step2'),
+                        document.getElementById('step3'),
+                        document.getElementById('step4')
+                    ],
+                    arrows: [
+                        document.getElementById('arrow1'),
+                        document.getElementById('arrow2'),
+                        document.getElementById('arrow3')
+                    ],
+                    timelineDots: document.querySelectorAll('.timeline-dot'),
+                    timelineItems: document.querySelectorAll('.timeline-item'),
+                    documentCards: document.querySelectorAll('.document-card'),
+                    narrationAudio: document.getElementById('narrationAudio'),
+                    startBtnText: document.getElementById('startBtnText')
+                };
+
+                this.bindEvents();
+                this.initAudioLoading();
+            }
+
+            bindEvents() {
+                this.elements.startBtn.addEventListener('click', () => this.start());
+                this.elements.resetBtn.addEventListener('click', () => this.reset());
+            }
+
+            initAudioLoading() {
+                const audio = this.elements.narrationAudio;
+
+                // Check if already loaded
+                if (audio.readyState >= 4) {
+                    this.onAudioReady();
+                    return;
+                }
+
+                // Wait for audio to be ready
+                audio.addEventListener('canplaythrough', () => this.onAudioReady(), { once: true });
+
+                // Handle loading error
+                audio.addEventListener('error', () => {
+                    this.elements.startBtnText.textContent = 'Start Demo (No Audio)';
+                    this.elements.startBtn.disabled = false;
+                }, { once: true });
+            }
+
+            onAudioReady() {
+                this.elements.startBtnText.textContent = 'Start Demo';
+                this.elements.startBtn.disabled = false;
+            }
+
+            async start() {
+                if (this.isRunning) return;
+                this.isRunning = true;
+                this.elements.startBtn.disabled = true;
+
+                // Start narration audio
+                this.elements.narrationAudio.currentTime = 0;
+                this.elements.narrationAudio.play().catch(e => console.log('Audio autoplay blocked:', e));
+
+                // Intro pause - narrator introduces the demo (~5 sec)
+                await this.delay(5000);
+
+                await this.step1_agentInvites();  // ~20 sec
+                await this.delay(1500);
+                await this.step2_emailReceived(); // ~18 sec
+                await this.delay(1500);
+                await this.step3_clientLogsIn();  // ~12 sec
+                await this.delay(1500);
+                await this.step4_viewTransaction(); // ~25 sec
+
+                this.isRunning = false;
+                this.elements.startBtn.disabled = false;
+            }
+
+            async step1_agentInvites() {
+                this.updateStatus('Agent preparing client invitation...', 10);
+                this.activateStep(0);
+
+                await this.delay(1000);
+                this.elements.agentDevice.classList.add('visible');
+                this.elements.clientDevice.classList.add('visible');
+
+                await this.delay(3000);
+                this.updateStatus('Opening invite dialog...', 15);
+
+                // Show modal
+                await this.delay(2000);
+                this.elements.modalOverlay.classList.add('visible');
+                this.elements.inviteModal.classList.add('visible');
+
+                await this.delay(4000);
+                this.updateStatus('Sending invitation email...', 22);
+
+                // Click send
+                await this.delay(2500);
+                this.elements.inviteModal.classList.remove('visible');
+                this.elements.modalOverlay.classList.remove('visible');
+
+                await this.delay(1000);
+                this.elements.inviteBtn.classList.add('sent');
+                this.elements.inviteBtnText.textContent = 'Invitation Sent!';
+
+                await this.delay(2000);
+                this.activateArrow(0);
+            }
+
+            async step2_emailReceived() {
+                this.activateStep(1);
+                this.updateStatus('Email arriving in client inbox...', 30);
+
+                await this.delay(2000);
+
+                // Show new email
+                this.elements.inviteEmail.style.display = 'block';
+                this.elements.inviteEmail.classList.add('unread', 'highlight');
+                this.elements.unreadBadge.textContent = '4';
+
+                // Move to top of list
+                this.elements.inviteEmail.parentNode.insertBefore(
+                    this.elements.inviteEmail,
+                    this.elements.inviteEmail.parentNode.children[0]
+                );
+
+                await this.delay(4000);
+                this.updateStatus('Client opens invitation email...', 38);
+
+                await this.delay(2500);
+
+                // Expand invitation email
+                this.elements.invitationEmail.classList.add('visible');
+                this.elements.inviteEmail.classList.remove('unread');
+                this.elements.unreadBadge.textContent = '3';
+
+                await this.delay(4000);
+                this.activateArrow(1);
+            }
+
+            async step3_clientLogsIn() {
+                this.activateStep(2);
+                this.updateStatus('Client clicks to access portal...', 45);
+
+                await this.delay(3000);
+
+                // Transition to portal
+                this.updateStatus('Logging in to client portal...', 52);
+                this.elements.phoneTitle.textContent = 'Clarify.RE - My Transaction';
+
+                await this.delay(2500);
+                this.elements.emailInbox.style.display = 'none';
+                this.elements.clientPortal.style.display = 'block';
+
+                await this.delay(2500);
+                this.activateArrow(2);
+            }
+
+            async step4_viewTransaction() {
+                this.activateStep(3);
+                this.updateStatus('Loading transaction details...', 60);
+
+                await this.delay(3000);
+
+                // Animate timeline items with longer delays for narration
+                for (const item of this.elements.timelineItems) {
+                    await this.delay(2500);
+                    item.classList.add('visible');
+                }
+
+                await this.delay(3000);
+                this.updateStatus('Loading documents...', 85);
+
+                // Animate document cards
+                for (const card of this.elements.documentCards) {
+                    await this.delay(1500);
+                    card.classList.add('visible');
+                }
+
+                await this.delay(4000);
+                this.updateStatus('Client portal ready!', 100);
+
+                // Wait for audio to finish before celebrating
+                await this.waitForAudioEnd();
+                this.celebrate();
+            }
+
+            waitForAudioEnd() {
+                return new Promise(resolve => {
+                    const audio = this.elements.narrationAudio;
+                    if (audio.ended || audio.paused) {
+                        resolve();
+                    } else {
+                        audio.addEventListener('ended', resolve, { once: true });
+                    }
+                });
+            }
+
+            activateStep(index) {
+                this.elements.steps.forEach((step, i) => {
+                    step.classList.remove('active');
+                    if (i < index) step.classList.add('completed');
+                    if (i === index) step.classList.add('active');
+                });
+
+                this.elements.timelineDots.forEach((dot, i) => {
+                    dot.classList.remove('active');
+                    if (i < index) dot.classList.add('completed');
+                    if (i === index) dot.classList.add('active');
+                });
+            }
+
+            activateArrow(index) {
+                if (this.elements.arrows[index]) {
+                    this.elements.arrows[index].classList.add('active');
+                }
+            }
+
+            updateStatus(text, progress) {
+                this.elements.statusText.textContent = text;
+                this.elements.statusFill.style.width = `${progress}%`;
+            }
+
+            celebrate() {
+                this.elements.celebration.classList.add('active');
+
+                const colors = ['#ff25bd', '#3b82f6', '#34d399', '#f59e0b'];
+                for (let i = 0; i < 50; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti active';
+                    confetti.style.left = `${Math.random() * 100}%`;
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = `${Math.random() * 0.5}s`;
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    this.elements.celebration.appendChild(confetti);
+                }
+
+                setTimeout(() => {
+                    this.elements.celebration.classList.remove('active');
+                    this.elements.celebration.innerHTML = '';
+                }, 3000);
+            }
+
+            reset() {
+                this.isRunning = false;
+                this.elements.startBtn.disabled = false;
+                this.elements.startBtnText.textContent = 'Start Demo';
+
+                // Stop and reset narration audio
+                this.elements.narrationAudio.pause();
+                this.elements.narrationAudio.currentTime = 0;
+
+                // Reset devices
+                this.elements.agentDevice.classList.remove('visible');
+                this.elements.clientDevice.classList.remove('visible');
+
+                // Reset modal
+                this.elements.inviteModal.classList.remove('visible');
+                this.elements.modalOverlay.classList.remove('visible');
+
+                // Reset invite button
+                this.elements.inviteBtn.classList.remove('sent');
+                this.elements.inviteBtnText.textContent = 'Invite to Portal';
+
+                // Reset email
+                this.elements.inviteEmail.style.display = 'none';
+                this.elements.inviteEmail.classList.remove('unread', 'highlight');
+                this.elements.invitationEmail.classList.remove('visible');
+                this.elements.unreadBadge.textContent = '3';
+
+                // Reset views
+                this.elements.emailInbox.style.display = 'block';
+                this.elements.clientPortal.style.display = 'none';
+                this.elements.phoneTitle.textContent = 'Email - Inbox';
+
+                // Reset timeline/documents
+                this.elements.timelineItems.forEach(item => item.classList.remove('visible'));
+                this.elements.documentCards.forEach(card => card.classList.remove('visible'));
+
+                // Reset flow steps
+                this.elements.steps.forEach(step => {
+                    step.classList.remove('active', 'completed');
+                });
+
+                this.elements.arrows.forEach(arrow => {
+                    arrow.classList.remove('active');
+                });
+
+                this.elements.timelineDots.forEach(dot => {
+                    dot.classList.remove('active', 'completed');
+                });
+
+                // Reset status
+                this.updateStatus('Click "Start Demo" to begin', 0);
+            }
+
+            delay(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+        }
+
+        // Initialize demo
+        document.addEventListener('DOMContentLoaded', () => {
+            new ClientPortalDemo();
+        });
+    </script>
+</body>
+</html>
