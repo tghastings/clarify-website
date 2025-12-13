@@ -1728,6 +1728,7 @@
                 await this.delay(1000);
                 this.elements.agentDevice.classList.add('visible');
                 this.elements.clientDevice.classList.add('visible');
+                this.scrollToElement(this.elements.agentDevice);
 
                 await this.delay(3000);
                 this.updateStatus('Opening invite dialog...', 15);
@@ -1779,6 +1780,7 @@
                 this.elements.invitationEmail.classList.add('visible');
                 this.elements.inviteEmail.classList.remove('unread');
                 this.elements.unreadBadge.textContent = '3';
+                this.scrollToElement(this.elements.clientDevice);
 
                 await this.delay(4000);
                 this.activateArrow(1);
@@ -1797,6 +1799,7 @@
                 await this.delay(2500);
                 this.elements.emailInbox.style.display = 'none';
                 this.elements.clientPortal.style.display = 'block';
+                this.scrollToElement(this.elements.clientDevice);
 
                 await this.delay(2500);
                 this.activateArrow(2);
@@ -1805,6 +1808,7 @@
             async step4_viewTransaction() {
                 this.activateStep(3);
                 this.updateStatus('Loading transaction details...', 60);
+                this.scrollToElement(this.elements.clientDevice);
 
                 await this.delay(3000);
 
@@ -1845,6 +1849,16 @@
                     } else {
                         audio.addEventListener('ended', resolve, { once: true });
                     }
+                });
+            }
+
+            scrollToElement(element, offset = 100) {
+                if (!element) return;
+                const rect = element.getBoundingClientRect();
+                const absoluteTop = window.pageYOffset + rect.top - offset;
+                window.scrollTo({
+                    top: absoluteTop,
+                    behavior: 'smooth'
                 });
             }
 

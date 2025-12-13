@@ -1819,6 +1819,7 @@
 
                 await this.delay(2000);
                 this.elements.emailPanel.classList.add('visible');
+                this.scrollToElement(this.elements.emailPanel);
 
                 await this.delay(3000);
                 this.elements.document.classList.add('visible');
@@ -1854,6 +1855,7 @@
 
                 await this.delay(2000);
                 this.elements.resultsPanel.classList.add('visible');
+                this.scrollToElement(this.elements.resultsPanel);
                 this.updateStatus('Data extraction complete', 55);
 
                 await this.delay(1500);
@@ -1895,6 +1897,7 @@
 
                 await this.delay(3000);
                 this.elements.dashboardPreview.classList.add('visible');
+                this.scrollToElement(this.elements.dashboardPreview);
                 this.updateStatus('Transaction ready for review!', 100);
 
                 // Wait for audio to finish before celebrating
@@ -1916,6 +1919,16 @@
                     } else {
                         audio.addEventListener('ended', resolve, { once: true });
                     }
+                });
+            }
+
+            scrollToElement(element, offset = 100) {
+                if (!element) return;
+                const rect = element.getBoundingClientRect();
+                const absoluteTop = window.pageYOffset + rect.top - offset;
+                window.scrollTo({
+                    top: absoluteTop,
+                    behavior: 'smooth'
                 });
             }
 
