@@ -164,6 +164,19 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     background-clip: text;
 }
 
+.text-white {
+    color: #fff;
+    font-weight: 600;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #9d174d, #db2777, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+}
+
 /* ========================================
    Buttons
    ======================================== */
@@ -10017,8 +10030,27 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 .solution-learn-more {
-    margin-top: 1rem;
-    width: 100%;
+    margin-top: auto;
+    width: calc(100% + 2 * var(--spacing-lg));
+    margin-left: calc(-1 * var(--spacing-lg));
+    margin-right: calc(-1 * var(--spacing-lg));
+    margin-bottom: calc(-1 * var(--spacing-lg));
+    padding: 0;
+    height: 44.8px;
+    min-height: 44.8px;
+    max-height: 44.8px;
+    flex-shrink: 0;
+    background: var(--gradient-primary);
+    border: none;
+    color: white;
+    font-size: 0.875rem;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-sizing: border-box;
+}
+
+.solution-learn-more:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 4px 20px rgba(255, 37, 189, 0.5);
 }
 
 /* Scene 1: Agent Reality / Chaos Grid */
