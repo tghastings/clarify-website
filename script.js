@@ -820,6 +820,114 @@ const addVideoPlayer = () => {
     modalObserver.observe(videoModal, { attributes: true });
 };
 
+// Feature Showcase Auto-Cycling Animation
+const addFeatureShowcase = () => {
+    const showcase = document.getElementById('feature-showcase');
+    if (!showcase) return;
+
+    const scenes = showcase.querySelectorAll('.showcase-scene');
+    const dots = showcase.querySelectorAll('.showcase-dot');
+    let currentScene = 0;
+    let autoPlayInterval;
+    let isPaused = false;
+
+    const showScene = (index) => {
+        // Update scenes
+        scenes.forEach((scene, i) => {
+            scene.classList.toggle('active', i === index);
+        });
+        // Update dots
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+        currentScene = index;
+    };
+
+    const nextScene = () => {
+        const next = (currentScene + 1) % scenes.length;
+        showScene(next);
+    };
+
+    const startAutoPlay = () => {
+        autoPlayInterval = setInterval(() => {
+            if (!isPaused) {
+                nextScene();
+            }
+        }, 4000); // Change scene every 4 seconds
+    };
+
+    const stopAutoPlay = () => {
+        clearInterval(autoPlayInterval);
+    };
+
+    // Dot click handlers
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showScene(index);
+            // Reset autoplay timer
+            stopAutoPlay();
+            startAutoPlay();
+        });
+    });
+
+    // Pause on hover (desktop)
+    showcase.addEventListener('mouseenter', () => {
+        isPaused = true;
+    });
+
+    showcase.addEventListener('mouseleave', () => {
+        isPaused = false;
+    });
+
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    showcase.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        isPaused = true;
+    }, { passive: true });
+
+    showcase.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+        isPaused = false;
+    }, { passive: true });
+
+    const handleSwipe = () => {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Swipe left - next scene
+                const next = (currentScene + 1) % scenes.length;
+                showScene(next);
+            } else {
+                // Swipe right - previous scene
+                const prev = (currentScene - 1 + scenes.length) % scenes.length;
+                showScene(prev);
+            }
+            // Reset autoplay timer
+            stopAutoPlay();
+            startAutoPlay();
+        }
+    };
+
+    // Start when in viewport
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startAutoPlay();
+            } else {
+                stopAutoPlay();
+            }
+        });
+    }, { threshold: 0.3 });
+
+    observer.observe(showcase);
+};
+
 // Initialize all features when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     addFadeInAnimation();
@@ -829,6 +937,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addModalFunctionality();
     addPortalTabFunctionality();
     addVideoPlayer();
+    addFeatureShowcase();
 });
 
 // Add smooth reveal on page load
