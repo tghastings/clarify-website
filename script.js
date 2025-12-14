@@ -399,7 +399,7 @@ const addVideoPlayer = () => {
     const playIcon = playBtn?.querySelector('.play-icon');
     const pauseIcon = playBtn?.querySelector('.pause-icon');
 
-    const featureCards = document.querySelectorAll('.feature-card-video');
+    const featureCards = document.querySelectorAll('.feature-card-video, .solution-card-video');
 
     if (!videoModal || !audio) return;
 
@@ -508,14 +508,18 @@ const addVideoPlayer = () => {
 
         if (hasAudio) {
             audio.src = audioSrc;
+            audio.load();
             timeDisplay.textContent = '0:00 / 0:00';
-            // Auto-play after short delay
-            setTimeout(() => {
-                audio.play();
-                isPlaying = true;
-                playIcon.style.display = 'none';
-                pauseIcon.style.display = 'block';
-            }, 500);
+            // Auto-play when audio is ready
+            audio.oncanplay = () => {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    playIcon.style.display = 'none';
+                    pauseIcon.style.display = 'block';
+                }).catch(err => {
+                    console.log('Auto-play blocked, click play to start');
+                });
+            };
         } else {
             // No audio - setup manual navigation
             totalDuration = getTotalDuration(demoType);
@@ -531,6 +535,7 @@ const addVideoPlayer = () => {
         if (hasAudio) {
             audio.pause();
             audio.currentTime = 0;
+            audio.oncanplay = null; // Clear the auto-play handler
         }
         isPlaying = false;
         videoModal.classList.remove('active');
@@ -540,45 +545,12 @@ const addVideoPlayer = () => {
         playBtn.style.pointerEvents = 'auto';
     };
 
-    // Seek on progress bar click
-    const seekTo = (e) => {
-        const rect = progressBar.getBoundingClientRect();
-        const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-
-        if (hasAudio) {
-            audio.currentTime = percent * audio.duration;
-        } else {
-            // Manual seek for no-audio demos
-            manualTime = percent * totalDuration;
-            progressFill.style.width = `${percent * 100}%`;
-            progressHandle.style.left = `${percent * 100}%`;
-            timeDisplay.textContent = `${formatTime(manualTime)} / ${formatTime(totalDuration)}`;
-            updateScenes(manualTime);
-        }
-    };
-
-    // Drag support for progress bar
-    let isDragging = false;
-
-    const handleDrag = (e) => {
-        if (!isDragging) return;
-        seekTo(e);
-    };
-
-    progressBar?.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        seekTo(e);
-    });
-
-    document.addEventListener('mousemove', handleDrag);
-    document.addEventListener('mouseup', () => {
-        isDragging = false;
-    });
+    // Seeking disabled - users can only pause/resume
+    // Progress bar is read-only
 
     // Event listeners
     playBtn?.addEventListener('click', togglePlay);
     closeBtn?.addEventListener('click', closeVideo);
-    progressBar?.addEventListener('click', seekTo);
 
     audio.addEventListener('timeupdate', updateProgress);
     audio.addEventListener('loadedmetadata', () => {
@@ -625,6 +597,54 @@ const addVideoPlayer = () => {
             openHandler();
         });
     });
+
+    // URL hash deep linking for demo modals
+    const hashToDemo = {
+        // Feature demos
+        'demo-compliance': { video: 'compliance', audio: 'audio/compliance_flow.wav', title: 'Compliance Flow Demo' },
+        'demo-email-to-transaction': { video: 'email', audio: 'audio/email_to_transaction.wav', title: 'Transaction Automation Demo' },
+        'demo-playbooks': { video: 'playbooks', audio: 'audio/playbooks.wav', title: 'Smart Playbooks Demo' },
+        'demo-client-portal': { video: 'portal', audio: 'audio/c_portal_demo.wav', title: 'Client Portal Demo' },
+        'demo-team-analytics': { video: 'analytics', audio: 'audio/team-analytics.wav', title: 'Team Analytics Demo' },
+        // Solution learn more modals
+        'learn-more-agents': { video: 'agents', audio: 'audio/agents_learn_more.wav', title: 'For Agents - See How It Works' },
+        'learn-more-tc': { video: 'tc', audio: 'audio/tc_learn_more.wav', title: 'For Transaction Coordinators - See How It Works' },
+        'learn-more-brokerage': { video: 'brokerage', audio: 'audio/brokerage_learn_more.wav', title: 'For Team Leaders & Brokerage Owners - See How It Works' }
+    };
+
+    const openDemoFromHash = () => {
+        const hash = window.location.hash.slice(1); // Remove the #
+        const demo = hashToDemo[hash];
+        if (demo) {
+            // Small delay to ensure page is ready
+            setTimeout(() => {
+                openVideo(demo.video, demo.audio, demo.title);
+            }, 100);
+        }
+    };
+
+    // Check hash on page load
+    openDemoFromHash();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', openDemoFromHash);
+
+    // Clear hash when modal is closed (listen for modal becoming inactive)
+    const clearHashOnClose = () => {
+        if (window.location.hash && hashToDemo[window.location.hash.slice(1)]) {
+            history.pushState('', document.title, window.location.pathname + window.location.search);
+        }
+    };
+
+    // Observer to detect modal close
+    const modalObserver = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'class' && !videoModal.classList.contains('active')) {
+                clearHashOnClose();
+            }
+        });
+    });
+    modalObserver.observe(videoModal, { attributes: true });
 };
 
 // Initialize all features when DOM is loaded

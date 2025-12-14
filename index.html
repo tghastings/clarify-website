@@ -25,7 +25,6 @@
                         <a href="#features">Features</a>
                         <a href="#how-it-works">How It Works</a>
                         <a href="#solutions">Solutions</a>
-                        <a href="#client-portal">Client Portal</a>
                         <a href="#pricing">Pricing</a>
                     </div>
                     <div class="nav-actions">
@@ -69,12 +68,6 @@
                 </a>
                 <a href="#solutions" class="mobile-nav-link">
                     <span class="mobile-nav-label">Solutions</span>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M7 4l6 6-6 6"/>
-                    </svg>
-                </a>
-                <a href="#client-portal" class="mobile-nav-link">
-                    <span class="mobile-nav-label">Client Portal</span>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M7 4l6 6-6 6"/>
                     </svg>
@@ -390,7 +383,7 @@
             </div>
 
             <div class="solutions-grid">
-                <div class="solution-card">
+                <div class="solution-card solution-card-video" data-video="agents" data-audio="audio/agents_learn_more.wav" data-title="For Agents - See How It Works">
                     <div class="solution-icon">
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="16" cy="10" r="6"/>
@@ -405,9 +398,10 @@
                         <li>Branded client portal</li>
                         <li>Mobile-friendly dashboard</li>
                     </ul>
+                    <button class="play-video-btn solution-learn-more">Learn More</button>
                 </div>
 
-                <div class="solution-card">
+                <div class="solution-card solution-card-video" data-video="tc" data-audio="audio/tc_learn_more.wav" data-title="For Transaction Coordinators - See How It Works">
                     <div class="solution-icon">
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="4" y="4" width="24" height="24" rx="2"/>
@@ -425,9 +419,10 @@
                         <li>Bulk document processing</li>
                         <li>Commission tracking & reporting</li>
                     </ul>
+                    <button class="play-video-btn solution-learn-more">Learn More</button>
                 </div>
 
-                <div class="solution-card">
+                <div class="solution-card solution-card-video" data-video="brokerage" data-audio="audio/brokerage_learn_more.wav" data-title="For Team Leaders & Brokerage Owners - See How It Works">
                     <div class="solution-icon">
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M4 28V10l12-6 12 6v18"/>
@@ -437,7 +432,7 @@
                             <circle cx="16" cy="10" r="2"/>
                         </svg>
                     </div>
-                    <h3>For Brokerage Owners</h3>
+                    <h3>For Team Leaders & Brokerage Owners</h3>
                     <p>Complete visibility into your entire operation. Reduce risk, ensure compliance, and scale with confidence.</p>
                     <ul class="solution-features">
                         <li>Real-time pipeline analytics</li>
@@ -445,6 +440,7 @@
                         <li>Custom compliance workflows</li>
                         <li>White-label client experience</li>
                     </ul>
+                    <button class="play-video-btn solution-learn-more">Learn More</button>
                 </div>
             </div>
         </div>
@@ -2818,6 +2814,762 @@
                                         <span class="vs-an-chart-total">$15.9M Total</span>
                                         <span class="vs-an-chart-trend up">↑ 28% vs last period</span>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- For Agents Learn More Demo -->
+                    <div class="video-scenes" data-demo="agents" style="display: none;">
+                        <!-- Scene 1: The Agent's Reality (0-25s) -->
+                        <div class="video-scene active" data-start="0" data-end="25">
+                            <div class="vs-ag-reality">
+                                <div class="vs-ag-chaos-grid">
+                                    <div class="vs-ag-chaos-item">
+                                        <svg class="vs-ag-chaos-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                            <polyline points="22,6 12,13 2,6"/>
+                                        </svg>
+                                        <span class="vs-ag-chaos-count">147</span>
+                                        <span class="vs-ag-chaos-label">Unread Emails</span>
+                                    </div>
+                                    <div class="vs-ag-chaos-item warning">
+                                        <svg class="vs-ag-chaos-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="3" y="4" width="18" height="18" rx="2"/>
+                                            <line x1="16" y1="2" x2="16" y2="6"/>
+                                            <line x1="8" y1="2" x2="8" y2="6"/>
+                                            <line x1="3" y1="10" x2="21" y2="10"/>
+                                        </svg>
+                                        <span class="vs-ag-chaos-count">3</span>
+                                        <span class="vs-ag-chaos-label">Deadlines Today</span>
+                                    </div>
+                                    <div class="vs-ag-chaos-item">
+                                        <svg class="vs-ag-chaos-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                            <polyline points="14 2 14 8 20 8"/>
+                                        </svg>
+                                        <span class="vs-ag-chaos-count">23</span>
+                                        <span class="vs-ag-chaos-label">Documents to Review</span>
+                                    </div>
+                                    <div class="vs-ag-chaos-item">
+                                        <svg class="vs-ag-chaos-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                            <polyline points="9 22 9 12 15 12 15 22"/>
+                                        </svg>
+                                        <span class="vs-ag-chaos-count">8</span>
+                                        <span class="vs-ag-chaos-label">Active Deals</span>
+                                    </div>
+                                </div>
+                                <div class="vs-ag-headline">
+                                    <span class="vs-ag-headline-text">Sound familiar?</span>
+                                    <span class="vs-ag-headline-sub">Over 60% of your time on admin work instead of closing deals</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 2: The Old Way Pain Points (25-60s) -->
+                        <div class="video-scene" data-start="25" data-end="60">
+                            <div class="vs-ag-oldway">
+                                <div class="vs-ag-oldway-header">The Traditional Way is Broken</div>
+                                <div class="vs-ag-pain-list">
+                                    <div class="vs-ag-pain-item">
+                                        <div class="vs-ag-pain-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"/>
+                                                <line x1="15" y1="9" x2="9" y2="15"/>
+                                                <line x1="9" y1="9" x2="15" y2="15"/>
+                                            </svg>
+                                        </div>
+                                        <div class="vs-ag-pain-text">
+                                            <span class="vs-ag-pain-title">Manual Contract Review</span>
+                                            <span class="vs-ag-pain-desc">Hours reading every page, hoping you don't miss compliance issues</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-ag-pain-item">
+                                        <div class="vs-ag-pain-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"/>
+                                                <line x1="15" y1="9" x2="9" y2="15"/>
+                                                <line x1="9" y1="9" x2="15" y2="15"/>
+                                            </svg>
+                                        </div>
+                                        <div class="vs-ag-pain-text">
+                                            <span class="vs-ag-pain-title">Deadline Chaos</span>
+                                            <span class="vs-ag-pain-desc">Spreadsheets, sticky notes, calendar apps - it's chaos</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-ag-pain-item">
+                                        <div class="vs-ag-pain-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"/>
+                                                <line x1="15" y1="9" x2="9" y2="15"/>
+                                                <line x1="9" y1="9" x2="15" y2="15"/>
+                                            </svg>
+                                        </div>
+                                        <div class="vs-ag-pain-text">
+                                            <span class="vs-ag-pain-title">Anxious Clients</span>
+                                            <span class="vs-ag-pain-desc">Daily calls asking "What's happening with my deal?"</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-ag-pain-item">
+                                        <div class="vs-ag-pain-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"/>
+                                                <line x1="15" y1="9" x2="9" y2="15"/>
+                                                <line x1="9" y1="9" x2="15" y2="15"/>
+                                            </svg>
+                                        </div>
+                                        <div class="vs-ag-pain-text">
+                                            <span class="vs-ag-pain-title">One Mistake Costs Thousands</span>
+                                            <span class="vs-ag-pain-desc">One missed item can kill a deal or cost you your license</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 3: Enter Clarify.RE (60-92s) -->
+                        <div class="video-scene" data-start="60" data-end="92">
+                            <div class="vs-ag-solution">
+                                <div class="vs-ag-logo-reveal">
+                                    <div class="vs-ag-logo">Clarify<span class="vs-ag-logo-accent">.RE</span></div>
+                                    <div class="vs-ag-tagline">Your AI-Powered Contract Guardian</div>
+                                </div>
+                                <div class="vs-ag-transform">
+                                    <div class="vs-ag-transform-item">
+                                        <svg class="vs-ag-transform-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                            <polyline points="22 4 12 14.01 9 11.01"/>
+                                        </svg>
+                                        <span>Dual AI reviews every contract in seconds</span>
+                                    </div>
+                                    <div class="vs-ag-transform-item">
+                                        <svg class="vs-ag-transform-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                            <polyline points="22 4 12 14.01 9 11.01"/>
+                                        </svg>
+                                        <span>Automatic deadline extraction & reminders</span>
+                                    </div>
+                                    <div class="vs-ag-transform-item">
+                                        <svg class="vs-ag-transform-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                            <polyline points="22 4 12 14.01 9 11.01"/>
+                                        </svg>
+                                        <span>Risk scoring on every document</span>
+                                    </div>
+                                    <div class="vs-ag-transform-item">
+                                        <svg class="vs-ag-transform-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                            <polyline points="22 4 12 14.01 9 11.01"/>
+                                        </svg>
+                                        <span>Client portal keeps everyone informed</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 4: AI Analysis Demo (92-135s) -->
+                        <div class="video-scene" data-start="92" data-end="135">
+                            <div class="vs-ag-ai-demo">
+                                <div class="vs-ag-contract-card">
+                                    <div class="vs-ag-contract-header">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                            <polyline points="14 2 14 8 20 8"/>
+                                        </svg>
+                                        Purchase_Contract_1234Oak.pdf
+                                    </div>
+                                    <div class="vs-ag-ai-processing">
+                                        <div class="vs-ag-ai-orb">
+                                            <div class="vs-ag-ai-ring ring1"></div>
+                                            <div class="vs-ag-ai-ring ring2"></div>
+                                            <div class="vs-ag-ai-core"></div>
+                                        </div>
+                                        <div class="vs-ag-ai-labels">
+                                            <span class="vs-ag-ai-label claude">Claude</span>
+                                            <span class="vs-ag-ai-label gpt">GPT-4</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-ag-extract-preview">
+                                        <div class="vs-ag-extract-row">
+                                            <span>Closing Date</span>
+                                            <span>December 28, 2024</span>
+                                        </div>
+                                        <div class="vs-ag-extract-row">
+                                            <span>Purchase Price</span>
+                                            <span>$425,000</span>
+                                        </div>
+                                        <div class="vs-ag-extract-row highlight">
+                                            <span>Inspection Deadline</span>
+                                            <span class="warning">Dec 15 (3 days!)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vs-ag-ai-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                        <polyline points="22 4 12 14.01 9 11.01"/>
+                                    </svg>
+                                    Dual AI Verified - 98% Confidence
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 5: Client Portal Preview (135-173s) -->
+                        <div class="video-scene" data-start="135" data-end="173">
+                            <div class="vs-ag-portal">
+                                <div class="vs-ag-portal-header">Your Branded Client Portal</div>
+                                <div class="vs-ag-portal-preview">
+                                    <div class="vs-ag-portal-topbar">
+                                        <div class="vs-ag-portal-dots"><span></span><span></span><span></span></div>
+                                        <span class="vs-ag-portal-url">portal.yourbrand.com</span>
+                                    </div>
+                                    <div class="vs-ag-portal-content">
+                                        <div class="vs-ag-portal-welcome">
+                                            <div class="vs-ag-portal-avatar">SM</div>
+                                            <div>
+                                                <div class="vs-ag-portal-greeting">Welcome, Sarah!</div>
+                                                <div class="vs-ag-portal-property">1234 Oak Street Purchase</div>
+                                            </div>
+                                        </div>
+                                        <div class="vs-ag-portal-progress">
+                                            <div class="vs-ag-portal-progress-bar">
+                                                <div class="vs-ag-portal-progress-fill" style="width: 67%"></div>
+                                            </div>
+                                            <div class="vs-ag-portal-milestones">
+                                                <span class="done">Contract</span>
+                                                <span class="done">Inspection</span>
+                                                <span class="current">Appraisal</span>
+                                                <span>Closing</span>
+                                            </div>
+                                        </div>
+                                        <div class="vs-ag-portal-stats">
+                                            <div class="vs-ag-portal-stat">
+                                                <span class="vs-ag-portal-stat-value">67%</span>
+                                                <span class="vs-ag-portal-stat-label">Complete</span>
+                                            </div>
+                                            <div class="vs-ag-portal-stat">
+                                                <span class="vs-ag-portal-stat-value">14</span>
+                                                <span class="vs-ag-portal-stat-label">Days Left</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vs-ag-portal-benefit">Clients stay informed 24/7 - fewer calls, happier clients</div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 6: Results & CTA (173-200s) -->
+                        <div class="video-scene" data-start="173" data-end="200">
+                            <div class="vs-ag-results">
+                                <div class="vs-ag-results-header">The Clarify.RE Difference</div>
+                                <div class="vs-ag-stats-grid">
+                                    <div class="vs-ag-stat-card">
+                                        <div class="vs-ag-stat-value">10<span class="vs-ag-stat-unit">hrs</span></div>
+                                        <div class="vs-ag-stat-label">Saved per transaction</div>
+                                    </div>
+                                    <div class="vs-ag-stat-card">
+                                        <div class="vs-ag-stat-value">95<span class="vs-ag-stat-unit">%</span></div>
+                                        <div class="vs-ag-stat-label">Compliance accuracy</div>
+                                    </div>
+                                    <div class="vs-ag-stat-card">
+                                        <div class="vs-ag-stat-value">0</div>
+                                        <div class="vs-ag-stat-label">Missed deadlines</div>
+                                    </div>
+                                    <div class="vs-ag-stat-card highlight">
+                                        <div class="vs-ag-stat-value">5★</div>
+                                        <div class="vs-ag-stat-label">Client experience</div>
+                                    </div>
+                                </div>
+                                <div class="vs-ag-cta">
+                                    <div class="vs-ag-cta-text">Ready to close more deals with less stress?</div>
+                                    <div class="vs-ag-cta-btn">Request Early Access</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- For Transaction Coordinators Learn More Demo -->
+                    <div class="video-scenes" data-demo="tc" style="display: none;">
+                        <!-- Scene 1: The TC's Reality (0-25s) -->
+                        <div class="video-scene active" data-start="0" data-end="25">
+                            <div class="vs-tc-reality">
+                                <div class="vs-tc-workload">
+                                    <div class="vs-tc-workload-item">
+                                        <span class="vs-tc-workload-number">32</span>
+                                        <span class="vs-tc-workload-label">Active Transactions</span>
+                                    </div>
+                                    <div class="vs-tc-workload-item">
+                                        <span class="vs-tc-workload-number">147</span>
+                                        <span class="vs-tc-workload-label">Deadlines This Week</span>
+                                    </div>
+                                    <div class="vs-tc-workload-item">
+                                        <span class="vs-tc-workload-number">8</span>
+                                        <span class="vs-tc-workload-label">Different Agents</span>
+                                    </div>
+                                </div>
+                                <div class="vs-tc-headline">
+                                    <span class="vs-tc-headline-text">This is your Tuesday.</span>
+                                    <span class="vs-tc-headline-sub">You're not coordinating transactions. You're juggling chaos.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 2: The Spreadsheet Hell (25-60s) -->
+                        <div class="video-scene" data-start="25" data-end="60">
+                            <div class="vs-tc-chaos">
+                                <div class="vs-tc-chaos-header">The TC Reality Nobody Warns You About</div>
+                                <div class="vs-tc-chaos-grid">
+                                    <div class="vs-tc-chaos-card">
+                                        <div class="vs-tc-chaos-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                                <path d="M3 9h18"/>
+                                                <path d="M3 15h18"/>
+                                                <path d="M9 3v18"/>
+                                            </svg>
+                                        </div>
+                                        <span class="vs-tc-chaos-title">Different Spreadsheets</span>
+                                        <span class="vs-tc-chaos-desc">Every agent, different formats</span>
+                                    </div>
+                                    <div class="vs-tc-chaos-card">
+                                        <div class="vs-tc-chaos-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <rect x="3" y="4" width="18" height="18" rx="2"/>
+                                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                                <line x1="3" y1="10" x2="21" y2="10"/>
+                                            </svg>
+                                        </div>
+                                        <span class="vs-tc-chaos-title">Manual Tracking</span>
+                                        <span class="vs-tc-chaos-desc">Copy-pasting into calendars</span>
+                                    </div>
+                                    <div class="vs-tc-chaos-card">
+                                        <div class="vs-tc-chaos-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                                <polyline points="22,6 12,13 2,6"/>
+                                            </svg>
+                                        </div>
+                                        <span class="vs-tc-chaos-title">Status Updates</span>
+                                        <span class="vs-tc-chaos-desc">Hours every week on emails</span>
+                                    </div>
+                                    <div class="vs-tc-chaos-card">
+                                        <div class="vs-tc-chaos-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                            </svg>
+                                        </div>
+                                        <span class="vs-tc-chaos-title">Scattered Documents</span>
+                                        <span class="vs-tc-chaos-desc">Email, Dropbox, Google Drive...</span>
+                                    </div>
+                                </div>
+                                <div class="vs-tc-chaos-quote">You spend more time organizing than coordinating.</div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 3: Enter Clarify.RE (60-99s) -->
+                        <div class="video-scene" data-start="60" data-end="99">
+                            <div class="vs-tc-solution">
+                                <div class="vs-tc-logo-reveal">
+                                    <div class="vs-tc-logo">Clarify<span class="vs-tc-logo-accent">.RE</span></div>
+                                    <div class="vs-tc-tagline">Built Specifically for Transaction Coordinators</div>
+                                </div>
+                                <div class="vs-tc-benefits">
+                                    <div class="vs-tc-benefit-item">
+                                        <div class="vs-tc-benefit-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                                <polyline points="22 4 12 14.01 9 11.01"/>
+                                            </svg>
+                                        </div>
+                                        <span>ONE dashboard for ALL transactions</span>
+                                    </div>
+                                    <div class="vs-tc-benefit-item">
+                                        <div class="vs-tc-benefit-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                                <polyline points="22 4 12 14.01 9 11.01"/>
+                                            </svg>
+                                        </div>
+                                        <span>Smart playbooks with auto-scheduling</span>
+                                    </div>
+                                    <div class="vs-tc-benefit-item">
+                                        <div class="vs-tc-benefit-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                                <polyline points="22 4 12 14.01 9 11.01"/>
+                                            </svg>
+                                        </div>
+                                        <span>Dual AI reviews every contract</span>
+                                    </div>
+                                    <div class="vs-tc-benefit-item">
+                                        <div class="vs-tc-benefit-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                                <polyline points="22 4 12 14.01 9 11.01"/>
+                                            </svg>
+                                        </div>
+                                        <span>Client portals eliminate status calls</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 4: Multi-Agent Dashboard (99-141s) -->
+                        <div class="video-scene" data-start="99" data-end="141">
+                            <div class="vs-tc-dashboard">
+                                <div class="vs-tc-dash-header">Your New Command Center</div>
+                                <div class="vs-tc-dash-preview">
+                                    <div class="vs-tc-dash-topbar">
+                                        <div class="vs-tc-dash-dots"><span></span><span></span><span></span></div>
+                                        <span class="vs-tc-dash-title">TC Dashboard</span>
+                                    </div>
+                                    <div class="vs-tc-dash-content">
+                                        <div class="vs-tc-dash-stats">
+                                            <div class="vs-tc-dash-stat">
+                                                <span class="vs-tc-dash-stat-value">32</span>
+                                                <span class="vs-tc-dash-stat-label">Active</span>
+                                            </div>
+                                            <div class="vs-tc-dash-stat warning">
+                                                <span class="vs-tc-dash-stat-value">5</span>
+                                                <span class="vs-tc-dash-stat-label">Due Today</span>
+                                            </div>
+                                            <div class="vs-tc-dash-stat success">
+                                                <span class="vs-tc-dash-stat-value">12</span>
+                                                <span class="vs-tc-dash-stat-label">Closing This Month</span>
+                                            </div>
+                                        </div>
+                                        <div class="vs-tc-dash-agents">
+                                            <div class="vs-tc-agent-row">
+                                                <span class="vs-tc-agent-name">Sarah Johnson</span>
+                                                <span class="vs-tc-agent-count">8 transactions</span>
+                                                <span class="vs-tc-agent-status good">All on track</span>
+                                            </div>
+                                            <div class="vs-tc-agent-row">
+                                                <span class="vs-tc-agent-name">Mike Peters</span>
+                                                <span class="vs-tc-agent-count">12 transactions</span>
+                                                <span class="vs-tc-agent-status warning">2 need attention</span>
+                                            </div>
+                                            <div class="vs-tc-agent-row">
+                                                <span class="vs-tc-agent-name">Lisa Martinez</span>
+                                                <span class="vs-tc-agent-count">6 transactions</span>
+                                                <span class="vs-tc-agent-status good">All on track</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 5: Smart Playbooks (141-188s) -->
+                        <div class="video-scene" data-start="141" data-end="188">
+                            <div class="vs-tc-playbooks">
+                                <div class="vs-tc-pb-header">Smart Playbooks - Your Secret Weapon</div>
+                                <div class="vs-tc-pb-demo">
+                                    <div class="vs-tc-pb-select">
+                                        <span class="vs-tc-pb-select-label">Select Playbook:</span>
+                                        <div class="vs-tc-pb-dropdown">Colorado Residential Purchase ▼</div>
+                                    </div>
+                                    <div class="vs-tc-pb-apply">
+                                        <span class="vs-tc-pb-count">23</span>
+                                        <span class="vs-tc-pb-apply-text">tasks auto-created & scheduled</span>
+                                    </div>
+                                    <div class="vs-tc-pb-tasks">
+                                        <div class="vs-tc-pb-task">
+                                            <span class="vs-tc-pb-task-name">Send welcome email to buyer</span>
+                                            <span class="vs-tc-pb-task-due">Day 1</span>
+                                        </div>
+                                        <div class="vs-tc-pb-task">
+                                            <span class="vs-tc-pb-task-name">Order title commitment</span>
+                                            <span class="vs-tc-pb-task-due">Day 3</span>
+                                        </div>
+                                        <div class="vs-tc-pb-task">
+                                            <span class="vs-tc-pb-task-name">Schedule inspection</span>
+                                            <span class="vs-tc-pb-task-due formula">Inspection - 5 days</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-tc-pb-benefit">Tasks calculate due dates from contract milestones automatically</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 6: Scale Your Business (188-234s) -->
+                        <div class="video-scene" data-start="188" data-end="234">
+                            <div class="vs-tc-results">
+                                <div class="vs-tc-results-header">Scale Your TC Business</div>
+                                <div class="vs-tc-stats-grid">
+                                    <div class="vs-tc-stat-card">
+                                        <div class="vs-tc-stat-value">2<span class="vs-tc-stat-unit">x</span></div>
+                                        <div class="vs-tc-stat-label">Transaction capacity</div>
+                                    </div>
+                                    <div class="vs-tc-stat-card">
+                                        <div class="vs-tc-stat-value">75<span class="vs-tc-stat-unit">%</span></div>
+                                        <div class="vs-tc-stat-label">Less admin time</div>
+                                    </div>
+                                    <div class="vs-tc-stat-card">
+                                        <div class="vs-tc-stat-value">0</div>
+                                        <div class="vs-tc-stat-label">Missed deadlines</div>
+                                    </div>
+                                    <div class="vs-tc-stat-card highlight">
+                                        <div class="vs-tc-stat-value">98<span class="vs-tc-stat-unit">%</span></div>
+                                        <div class="vs-tc-stat-label">Compliance confidence</div>
+                                    </div>
+                                </div>
+                                <div class="vs-tc-cta">
+                                    <div class="vs-tc-cta-text">Ready to take on more without the overwhelm?</div>
+                                    <div class="vs-tc-cta-btn">Request Early Access</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- For Team Leaders & Brokerage Owners Learn More Demo -->
+                    <div class="video-scenes" data-demo="brokerage" style="display: none;">
+                        <!-- Scene 1: The Leadership Challenge (0-18s) -->
+                        <div class="video-scene active" data-start="0" data-end="18">
+                            <div class="vs-br-challenge">
+                                <div class="vs-br-org-chart">
+                                    <div class="vs-br-org-top">
+                                        <div class="vs-br-org-node owner">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                                                <circle cx="9" cy="7" r="4"/>
+                                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                            </svg>
+                                            <span>You</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-br-org-line"></div>
+                                    <div class="vs-br-org-agents">
+                                        <div class="vs-br-org-node agent">12 Agents</div>
+                                        <div class="vs-br-org-node agent">45 Transactions</div>
+                                        <div class="vs-br-org-node agent warning">??? Status</div>
+                                    </div>
+                                </div>
+                                <div class="vs-br-headline">
+                                    <span class="vs-br-headline-text">What's really happening in your brokerage?</span>
+                                    <span class="vs-br-headline-sub">Most team leaders don't know until it's too late</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 2: The Visibility Problem (18-59s) -->
+                        <div class="video-scene" data-start="18" data-end="59">
+                            <div class="vs-br-problems">
+                                <div class="vs-br-problems-header">The Leadership Blind Spots</div>
+                                <div class="vs-br-problem-list">
+                                    <div class="vs-br-problem-item">
+                                        <div class="vs-br-problem-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"/>
+                                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                            </svg>
+                                        </div>
+                                        <div class="vs-br-problem-text">
+                                            <span class="vs-br-problem-title">No Real-Time Visibility</span>
+                                            <span class="vs-br-problem-desc">Finding out about problems after they've become crises</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-br-problem-item">
+                                        <div class="vs-br-problem-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"/>
+                                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                            </svg>
+                                        </div>
+                                        <div class="vs-br-problem-text">
+                                            <span class="vs-br-problem-title">Compliance Risk Exposure</span>
+                                            <span class="vs-br-problem-desc">One agent's mistake can cost the entire brokerage</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-br-problem-item">
+                                        <div class="vs-br-problem-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"/>
+                                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                            </svg>
+                                        </div>
+                                        <div class="vs-br-problem-text">
+                                            <span class="vs-br-problem-title">Inconsistent Client Experience</span>
+                                            <span class="vs-br-problem-desc">Every agent doing things their own way</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-br-problem-item">
+                                        <div class="vs-br-problem-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"/>
+                                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                            </svg>
+                                        </div>
+                                        <div class="vs-br-problem-text">
+                                            <span class="vs-br-problem-title">Pipeline Surprises</span>
+                                            <span class="vs-br-problem-desc">Forecasting revenue is basically guesswork</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 3: Enter Clarify.RE (59-106s) -->
+                        <div class="video-scene" data-start="59" data-end="106">
+                            <div class="vs-br-solution">
+                                <div class="vs-br-logo-reveal">
+                                    <div class="vs-br-logo">Clarify<span class="vs-br-logo-accent">.RE</span></div>
+                                    <div class="vs-br-tagline">Command & Control for Your Brokerage</div>
+                                </div>
+                                <div class="vs-br-benefits">
+                                    <div class="vs-br-benefit-item">
+                                        <div class="vs-br-benefit-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                                <polyline points="22 4 12 14.01 9 11.01"/>
+                                            </svg>
+                                        </div>
+                                        <span>Real-time visibility into every transaction</span>
+                                    </div>
+                                    <div class="vs-br-benefit-item">
+                                        <div class="vs-br-benefit-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                                <polyline points="22 4 12 14.01 9 11.01"/>
+                                            </svg>
+                                        </div>
+                                        <span>Dual AI compliance on every contract</span>
+                                    </div>
+                                    <div class="vs-br-benefit-item">
+                                        <div class="vs-br-benefit-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                                <polyline points="22 4 12 14.01 9 11.01"/>
+                                            </svg>
+                                        </div>
+                                        <span>White-label portal elevates your brand</span>
+                                    </div>
+                                    <div class="vs-br-benefit-item">
+                                        <div class="vs-br-benefit-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                                <polyline points="22 4 12 14.01 9 11.01"/>
+                                            </svg>
+                                        </div>
+                                        <span>Agent performance analytics at a glance</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 4: Brokerage Dashboard (106-139s) -->
+                        <div class="video-scene" data-start="106" data-end="139">
+                            <div class="vs-br-dashboard">
+                                <div class="vs-br-dash-header">Your Brokerage Command Center</div>
+                                <div class="vs-br-dash-preview">
+                                    <div class="vs-br-dash-topbar">
+                                        <div class="vs-br-dash-dots"><span></span><span></span><span></span></div>
+                                        <span class="vs-br-dash-title">Brokerage Analytics</span>
+                                    </div>
+                                    <div class="vs-br-dash-content">
+                                        <div class="vs-br-dash-metrics">
+                                            <div class="vs-br-metric">
+                                                <span class="vs-br-metric-value">$4.2M</span>
+                                                <span class="vs-br-metric-label">Pipeline Value</span>
+                                            </div>
+                                            <div class="vs-br-metric success">
+                                                <span class="vs-br-metric-value">45</span>
+                                                <span class="vs-br-metric-label">Active Deals</span>
+                                            </div>
+                                            <div class="vs-br-metric warning">
+                                                <span class="vs-br-metric-value">3</span>
+                                                <span class="vs-br-metric-label">Need Attention</span>
+                                            </div>
+                                        </div>
+                                        <div class="vs-br-dash-chart">
+                                            <div class="vs-br-chart-title">Monthly Closings</div>
+                                            <div class="vs-br-chart-bars">
+                                                <div class="vs-br-bar" style="height: 40%"><span>Oct</span></div>
+                                                <div class="vs-br-bar" style="height: 65%"><span>Nov</span></div>
+                                                <div class="vs-br-bar highlight" style="height: 85%"><span>Dec</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 5: Agent Performance & Compliance (139-179s) -->
+                        <div class="video-scene" data-start="139" data-end="179">
+                            <div class="vs-br-performance">
+                                <div class="vs-br-perf-header">Agent Performance & Compliance</div>
+                                <div class="vs-br-perf-grid">
+                                    <div class="vs-br-perf-card leaderboard">
+                                        <div class="vs-br-perf-card-title">Top Performers</div>
+                                        <div class="vs-br-agent-rank">
+                                            <span class="vs-br-rank">1</span>
+                                            <span class="vs-br-agent-name">Sarah J.</span>
+                                            <span class="vs-br-agent-vol">$1.2M</span>
+                                        </div>
+                                        <div class="vs-br-agent-rank">
+                                            <span class="vs-br-rank">2</span>
+                                            <span class="vs-br-agent-name">Mike P.</span>
+                                            <span class="vs-br-agent-vol">$980K</span>
+                                        </div>
+                                        <div class="vs-br-agent-rank">
+                                            <span class="vs-br-rank">3</span>
+                                            <span class="vs-br-agent-name">Lisa M.</span>
+                                            <span class="vs-br-agent-vol">$875K</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-br-perf-card compliance">
+                                        <div class="vs-br-perf-card-title">Compliance Score</div>
+                                        <div class="vs-br-compliance-ring">
+                                            <div class="vs-br-ring-value">98%</div>
+                                            <div class="vs-br-ring-label">Team Average</div>
+                                        </div>
+                                        <div class="vs-br-compliance-detail">
+                                            <span class="vs-br-comp-check">AI-verified contracts</span>
+                                            <span class="vs-br-comp-check">Zero compliance issues</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vs-br-perf-benefit">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                        <polyline points="22 4 12 14.01 9 11.01"/>
+                                    </svg>
+                                    <span>AI-generated weekly reports delivered to your inbox</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 6: Scale Your Brokerage (179-228s) -->
+                        <div class="video-scene" data-start="179" data-end="228">
+                            <div class="vs-br-results">
+                                <div class="vs-br-results-header">Lead with Confidence</div>
+                                <div class="vs-br-stats-grid">
+                                    <div class="vs-br-stat-card">
+                                        <div class="vs-br-stat-value">100<span class="vs-br-stat-unit">%</span></div>
+                                        <div class="vs-br-stat-label">Transaction visibility</div>
+                                    </div>
+                                    <div class="vs-br-stat-card">
+                                        <div class="vs-br-stat-value">98<span class="vs-br-stat-unit">%</span></div>
+                                        <div class="vs-br-stat-label">Compliance rate</div>
+                                    </div>
+                                    <div class="vs-br-stat-card">
+                                        <div class="vs-br-stat-value">24/7</div>
+                                        <div class="vs-br-stat-label">AI monitoring</div>
+                                    </div>
+                                    <div class="vs-br-stat-card highlight">
+                                        <div class="vs-br-stat-value">1</div>
+                                        <div class="vs-br-stat-label">Platform for everything</div>
+                                    </div>
+                                </div>
+                                <div class="vs-br-cta">
+                                    <div class="vs-br-cta-text">Ready to lead your brokerage with complete visibility?</div>
+                                    <div class="vs-br-cta-btn">Request Early Access</div>
                                 </div>
                             </div>
                         </div>

@@ -1,0 +1,124 @@
+TRANSACTION COORDINATORS LEARN MORE - MARKETING VIDEO TRANSCRIPT
+Duration: ~3 minutes 10 seconds (190 seconds)
+Audio File: tc_learn_more.wav
+
+================================================================================
+SCENE 1: THE TC'S REALITY (0-25 seconds)
+================================================================================
+
+[Visual: Workload stats - 32 transactions, 147 deadlines, 8 agents]
+
+"Thirty-two active transactions. One hundred forty-seven deadlines this week. Eight different agents, each with their own way of doing things."
+
+"This is your Tuesday."
+
+"And here's the reality: every spreadsheet, every deadline, every document... lives in a completely different place."
+
+"You're not just coordinating transactions. You're juggling chaos."
+
+================================================================================
+SCENE 2: THE SPREADSHEET HELL (25-55 seconds)
+================================================================================
+
+[Visual: Chaos grid - spreadsheets, calendars, emails, documents]
+
+"Let's talk about the TC reality that nobody warns you about."
+
+"A different spreadsheet for every agent. Different formats. Different update schedules. Hours spent just keeping them in sync."
+
+"Manual deadline tracking. Copy-pasting dates into calendars. Praying nothing falls through the cracks."
+
+"Status update emails that take HOURS every week. Agents asking 'Where are we on this?' Clients asking 'What's happening?'"
+
+"Documents scattered across email, Dropbox, Google Drive, and that one folder you can never find."
+
+"You spend more time organizing than actually coordinating."
+
+================================================================================
+SCENE 3: ENTER CLARIFY.RE (55-85 seconds)
+================================================================================
+
+[Visual: Clarify.RE logo with TC-specific benefits]
+
+"What if there was a better way?"
+
+"Introducing Clarify.RE - built specifically for transaction coordinators."
+
+"Imagine ONE dashboard where you see ALL your transactions. Every agent. Every deal. Every deadline. In one place."
+
+"Smart playbooks that apply twenty or more tasks to a new transaction with a single click. Tasks that automatically schedule themselves based on contract dates."
+
+"Dual AI that reviews every contract the moment it's uploaded - catching compliance issues before they become problems."
+
+"And client portals that let buyers and sellers track their own progress - eliminating those constant 'What's happening?' calls."
+
+================================================================================
+SCENE 4: MULTI-AGENT DASHBOARD (85-120 seconds)
+================================================================================
+
+[Visual: Dashboard preview with agent rows and status]
+
+"Let me show you your new command center."
+
+"At a glance, you see everything: Thirty-two active transactions. Five with deadlines today. Twelve closing this month."
+
+"But here's where it gets powerful. You see each agent's portfolio instantly. Sarah Johnson - eight transactions, all on track. Mike Peters - twelve transactions, two need your attention. Lisa Martinez - six transactions, smooth sailing."
+
+"Click into any transaction and you see every task, every document, every deadline. No more hunting through emails. No more spreadsheet chaos."
+
+"When something needs attention, Clarify.RE tells you. Proactively. Before it becomes a crisis."
+
+================================================================================
+SCENE 5: SMART PLAYBOOKS (120-155 seconds)
+================================================================================
+
+[Visual: Playbook selection and task list]
+
+"Now let's talk about Smart Playbooks - your secret weapon."
+
+"Select a playbook for the transaction type. Colorado Residential Purchase? Done. Commercial Lease? Done. Short Sale? We've got you covered."
+
+"With one click, twenty-three tasks are created and scheduled automatically."
+
+"Send welcome email to buyer - Day one. Order title commitment - Day three. Schedule inspection - five days before the inspection deadline."
+
+"Notice those date formulas? Tasks calculate their due dates based on actual contract milestones. Inspection date minus five days. Closing date minus seven days."
+
+"No more manual calendar entries. No more missed deadlines. Ever."
+
+"And you can customize these playbooks for each agent's preferences. Build once, use forever."
+
+================================================================================
+SCENE 6: SCALE YOUR BUSINESS (155-190 seconds)
+================================================================================
+
+[Visual: Stats grid and CTA]
+
+"Here's the bottom line for your TC business."
+
+"Double your transaction capacity. Take on twice as many files without working twice as many hours."
+
+"Spend seventy-five percent less time on administrative tasks. No more spreadsheet updates. No more manual deadline tracking."
+
+"Zero missed deadlines. Automated reminders catch everything before it slips."
+
+"And one hundred percent compliance confidence with dual AI reviewing every contract."
+
+"Clarify.RE isn't just software. It's your path to scaling a TC business that doesn't consume your entire life."
+
+"Ready to take on more transactions without the overwhelm?"
+
+"Request early access to Clarify.RE today."
+
+"This is transaction coordination, finally simplified."
+
+================================================================================
+END OF TRANSCRIPT
+================================================================================
+
+VOICE DIRECTION:
+- Tone: Professional, empathetic to TC overwhelm, increasingly excited about solutions
+- Pace: Moderate, punchy delivery on stats and pain points
+- Energy: Start with empathy for the chaos, build excitement through features, end with confident call-to-action
+- Emphasis: Numbers (32, 147, 8), pain points, "one click", "automatically", and "Clarify.RE" brand
+- Target Audience: Experienced TCs who are feeling overwhelmed and looking to scale their business

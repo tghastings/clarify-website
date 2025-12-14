@@ -1,0 +1,121 @@
+AGENTS LEARN MORE - MARKETING VIDEO TRANSCRIPT
+Duration: ~2 minutes (120 seconds)
+Audio File: agents_learn_more.wav
+
+================================================================================
+SCENE 1: THE AGENT'S REALITY (0-20 seconds)
+================================================================================
+
+[Visual: Chaos grid showing emails, deadlines, documents, and active deals]
+
+"One hundred forty-seven unread emails. Three deadlines hitting today. Twenty-three documents waiting for your review. Eight active deals demanding your attention."
+
+"Sound familiar?"
+
+"If you're like most agents, you're spending over sixty percent of your time on administrative work... instead of what you do best: building relationships and closing deals."
+
+================================================================================
+SCENE 2: THE OLD WAY PAIN POINTS (20-40 seconds)
+================================================================================
+
+[Visual: Pain points list with X icons]
+
+"The traditional way of managing transactions is broken."
+
+"Manual contract review means hours of reading every page, hoping you don't miss a compliance issue that could cost you the deal... or worse, your license."
+
+"Tracking deadlines across spreadsheets, sticky notes, and calendar apps. It's chaos."
+
+"And your clients? They're anxious. Calling you every day asking 'What's happening with my deal?' - time you could be spending on your next listing."
+
+"One missed item can kill a deal or cost you thousands in liability."
+
+================================================================================
+SCENE 3: ENTER CLARIFY.RE - THE SOLUTION (40-60 seconds)
+================================================================================
+
+[Visual: Clarify.RE logo reveal with transformation points]
+
+"There's a better way."
+
+"Introducing Clarify.RE - real estate transactions, simplified by AI."
+
+"Imagine if AI could review your contracts in seconds, not hours."
+
+"Imagine automated deadline tracking that never lets a critical date slip."
+
+"Imagine your clients tracking their own deal progress - eliminating those daily status calls."
+
+"And imagine two AI systems working together, catching compliance issues that even experienced agents miss."
+
+"That's exactly what Clarify.RE delivers."
+
+================================================================================
+SCENE 4: DUAL AI CONTRACT MAGIC (60-80 seconds)
+================================================================================
+
+[Visual: Contract card with AI processing animation]
+
+"Here's where it gets interesting."
+
+"When you upload a contract to Clarify.RE, something unique happens. Two independent AI systems - Claude and ChatGPT - analyze every clause, every date, every detail simultaneously."
+
+"They extract property information, buyer and seller details, key dates, and contingencies automatically."
+
+"But here's the breakthrough: we only flag issues when BOTH AI systems agree there's a problem."
+
+"That means dramatically higher accuracy and fewer false positives wasting your time."
+
+"Financing deadline unclear in Section 8? Both AIs spotted it. You'll know before it becomes a crisis."
+
+================================================================================
+SCENE 5: CLIENT PORTAL MAGIC (80-100 seconds)
+================================================================================
+
+[Visual: Client portal preview with progress tracking]
+
+"Now let's talk about your clients."
+
+"With Clarify.RE, every client gets their own branded portal. Your branding. Your name. Your professional image."
+
+"They can log in anytime to see exactly where their deal stands. What milestones are complete. What's coming next. How many days until closing."
+
+"They can view and sign documents, track deadlines, and message you directly."
+
+"The result? No more 'What's happening with my deal?' phone calls."
+
+"Your clients feel informed and confident. You look like a superstar agent who has everything under control."
+
+================================================================================
+SCENE 6: RESULTS & CTA (100-120 seconds)
+================================================================================
+
+[Visual: Stats grid and call-to-action]
+
+"The Clarify.RE difference is measurable."
+
+"Save ten hours per transaction on administrative work."
+
+"Achieve ninety-five percent compliance accuracy with dual AI verification."
+
+"Zero missed deadlines with automated tracking and reminders."
+
+"And deliver a five-star client experience that generates referrals."
+
+"Less paperwork. Fewer missed deadlines. Happier clients. More closings."
+
+"Ready to close more deals with less stress?"
+
+"Request early access to Clarify.RE today, and transform how you manage transactions."
+
+"This is real estate, simplified by AI."
+
+================================================================================
+END OF TRANSCRIPT
+================================================================================
+
+VOICE DIRECTION:
+- Tone: Professional, confident, empathetic to agent pain points
+- Pace: Moderate, allowing visual scenes to breathe
+- Energy: Build from empathetic (Scene 1-2) to excited (Scene 3-4) to confident (Scene 5-6)
+- Emphasis: Key stats, pain points, and "Clarify.RE" brand name
