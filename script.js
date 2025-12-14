@@ -31,6 +31,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 top: targetPosition,
                 behavior: 'smooth'
             });
+
+            // Update URL hash so users can copy/share the link
+            history.pushState(null, '', href);
         }
     });
 });
@@ -928,6 +931,67 @@ const addFeatureShowcase = () => {
     observer.observe(showcase);
 };
 
+// Scroll-spy for navigation
+const addScrollSpy = () => {
+    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    const sections = [];
+
+    // Collect sections that correspond to nav links
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && href !== '#') {
+            const section = document.querySelector(href);
+            if (section) {
+                sections.push({
+                    id: href.slice(1),
+                    element: section,
+                    link: link
+                });
+            }
+        }
+    });
+
+    if (sections.length === 0) return;
+
+    const updateActiveLink = () => {
+        const navHeight = document.querySelector('.navbar')?.offsetHeight || 80;
+        const scrollPosition = window.scrollY + navHeight + 100; // Add offset for better detection
+
+        let activeSection = null;
+
+        // Find the current section
+        for (let i = sections.length - 1; i >= 0; i--) {
+            const section = sections[i];
+            if (section.element.offsetTop <= scrollPosition) {
+                activeSection = section;
+                break;
+            }
+        }
+
+        // Update active states
+        navLinks.forEach(link => link.classList.remove('active'));
+
+        if (activeSection) {
+            activeSection.link.classList.add('active');
+        }
+    };
+
+    // Throttle scroll events for performance
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                updateActiveLink();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+
+    // Initial check
+    updateActiveLink();
+};
+
 // Initialize all features when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     addFadeInAnimation();
@@ -938,6 +1002,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addPortalTabFunctionality();
     addVideoPlayer();
     addFeatureShowcase();
+    addScrollSpy();
 });
 
 // Add smooth reveal on page load

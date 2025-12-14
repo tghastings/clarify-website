@@ -307,11 +307,47 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     gap: var(--spacing-lg);
 }
 
+.nav-links {
+    position: relative;
+}
+
 .nav-links a {
     font-size: 0.9375rem;
     font-weight: 500;
     color: var(--color-gray-600);
     transition: color var(--transition-fast);
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-primary);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(0.5);
+    opacity: 0.5;
+}
+
+.nav-links a.active {
+    color: var(--color-primary);
+}
+
+.nav-links a.active::after {
+    transform: scaleX(1);
+    opacity: 1;
+    box-shadow: 0 0 12px var(--color-primary), 0 0 24px rgba(255, 37, 189, 0.4);
 }
 
 .nav-links a:hover {
@@ -1249,26 +1285,23 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     100% { opacity: 0.3; }
 }
 
-.match-icon {
-    color: #71717a;
+.match-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: spinnerRotate 0.8s linear infinite;
 }
 
-.match-icon svg {
-    width: 24px;
-    height: 24px;
-}
-
-.match-icon.searching {
-    animation: searchSpin 1s linear infinite;
-}
-
-@keyframes searchSpin {
+@keyframes spinnerRotate {
     to { transform: rotate(360deg); }
 }
 
 .match-text {
-    font-size: 0.8125rem;
-    color: #71717a;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
 }
 
 .client-card-new {
