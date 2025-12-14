@@ -1,3 +1,10 @@
+// Demo hashes that should open modals instead of scrolling
+const demoHashes = [
+    'demo-compliance', 'demo-email-to-transaction', 'demo-playbooks',
+    'demo-client-portal', 'demo-team-analytics',
+    'learn-more-agents', 'learn-more-tc', 'learn-more-brokerage'
+];
+
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -5,6 +12,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
         // Don't prevent default for # only links
         if (href === '#') return;
+
+        // Skip demo hashes - these open modals instead (handled by video player)
+        const hash = href.slice(1);
+        if (demoHashes.includes(hash)) {
+            // Let the hashchange event handle this
+            return;
+        }
 
         e.preventDefault();
         const target = document.querySelector(href);
@@ -24,6 +38,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Handle hash scroll on page load (for cross-page navigation)
 const handleHashScroll = () => {
     if (window.location.hash) {
+        const hash = window.location.hash.slice(1);
+        // Skip scrolling for demo hashes - these open modals instead
+        if (demoHashes.includes(hash)) return;
+
         const target = document.querySelector(window.location.hash);
         if (target) {
             // Small delay to ensure page is fully rendered
@@ -597,6 +615,161 @@ const addVideoPlayer = () => {
             openHandler();
         });
     });
+
+    // ========================================
+    // Share Button Functionality
+    // ========================================
+    const shareBtn = document.getElementById('video-share-btn');
+    const shareMenu = document.getElementById('video-share-menu');
+    const shareLinkInput = document.getElementById('share-link-input');
+    const shareCopyBtn = document.getElementById('share-copy-btn');
+    const shareNativeBtn = document.getElementById('share-native-btn');
+    const shareXBtn = document.getElementById('share-x-btn');
+    const shareLinkedInBtn = document.getElementById('share-linkedin-btn');
+    const shareFacebookBtn = document.getElementById('share-facebook-btn');
+
+    // Video to hash mapping (reverse of hashToDemo)
+    const videoToHash = {
+        'compliance': 'demo-compliance',
+        'email': 'demo-email-to-transaction',
+        'playbooks': 'demo-playbooks',
+        'portal': 'demo-client-portal',
+        'analytics': 'demo-team-analytics',
+        'agents': 'learn-more-agents',
+        'tc': 'learn-more-tc',
+        'brokerage': 'learn-more-brokerage'
+    };
+
+    // Get shareable URL for current demo
+    const getShareUrl = () => {
+        const hash = videoToHash[currentDemo];
+        if (hash) {
+            return `${window.location.origin}${window.location.pathname}#${hash}`;
+        }
+        return window.location.href;
+    };
+
+    // Get share title
+    const getShareTitle = () => {
+        return modalTitle?.textContent || 'Clarify.RE Demo';
+    };
+
+    // Toggle share menu
+    const toggleShareMenu = (e) => {
+        e?.stopPropagation();
+        const isOpen = shareMenu.classList.contains('active');
+        if (isOpen) {
+            shareMenu.classList.remove('active');
+        } else {
+            // Update the share URL in the input
+            shareLinkInput.value = getShareUrl();
+            shareMenu.classList.add('active');
+        }
+    };
+
+    // Close share menu when clicking outside
+    const closeShareMenu = (e) => {
+        if (shareMenu.classList.contains('active') &&
+            !shareMenu.contains(e.target) &&
+            !shareBtn.contains(e.target)) {
+            shareMenu.classList.remove('active');
+        }
+    };
+
+    // Copy link to clipboard
+    const copyShareLink = async () => {
+        const url = getShareUrl();
+        const copyText = shareCopyBtn.querySelector('.copy-text');
+        const showCopied = () => {
+            shareCopyBtn.classList.add('copied');
+            if (copyText) copyText.textContent = 'Copied!';
+            setTimeout(() => {
+                shareCopyBtn.classList.remove('copied');
+                if (copyText) copyText.textContent = 'Copy';
+            }, 2000);
+        };
+        try {
+            await navigator.clipboard.writeText(url);
+            showCopied();
+        } catch (err) {
+            // Fallback for older browsers
+            shareLinkInput.select();
+            document.execCommand('copy');
+            showCopied();
+        }
+    };
+
+    // Native share (mobile)
+    const shareNative = async () => {
+        const url = getShareUrl();
+        const title = getShareTitle();
+        const text = `Check out this demo from Clarify.RE: ${title}`;
+
+        if (navigator.share) {
+            try {
+                await navigator.share({ title, text, url });
+                shareMenu.classList.remove('active');
+            } catch (err) {
+                if (err.name !== 'AbortError') {
+                    console.log('Share failed:', err);
+                }
+            }
+        }
+    };
+
+    // Social share functions
+    const shareToX = () => {
+        const url = getShareUrl();
+        const title = getShareTitle();
+        const text = encodeURIComponent(`Check out this demo from @ClarifyRE: ${title}`);
+        window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(url)}`, '_blank', 'width=550,height=420');
+        shareMenu.classList.remove('active');
+    };
+
+    const shareToLinkedIn = () => {
+        const url = getShareUrl();
+        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank', 'width=550,height=420');
+        shareMenu.classList.remove('active');
+    };
+
+    const shareToFacebook = () => {
+        const url = getShareUrl();
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'width=550,height=420');
+        shareMenu.classList.remove('active');
+    };
+
+    // Event listeners for share functionality
+    shareBtn?.addEventListener('click', toggleShareMenu);
+    shareCopyBtn?.addEventListener('click', copyShareLink);
+    shareNativeBtn?.addEventListener('click', shareNative);
+    shareXBtn?.addEventListener('click', shareToX);
+    shareLinkedInBtn?.addEventListener('click', shareToLinkedIn);
+    shareFacebookBtn?.addEventListener('click', shareToFacebook);
+
+    // Close share menu on outside click
+    document.addEventListener('click', closeShareMenu);
+
+    // Close share menu when escape is pressed (inside share menu)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && shareMenu?.classList.contains('active')) {
+            shareMenu.classList.remove('active');
+        }
+    });
+
+    // Observer to detect when modal closes - also close share menu
+    const shareMenuObserver = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'class' && !videoModal.classList.contains('active')) {
+                shareMenu?.classList.remove('active');
+            }
+        });
+    });
+    shareMenuObserver.observe(videoModal, { attributes: true });
+
+    // Show/hide native share button based on support
+    if (navigator.share && shareNativeBtn) {
+        shareNativeBtn.style.display = 'flex';
+    }
 
     // URL hash deep linking for demo modals
     const hashToDemo = {
