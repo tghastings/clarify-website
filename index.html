@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clarify.RE - AI-Powered Real Estate Transaction Management | Coming Soon</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=22">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
@@ -261,34 +261,35 @@
                     </div>
                 </div>
 
-                <!-- Feature 2: Smart Contract Upload -->
-                <div class="feature-card">
+                <!-- Feature 2: Compliance Flow Builder -->
+                <div class="feature-card feature-card-video" data-video="compliance" data-audio="audio/compliance_flow.wav" data-title="Compliance Flow Demo">
                     <div class="feature-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="12" y1="18" x2="12" y2="12"/>
-                            <line x1="9" y1="15" x2="15" y2="15"/>
+                            <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+                            <rect x="9" y="3" width="6" height="4" rx="1"/>
+                            <path d="M9 12l2 2 4-4"/>
                         </svg>
                     </div>
-                    <h3>Smart Contract Upload</h3>
-                    <p>Upload PDF contracts and AI automatically extracts all transaction details - property address, price, parties, dates, and more.</p>
+                    <h3>Compliance Flow Builder</h3>
+                    <p>Visual Kanban board to design document workflows. Drag-and-drop milestones, set compliance checks, and automate reviews.</p>
+                    <button class="play-video-btn full-width">Watch Demo</button>
                 </div>
 
-                <!-- Feature 3: Email-to-Transaction -->
-                <div class="feature-card">
+                <!-- Feature 3: Transaction Automation -->
+                <div class="feature-card feature-card-video" data-video="email" data-audio="audio/email_to_transaction.wav" data-title="Transaction Automation Demo">
                     <div class="feature-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                             <polyline points="22,6 12,13 2,6"/>
                         </svg>
                     </div>
-                    <h3>Email-to-Transaction</h3>
+                    <h3>Transaction Email Automation</h3>
                     <p>Forward contracts to your dedicated inbox. AI extracts all details and creates transactions automatically.</p>
+                    <button class="play-video-btn full-width">Watch Demo</button>
                 </div>
 
                 <!-- Feature 4: Smart Playbooks -->
-                <div class="feature-card">
+                <div class="feature-card feature-card-video" data-video="playbooks" data-audio="audio/playbooks.wav" data-title="Smart Playbooks Demo">
                     <div class="feature-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
@@ -296,11 +297,12 @@
                         </svg>
                     </div>
                     <h3>Smart Playbooks</h3>
-                    <p>Pre-built templates with automated task scheduling. Tasks calculate due dates from contract dates automatically.</p>
+                    <p>Pre-built workflow templates with automated task scheduling. Define due dates with formulas like "closing_date - 7 days" and apply 20+ tasks instantly.</p>
+                    <button class="play-video-btn full-width">Watch Demo</button>
                 </div>
 
                 <!-- Feature 5: Client Portal -->
-                <div class="feature-card">
+                <div class="feature-card feature-card-video" data-video="portal" data-audio="audio/c_portal_demo.wav" data-title="Client Portal Demo">
                     <div class="feature-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -311,10 +313,11 @@
                     </div>
                     <h3>White-Label Client Portal</h3>
                     <p>Branded portal where clients view status, upload documents, and track their deal progress in real-time.</p>
+                    <button class="play-video-btn full-width">Watch Demo</button>
                 </div>
 
                 <!-- Feature 6: Analytics -->
-                <div class="feature-card">
+                <div class="feature-card feature-card-video" data-video="analytics" data-audio="audio/team-analytics.wav" data-title="Team Analytics Demo">
                     <div class="feature-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="18" y1="20" x2="18" y2="10"/>
@@ -322,8 +325,9 @@
                             <line x1="6" y1="20" x2="6" y2="14"/>
                         </svg>
                     </div>
-                    <h3>Brokerage Analytics</h3>
-                    <p>Pipeline value, transaction trends, agent leaderboards, and AI-generated weekly summaries.</p>
+                    <h3>Team Analytics</h3>
+                    <p>Track pipeline value, transaction trends, and agent performance with real-time dashboards. AI-generated weekly summaries highlight wins, flag at-risk deals, and recommend actions.</p>
+                    <button class="play-video-btn full-width">Watch Demo</button>
                 </div>
             </div>
         </div>
@@ -1520,6 +1524,1330 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Video Demo Modal -->
+    <div class="video-modal-overlay" id="video-modal">
+        <div class="video-modal">
+            <button class="video-modal-close" aria-label="Close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+
+            <div class="video-player">
+                <div class="video-screen" id="video-screen">
+                    <!-- Email Demo Scenes - Synced with audio/email_to_transaction.wav -->
+                    <div class="video-scenes" data-demo="email">
+                        <!-- Scene 1: eContracts Email Received (0-22 sec) -->
+                        <div class="video-scene active" data-start="0" data-end="22">
+                            <div class="vs-email-panel">
+                                <div class="vs-panel-header">
+                                    <div class="vs-panel-dots"><span></span><span></span><span></span></div>
+                                    <span>Incoming Email</span>
+                                </div>
+                                <div class="vs-email-body">
+                                    <div class="vs-email-meta">
+                                        <div><span class="vs-label">From:</span> noreply@ctmecontracts.com</div>
+                                        <div><span class="vs-label">To:</span> acme-realty-x7k2m@clarify.re</div>
+                                        <div><span class="vs-label">Subject:</span> eContracts for 742 Evergreen Terrace</div>
+                                    </div>
+                                    <div class="vs-econtracts-header">CTM eContracts</div>
+                                    <div class="vs-doc-list-email">
+                                        <div class="vs-doc-row"><span>CONTRACT TO BUY AND SELL</span><span class="vs-status-ready">Signature Ready</span></div>
+                                        <div class="vs-doc-row"><span>INSPECTION OBJECTION</span><span class="vs-status-ready">Signature Ready</span></div>
+                                        <div class="vs-doc-row"><span>Lead-Based Paint Disclosure</span><span class="vs-status-signed">Signed</span></div>
+                                        <div class="vs-doc-row"><span>EarnestMoneyReceipt.pdf</span><span class="vs-status-download">Download</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Scene 2: Dual AI Processing (22-42 sec) -->
+                        <div class="video-scene" data-start="22" data-end="42">
+                            <div class="vs-processing">
+                                <div class="vs-ai-rings">
+                                    <div class="vs-ring vs-ring-1"></div>
+                                    <div class="vs-ring vs-ring-2"></div>
+                                </div>
+                                <div class="vs-ai-labels-dual">
+                                    <span class="vs-ai-tag claude"><span class="vs-ai-dot"></span>Claude Analyzing...</span>
+                                    <span class="vs-ai-tag gpt"><span class="vs-ai-dot"></span>ChatGPT Verifying...</span>
+                                </div>
+                                <div class="vs-extract-list">
+                                    <div class="vs-extract-item done"><span class="vs-check">✓</span>Reading PDF attachment</div>
+                                    <div class="vs-extract-item done"><span class="vs-check">✓</span>Extracting property details</div>
+                                    <div class="vs-extract-item active"><span class="vs-spinner"></span>Running compliance check</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Scene 3: Results + Compliance Findings (42-62 sec) -->
+                        <div class="video-scene" data-start="42" data-end="62">
+                            <div class="vs-results-panel">
+                                <div class="vs-panel-header">
+                                    <div class="vs-panel-dots"><span></span><span></span><span></span></div>
+                                    <span>Extracted Data & Findings</span>
+                                </div>
+                                <div class="vs-results-body">
+                                    <div class="vs-data-section">
+                                        <div class="vs-section-title">Transaction Details</div>
+                                        <div class="vs-data-grid">
+                                            <div class="vs-data-item"><span>Property</span><span>742 Evergreen Terrace</span></div>
+                                            <div class="vs-data-item"><span>Price</span><span>$485,000</span></div>
+                                            <div class="vs-data-item"><span>Buyer</span><span>Homer & Marge Simpson</span></div>
+                                            <div class="vs-data-item"><span>Seller</span><span>Ned Flanders</span></div>
+                                            <div class="vs-data-item"><span>Closing</span><span>Jan 15, 2025</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="vs-finding-card warning">
+                                        <div class="vs-finding-header"><span class="vs-warning-icon">⚠</span>Inspection Deadline Missing</div>
+                                        <div class="vs-finding-desc">Section 8.2 deadline not specified</div>
+                                        <div class="vs-ai-consensus"><span class="vs-badge-claude">Claude ✓</span><span class="vs-badge-gpt">ChatGPT ✓</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Scene 4: Dashboard Ready (62-end) -->
+                        <div class="video-scene" data-start="62" data-end="100">
+                            <div class="vs-dashboard-card">
+                                <div class="vs-dash-header">
+                                    <div class="vs-dash-title">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2">
+                                            <rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>
+                                        </svg>
+                                        New Transaction Created
+                                    </div>
+                                    <span class="vs-review-badge">Needs Review</span>
+                                </div>
+                                <div class="vs-dash-body">
+                                    <div class="vs-property-info">
+                                        <div class="vs-prop-address">742 Evergreen Terrace</div>
+                                        <div class="vs-prop-city">Springfield, IL 62701</div>
+                                        <div class="vs-prop-price">$485,000</div>
+                                    </div>
+                                    <div class="vs-compliance-summary">
+                                        <div class="vs-compliance-item warning"><span>⚠</span> 1 Issue to Review</div>
+                                        <div class="vs-compliance-item success"><span>✓</span> 5 Items Verified</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Portal Demo Scenes -->
+                    <div class="video-scenes" data-demo="portal" style="display: none;">
+                        <!-- Scene 1: Client Receives Email Invitation -->
+                        <div class="video-scene active" data-start="0" data-end="11">
+                            <div class="vs-cp-email">
+                                <div class="vs-cp-email-header">
+                                    <div class="vs-cp-email-app">
+                                        <span class="vs-cp-email-dot red"></span>
+                                        <span class="vs-cp-email-dot yellow"></span>
+                                        <span class="vs-cp-email-dot green"></span>
+                                        <span class="vs-cp-email-app-title">Inbox</span>
+                                    </div>
+                                </div>
+                                <div class="vs-cp-email-body">
+                                    <div class="vs-cp-email-from">
+                                        <div class="vs-cp-email-avatar">SJ</div>
+                                        <div class="vs-cp-email-from-info">
+                                            <div class="vs-cp-email-sender">Sarah Johnson</div>
+                                            <div class="vs-cp-email-address">sarah@realestate.com</div>
+                                        </div>
+                                        <div class="vs-cp-email-time">Just now</div>
+                                    </div>
+                                    <div class="vs-cp-email-subject">You're Invited to Your Client Portal! 🏠</div>
+                                    <div class="vs-cp-email-content">
+                                        <p>Hi James,</p>
+                                        <p>Congratulations on your offer being accepted for <strong>1847 Maple Avenue</strong>!</p>
+                                        <p>I've set up a personalized portal where you can track your transaction progress, view documents, and stay updated every step of the way.</p>
+                                        <div class="vs-cp-email-cta">
+                                            <button class="vs-cp-btn">Access Your Portal</button>
+                                        </div>
+                                        <p class="vs-cp-email-footer-text">Best regards,<br>Sarah Johnson<br>Your Real Estate Agent</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 2: Client Portal Dashboard -->
+                        <div class="video-scene" data-start="11" data-end="22">
+                            <div class="vs-cp-panel wide">
+                                <div class="vs-cp-header">Client Portal</div>
+                                <div class="vs-cp-body">
+                                    <!-- Property Hero -->
+                                    <div class="vs-cp-property-hero">
+                                        <div class="vs-cp-property-img"></div>
+                                        <div class="vs-cp-property-info">
+                                            <div class="vs-cp-property-addr">1847 Maple Avenue</div>
+                                            <div class="vs-cp-property-meta">
+                                                <span><strong class="blue">$425,000</strong></span>
+                                                <span>Closing: <strong>Jan 15, 2025</strong></span>
+                                                <span class="vs-cp-stat-badge">Under Contract</span>
+                                            </div>
+                                        </div>
+                                        <div class="vs-cp-agent-card">
+                                            <div class="vs-cp-avatar sm">SJ</div>
+                                            <div>
+                                                <div class="vs-cp-agent-name">Sarah Johnson</div>
+                                                <div class="vs-cp-agent-phone">(555) 123-4567</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Tabs -->
+                                    <div class="vs-cp-tabs">
+                                        <div class="vs-cp-tab active">Dashboard</div>
+                                        <div class="vs-cp-tab">Process Map</div>
+                                        <div class="vs-cp-tab">Documents</div>
+                                        <div class="vs-cp-tab">Calendar</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 3: Action Items & Progress -->
+                        <div class="video-scene" data-start="22" data-end="34">
+                            <div class="vs-cp-panel wide">
+                                <div class="vs-cp-header">Dashboard</div>
+                                <div class="vs-cp-body">
+                                    <!-- Action Items -->
+                                    <div class="vs-cp-section-title">Your Action Items</div>
+                                    <div class="vs-cp-tasks">
+                                        <div class="vs-cp-task urgent">
+                                            <div class="vs-cp-task-text">Schedule Home Inspection</div>
+                                            <div class="vs-cp-task-due">Due Tomorrow</div>
+                                        </div>
+                                        <div class="vs-cp-task">
+                                            <div class="vs-cp-task-text">Upload Bank Statements</div>
+                                            <div class="vs-cp-task-due">Due in 3 days</div>
+                                        </div>
+                                        <div class="vs-cp-task">
+                                            <div class="vs-cp-task-text">Review Title Commitment</div>
+                                            <div class="vs-cp-task-due">Due in 5 days</div>
+                                        </div>
+                                    </div>
+                                    <!-- Progress -->
+                                    <div class="vs-cp-progress-section">
+                                        <div class="vs-cp-progress-header">
+                                            <span>Your Progress</span>
+                                            <span class="vs-cp-progress-pct">60%</span>
+                                        </div>
+                                        <div class="vs-cp-progress-track">
+                                            <div class="vs-cp-progress-fill" style="width: 60%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 4: Process Map -->
+                        <div class="video-scene" data-start="34" data-end="46">
+                            <div class="vs-cp-panel wide">
+                                <div class="vs-cp-header">Process Map</div>
+                                <div class="vs-cp-body">
+                                    <div class="vs-cp-section-title">Your Home Buying Journey</div>
+                                    <div class="vs-cp-timeline">
+                                        <div class="vs-cp-step done">
+                                            <div class="vs-cp-step-marker">✓</div>
+                                            <div class="vs-cp-step-info">
+                                                <div class="vs-cp-step-title">Offer Accepted</div>
+                                                <div class="vs-cp-step-date">Dec 1</div>
+                                            </div>
+                                        </div>
+                                        <div class="vs-cp-step done">
+                                            <div class="vs-cp-step-marker">✓</div>
+                                            <div class="vs-cp-step-info">
+                                                <div class="vs-cp-step-title">Earnest Money</div>
+                                                <div class="vs-cp-step-date">Dec 3</div>
+                                            </div>
+                                        </div>
+                                        <div class="vs-cp-step current">
+                                            <div class="vs-cp-step-marker">3</div>
+                                            <div class="vs-cp-step-info">
+                                                <div class="vs-cp-step-title">Inspection</div>
+                                                <div class="vs-cp-step-date">Dec 15</div>
+                                            </div>
+                                        </div>
+                                        <div class="vs-cp-step">
+                                            <div class="vs-cp-step-marker">4</div>
+                                            <div class="vs-cp-step-info">
+                                                <div class="vs-cp-step-title">Appraisal</div>
+                                                <div class="vs-cp-step-date">Dec 20</div>
+                                            </div>
+                                        </div>
+                                        <div class="vs-cp-step">
+                                            <div class="vs-cp-step-marker">5</div>
+                                            <div class="vs-cp-step-info">
+                                                <div class="vs-cp-step-title">Walkthrough</div>
+                                                <div class="vs-cp-step-date">Jan 14</div>
+                                            </div>
+                                        </div>
+                                        <div class="vs-cp-step">
+                                            <div class="vs-cp-step-marker">6</div>
+                                            <div class="vs-cp-step-info">
+                                                <div class="vs-cp-step-title">Closing</div>
+                                                <div class="vs-cp-step-date">Jan 15</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 5: Documents -->
+                        <div class="video-scene" data-start="46" data-end="57">
+                            <div class="vs-cp-panel wide">
+                                <div class="vs-cp-header">Documents</div>
+                                <div class="vs-cp-body">
+                                    <div class="vs-cp-section-title">Your Documents</div>
+                                    <div class="vs-cp-docs-grid">
+                                        <div class="vs-cp-doc blue">
+                                            <div class="vs-cp-doc-icon">📄</div>
+                                            <div class="vs-cp-doc-name">Purchase Contract</div>
+                                            <div class="vs-cp-doc-badge green">Signed</div>
+                                        </div>
+                                        <div class="vs-cp-doc orange">
+                                            <div class="vs-cp-doc-icon">📋</div>
+                                            <div class="vs-cp-doc-name">Inspection Report</div>
+                                            <div class="vs-cp-doc-badge">View</div>
+                                        </div>
+                                        <div class="vs-cp-doc yellow">
+                                            <div class="vs-cp-doc-icon">📄</div>
+                                            <div class="vs-cp-doc-name">Seller Disclosure</div>
+                                            <div class="vs-cp-doc-badge green">Signed</div>
+                                        </div>
+                                        <div class="vs-cp-doc teal">
+                                            <div class="vs-cp-doc-icon">🏦</div>
+                                            <div class="vs-cp-doc-name">Pre-Approval</div>
+                                            <div class="vs-cp-doc-badge purple">Uploaded</div>
+                                        </div>
+                                        <div class="vs-cp-doc green">
+                                            <div class="vs-cp-doc-icon">📜</div>
+                                            <div class="vs-cp-doc-name">Title Commitment</div>
+                                            <div class="vs-cp-doc-badge amber">Review</div>
+                                        </div>
+                                        <div class="vs-cp-doc purple">
+                                            <div class="vs-cp-doc-icon">🪪</div>
+                                            <div class="vs-cp-doc-name">Photo ID</div>
+                                            <div class="vs-cp-doc-badge purple">Uploaded</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 6: Document View -->
+                        <div class="video-scene" data-start="57" data-end="68">
+                            <div class="vs-cp-panel wide">
+                                <div class="vs-cp-header">View Document</div>
+                                <div class="vs-cp-body">
+                                    <div class="vs-cp-doc-preview">
+                                        <div class="vs-cp-doc-preview-header">
+                                            <span class="vs-cp-doc-preview-title">📄 Purchase Contract</span>
+                                            <span class="vs-cp-doc-badge green">Signed</span>
+                                        </div>
+                                        <div class="vs-cp-doc-viewer">
+                                            <div class="vs-cp-doc-placeholder">
+                                                <div class="vs-cp-doc-placeholder-icon">📄</div>
+                                                <div class="vs-cp-doc-placeholder-text">Purchase_Contract_1847_Maple.pdf</div>
+                                                <div class="vs-cp-doc-placeholder-meta">12 pages • 2.4 MB • Uploaded Dec 5, 2025</div>
+                                            </div>
+                                        </div>
+                                        <div class="vs-cp-doc-actions">
+                                            <button class="vs-cp-btn-secondary">Download</button>
+                                            <button class="vs-cp-btn">Open in New Tab</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 7: Messaging -->
+                        <div class="video-scene" data-start="68" data-end="82">
+                            <div class="vs-cp-panel wide">
+                                <div class="vs-cp-header">Messages</div>
+                                <div class="vs-cp-body">
+                                    <div class="vs-cp-chat">
+                                        <div class="vs-cp-message received">
+                                            <div class="vs-cp-message-avatar">SJ</div>
+                                            <div class="vs-cp-message-content">
+                                                <div class="vs-cp-message-sender">Sarah Johnson</div>
+                                                <div class="vs-cp-message-text">Hi James! Great news - the inspection report came back. A few minor items but nothing major. I've uploaded it to your documents.</div>
+                                                <div class="vs-cp-message-time">2:30 PM</div>
+                                            </div>
+                                        </div>
+                                        <div class="vs-cp-message sent">
+                                            <div class="vs-cp-message-content">
+                                                <div class="vs-cp-message-text">Thanks Sarah! I saw the report. Should we ask the seller to fix the HVAC filter?</div>
+                                                <div class="vs-cp-message-time">2:45 PM</div>
+                                            </div>
+                                        </div>
+                                        <div class="vs-cp-message received">
+                                            <div class="vs-cp-message-avatar">SJ</div>
+                                            <div class="vs-cp-message-content">
+                                                <div class="vs-cp-message-sender">Sarah Johnson</div>
+                                                <div class="vs-cp-message-text">Good idea! I'll add that to our repair request. I've also scheduled your appraisal for Dec 20th. ✅</div>
+                                                <div class="vs-cp-message-time">2:52 PM</div>
+                                            </div>
+                                        </div>
+                                        <div class="vs-cp-chat-input">
+                                            <input type="text" placeholder="Type a message..." class="vs-cp-input">
+                                            <button class="vs-cp-send-btn">Send</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Compliance Flow Demo Scenes -->
+                    <div class="video-scenes" data-demo="compliance" style="display: none;">
+                        <!-- Scene 1: Kanban Board Overview -->
+                        <div class="video-scene active" data-start="0" data-end="20">
+                            <div class="vs-cf-kanban">
+                                <div class="vs-cf-header">
+                                    <div class="vs-cf-title">Compliance Flow Builder</div>
+                                    <div class="vs-cf-subtitle">Colorado Residential Purchase</div>
+                                </div>
+                                <div class="vs-cf-board">
+                                    <!-- Backlog Column -->
+                                    <div class="vs-cf-column backlog">
+                                        <div class="vs-cf-column-header">
+                                            <span class="vs-cf-column-icon">📥</span>
+                                            <span>Backlog</span>
+                                            <span class="vs-cf-count">2</span>
+                                        </div>
+                                        <div class="vs-cf-cards">
+                                            <div class="vs-cf-card">
+                                                <span class="vs-cf-card-icon">📄</span>
+                                                <span>Lead Based Paint</span>
+                                            </div>
+                                            <div class="vs-cf-card">
+                                                <span class="vs-cf-card-icon">📄</span>
+                                                <span>Square Footage</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Milestone 1: Active Listing -->
+                                    <div class="vs-cf-column milestone">
+                                        <div class="vs-cf-column-header">
+                                            <span class="vs-cf-milestone-num">1</span>
+                                            <span>Active Listing</span>
+                                            <span class="vs-cf-count">4</span>
+                                        </div>
+                                        <div class="vs-cf-cards">
+                                            <div class="vs-cf-card active">
+                                                <span class="vs-cf-card-icon">📄</span>
+                                                <span>Listing Agreement</span>
+                                                <span class="vs-cf-check-badge">12 checks</span>
+                                            </div>
+                                            <div class="vs-cf-card">
+                                                <span class="vs-cf-card-icon">📄</span>
+                                                <span>Seller Disclosure</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Milestone 2: Under Contract -->
+                                    <div class="vs-cf-column milestone">
+                                        <div class="vs-cf-column-header">
+                                            <span class="vs-cf-milestone-num">2</span>
+                                            <span>Under Contract</span>
+                                            <span class="vs-cf-count">5</span>
+                                        </div>
+                                        <div class="vs-cf-cards">
+                                            <div class="vs-cf-card">
+                                                <span class="vs-cf-card-icon">📄</span>
+                                                <span>Contract</span>
+                                                <span class="vs-cf-check-badge">20 checks</span>
+                                            </div>
+                                            <div class="vs-cf-card">
+                                                <span class="vs-cf-card-icon">📄</span>
+                                                <span>Inspection Objection</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Milestone 3: Closing -->
+                                    <div class="vs-cf-column milestone">
+                                        <div class="vs-cf-column-header">
+                                            <span class="vs-cf-milestone-num">3</span>
+                                            <span>Closing</span>
+                                            <span class="vs-cf-count">4</span>
+                                        </div>
+                                        <div class="vs-cf-cards">
+                                            <div class="vs-cf-card">
+                                                <span class="vs-cf-card-icon">📄</span>
+                                                <span>Settlement Statement</span>
+                                            </div>
+                                            <div class="vs-cf-card">
+                                                <span class="vs-cf-card-icon">📄</span>
+                                                <span>Commission Disbursement</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 2: Drag and Drop -->
+                        <div class="video-scene" data-start="20" data-end="39">
+                            <div class="vs-cf-kanban">
+                                <div class="vs-cf-header">
+                                    <div class="vs-cf-title">Drag & Drop Documents</div>
+                                    <div class="vs-cf-subtitle">Organize documents into milestones</div>
+                                </div>
+                                <div class="vs-cf-board">
+                                    <div class="vs-cf-column backlog">
+                                        <div class="vs-cf-column-header">
+                                            <span class="vs-cf-column-icon">📥</span>
+                                            <span>Backlog</span>
+                                        </div>
+                                        <div class="vs-cf-cards">
+                                            <div class="vs-cf-card dragging">
+                                                <span class="vs-cf-card-icon">📄</span>
+                                                <span>Lead Based Paint</span>
+                                                <span class="vs-cf-drag-handle">⋮⋮</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vs-cf-column milestone drop-target">
+                                        <div class="vs-cf-column-header">
+                                            <span class="vs-cf-milestone-num">1</span>
+                                            <span>Active Listing</span>
+                                        </div>
+                                        <div class="vs-cf-cards">
+                                            <div class="vs-cf-card">
+                                                <span class="vs-cf-card-icon">📄</span>
+                                                <span>Listing Agreement</span>
+                                            </div>
+                                            <div class="vs-cf-drop-zone">
+                                                <span>Drop here</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vs-cf-column milestone">
+                                        <div class="vs-cf-column-header">
+                                            <span class="vs-cf-milestone-num">2</span>
+                                            <span>Under Contract</span>
+                                        </div>
+                                        <div class="vs-cf-cards">
+                                            <div class="vs-cf-card">
+                                                <span class="vs-cf-card-icon">📄</span>
+                                                <span>Contract</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vs-cf-hint">
+                                    <span class="vs-cf-hint-icon">💡</span>
+                                    <span>Drag documents between columns to assign them to milestones</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 3: Document Editor Panel -->
+                        <div class="video-scene" data-start="39" data-end="57">
+                            <div class="vs-cf-split">
+                                <div class="vs-cf-kanban-mini">
+                                    <div class="vs-cf-column milestone">
+                                        <div class="vs-cf-column-header">
+                                            <span class="vs-cf-milestone-num">2</span>
+                                            <span>Under Contract</span>
+                                        </div>
+                                        <div class="vs-cf-cards">
+                                            <div class="vs-cf-card selected">
+                                                <span class="vs-cf-card-icon">📄</span>
+                                                <span>Contract</span>
+                                                <span class="vs-cf-edit-icon">✏️</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vs-cf-editor">
+                                    <div class="vs-cf-editor-header">
+                                        <span>Edit Document Type</span>
+                                        <span class="vs-cf-close-btn">×</span>
+                                    </div>
+                                    <div class="vs-cf-editor-body">
+                                        <div class="vs-cf-field">
+                                            <label>Document Name</label>
+                                            <input type="text" value="Contract" class="vs-cf-input">
+                                        </div>
+                                        <div class="vs-cf-field">
+                                            <label>PDF Identifiers</label>
+                                            <input type="text" value="contract, purchase contract, cbs, sales contract" class="vs-cf-input">
+                                        </div>
+                                        <div class="vs-cf-field">
+                                            <label>Upload Deadline</label>
+                                            <input type="text" value="72 hours of signature dates" class="vs-cf-input">
+                                        </div>
+                                        <div class="vs-cf-field">
+                                            <label>Compliance Checks</label>
+                                            <div class="vs-cf-check-count">20 checks configured</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 4: Compliance Checks -->
+                        <div class="video-scene" data-start="57" data-end="76">
+                            <div class="vs-cf-panel wide">
+                                <div class="vs-cf-panel-header">Compliance Checks</div>
+                                <div class="vs-cf-panel-body">
+                                    <div class="vs-cf-doc-title">
+                                        <span class="vs-cf-card-icon">📄</span>
+                                        <span>Contract</span>
+                                    </div>
+                                    <div class="vs-cf-checks">
+                                        <div class="vs-cf-check">
+                                            <span class="vs-cf-severity critical">●</span>
+                                            <span class="vs-cf-check-text">Commission amount stated with NO RANGES</span>
+                                            <span class="vs-cf-severity-badge critical">Critical</span>
+                                        </div>
+                                        <div class="vs-cf-check">
+                                            <span class="vs-cf-severity critical">●</span>
+                                            <span class="vs-cf-check-text">Buyer signature date MUST be date of contract or before</span>
+                                            <span class="vs-cf-severity-badge critical">Critical</span>
+                                        </div>
+                                        <div class="vs-cf-check">
+                                            <span class="vs-cf-severity high">●</span>
+                                            <span class="vs-cf-check-text">Section 29 - Buyer's Brokerage Compensation checked</span>
+                                            <span class="vs-cf-severity-badge high">High</span>
+                                        </div>
+                                        <div class="vs-cf-check">
+                                            <span class="vs-cf-severity medium">●</span>
+                                            <span class="vs-cf-check-text">Legal description & property address present</span>
+                                            <span class="vs-cf-severity-badge medium">Medium</span>
+                                        </div>
+                                    </div>
+                                    <button class="vs-cf-add-check">+ Add Compliance Check</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 5: Compliance Report -->
+                        <div class="video-scene" data-start="76" data-end="89">
+                            <div class="vs-cf-report">
+                                <div class="vs-cf-report-header">
+                                    <div class="vs-cf-report-title">
+                                        <span class="vs-cf-status-icon success">✓</span>
+                                        <span>Compliance Report</span>
+                                    </div>
+                                    <div class="vs-cf-report-status success">All Clear</div>
+                                </div>
+                                <div class="vs-cf-report-body">
+                                    <div class="vs-cf-report-stats">
+                                        <div class="vs-cf-stat-card">
+                                            <div class="vs-cf-stat-num green">32</div>
+                                            <div class="vs-cf-stat-label">Checks Passed</div>
+                                        </div>
+                                        <div class="vs-cf-stat-card">
+                                            <div class="vs-cf-stat-num gray">0</div>
+                                            <div class="vs-cf-stat-label">Issues Found</div>
+                                        </div>
+                                        <div class="vs-cf-stat-card">
+                                            <div class="vs-cf-stat-num blue">11</div>
+                                            <div class="vs-cf-stat-label">Documents</div>
+                                        </div>
+                                    </div>
+                                    <div class="vs-cf-report-docs">
+                                        <div class="vs-cf-report-doc">
+                                            <span class="vs-cf-doc-status">✓</span>
+                                            <span>Contract</span>
+                                            <span class="vs-cf-doc-checks">20/20 passed</span>
+                                        </div>
+                                        <div class="vs-cf-report-doc">
+                                            <span class="vs-cf-doc-status">✓</span>
+                                            <span>Listing Agreement</span>
+                                            <span class="vs-cf-doc-checks">12/12 passed</span>
+                                        </div>
+                                        <div class="vs-cf-report-doc">
+                                            <span class="vs-cf-doc-status">✓</span>
+                                            <span>Settlement Statement</span>
+                                            <span class="vs-cf-doc-checks">—</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 6: Issue Detection -->
+                        <div class="video-scene" data-start="89" data-end="108">
+                            <div class="vs-cf-report">
+                                <div class="vs-cf-report-header">
+                                    <div class="vs-cf-report-title">
+                                        <span class="vs-cf-status-icon warning">⚠</span>
+                                        <span>Compliance Report</span>
+                                    </div>
+                                    <div class="vs-cf-report-status warning">2 Issues Found</div>
+                                </div>
+                                <div class="vs-cf-report-body">
+                                    <div class="vs-cf-issue-card critical">
+                                        <div class="vs-cf-issue-header">
+                                            <span class="vs-cf-severity-badge critical">Critical</span>
+                                            <span class="vs-cf-issue-doc">Contract</span>
+                                        </div>
+                                        <div class="vs-cf-issue-text">Commission amount contains a RANGE - must be specific</div>
+                                        <div class="vs-cf-issue-source">Section 29, Buyer's Brokerage Compensation</div>
+                                    </div>
+                                    <div class="vs-cf-issue-card high">
+                                        <div class="vs-cf-issue-header">
+                                            <span class="vs-cf-severity-badge high">High</span>
+                                            <span class="vs-cf-issue-doc">Listing Agreement</span>
+                                        </div>
+                                        <div class="vs-cf-issue-text">Listing period dates not entered in Section 3.7</div>
+                                        <div class="vs-cf-issue-source">Section 3.7, Listing Period</div>
+                                    </div>
+                                    <div class="vs-cf-issue-actions">
+                                        <button class="vs-cf-btn-secondary">Mark as Resolved</button>
+                                        <button class="vs-cf-btn-primary">Request Correction</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Smart Playbooks Demo Scenes -->
+                    <div class="video-scenes" data-demo="playbooks" style="display: none;">
+                        <!-- Scene 1: Playbook Library -->
+                        <div class="video-scene active" data-start="0" data-end="19">
+                            <div class="vs-pb-container">
+                                <div class="vs-pb-header">
+                                    <div class="vs-pb-title">Smart Playbooks</div>
+                                    <div class="vs-pb-subtitle">Automate your transaction workflows</div>
+                                </div>
+                                <div class="vs-pb-grid">
+                                    <div class="vs-pb-card active">
+                                        <div class="vs-pb-card-header">
+                                            <span class="vs-pb-scope-badge system">System</span>
+                                            <span class="vs-pb-status-badge active">Active</span>
+                                        </div>
+                                        <div class="vs-pb-card-title">Standard Buyer Transaction</div>
+                                        <div class="vs-pb-card-desc">Complete workflow for buyer-side transactions with all critical deadlines</div>
+                                        <div class="vs-pb-card-stats">
+                                            <span>5 Phases</span>
+                                            <span>•</span>
+                                            <span>20 Tasks</span>
+                                            <span>•</span>
+                                            <span>Used 47x</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-pb-card">
+                                        <div class="vs-pb-card-header">
+                                            <span class="vs-pb-scope-badge brokerage">Brokerage</span>
+                                            <span class="vs-pb-status-badge active">Active</span>
+                                        </div>
+                                        <div class="vs-pb-card-title">Colorado Springs Realty</div>
+                                        <div class="vs-pb-card-desc">Custom workflow for our brokerage compliance requirements</div>
+                                        <div class="vs-pb-card-stats">
+                                            <span>4 Phases</span>
+                                            <span>•</span>
+                                            <span>18 Tasks</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-pb-card">
+                                        <div class="vs-pb-card-header">
+                                            <span class="vs-pb-scope-badge personal">Personal</span>
+                                            <span class="vs-pb-status-badge draft">Draft</span>
+                                        </div>
+                                        <div class="vs-pb-card-title">My Quick Start</div>
+                                        <div class="vs-pb-card-desc">Simplified essentials for fast closings</div>
+                                        <div class="vs-pb-card-stats">
+                                            <span>2 Phases</span>
+                                            <span>•</span>
+                                            <span>6 Tasks</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 2: Playbook Detail - Phases & Tasks -->
+                        <div class="video-scene" data-start="19" data-end="38">
+                            <div class="vs-pb-detail">
+                                <div class="vs-pb-detail-header">
+                                    <div class="vs-pb-detail-title">
+                                        <span>Standard Buyer Transaction</span>
+                                        <span class="vs-pb-scope-badge system">System</span>
+                                    </div>
+                                    <div class="vs-pb-detail-meta">5 Phases • 20 Tasks • Buyer Contract</div>
+                                </div>
+                                <div class="vs-pb-phases">
+                                    <div class="vs-pb-phase expanded">
+                                        <div class="vs-pb-phase-header blue">
+                                            <span class="vs-pb-phase-num">1</span>
+                                            <span class="vs-pb-phase-name">Contract Execution</span>
+                                            <span class="vs-pb-phase-count">4 tasks</span>
+                                        </div>
+                                        <div class="vs-pb-tasks">
+                                            <div class="vs-pb-task">
+                                                <span class="vs-pb-task-title">Send welcome email</span>
+                                                <span class="vs-pb-task-formula">contract_date</span>
+                                            </div>
+                                            <div class="vs-pb-task critical">
+                                                <span class="vs-pb-task-title">Collect earnest money</span>
+                                                <span class="vs-pb-priority critical">Critical</span>
+                                                <span class="vs-pb-task-formula">contract_date + 3 business days</span>
+                                            </div>
+                                            <div class="vs-pb-task">
+                                                <span class="vs-pb-task-title">Send contract to lender</span>
+                                                <span class="vs-pb-task-formula">contract_date + 1 business day</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vs-pb-phase">
+                                        <div class="vs-pb-phase-header purple">
+                                            <span class="vs-pb-phase-num">2</span>
+                                            <span class="vs-pb-phase-name">Due Diligence</span>
+                                            <span class="vs-pb-phase-count">5 tasks</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-pb-phase">
+                                        <div class="vs-pb-phase-header green">
+                                            <span class="vs-pb-phase-num">3</span>
+                                            <span class="vs-pb-phase-name">Financing</span>
+                                            <span class="vs-pb-phase-count">5 tasks</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 3: Date Formula System -->
+                        <div class="video-scene" data-start="38" data-end="57">
+                            <div class="vs-pb-formula-panel">
+                                <div class="vs-pb-formula-header">
+                                    <span>Smart Date Formulas</span>
+                                </div>
+                                <div class="vs-pb-formula-body">
+                                    <div class="vs-pb-formula-task">
+                                        <div class="vs-pb-formula-task-title">Collect earnest money deposit</div>
+                                        <div class="vs-pb-formula-input">
+                                            <label>Due Formula</label>
+                                            <div class="vs-pb-formula-field">contract_date + 3 business days</div>
+                                        </div>
+                                    </div>
+                                    <div class="vs-pb-formula-examples">
+                                        <div class="vs-pb-formula-title">Available Date Variables</div>
+                                        <div class="vs-pb-formula-vars">
+                                            <span class="vs-pb-var">contract_date</span>
+                                            <span class="vs-pb-var">closing_date</span>
+                                            <span class="vs-pb-var">effective_date</span>
+                                            <span class="vs-pb-var">inspection_deadline</span>
+                                            <span class="vs-pb-var">appraisal_deadline</span>
+                                            <span class="vs-pb-var">financing_deadline</span>
+                                        </div>
+                                        <div class="vs-pb-formula-title">Example Formulas</div>
+                                        <div class="vs-pb-formula-list">
+                                            <div class="vs-pb-formula-ex">
+                                                <code>closing_date - 7</code>
+                                                <span>7 days before closing</span>
+                                            </div>
+                                            <div class="vs-pb-formula-ex">
+                                                <code>contract_date + 5 business days</code>
+                                                <span>5 business days after contract</span>
+                                            </div>
+                                            <div class="vs-pb-formula-ex">
+                                                <code>closing_date @ 9:00 AM</code>
+                                                <span>Closing date at specific time</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 4: Apply to Transaction Preview -->
+                        <div class="video-scene" data-start="57" data-end="76">
+                            <div class="vs-pb-apply">
+                                <div class="vs-pb-apply-header">
+                                    <div class="vs-pb-apply-title">Apply Playbook</div>
+                                    <div class="vs-pb-apply-property">1847 Maple Creek Drive, Colorado Springs</div>
+                                </div>
+                                <div class="vs-pb-apply-body">
+                                    <div class="vs-pb-apply-info">
+                                        <div class="vs-pb-apply-dates">
+                                            <div class="vs-pb-date-item">
+                                                <span class="vs-pb-date-label">Contract Date</span>
+                                                <span class="vs-pb-date-value">Dec 1, 2025</span>
+                                            </div>
+                                            <div class="vs-pb-date-item">
+                                                <span class="vs-pb-date-label">Closing Date</span>
+                                                <span class="vs-pb-date-value">Jan 15, 2026</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vs-pb-apply-tasks">
+                                        <div class="vs-pb-apply-task">
+                                            <input type="checkbox" checked>
+                                            <span class="vs-pb-apply-task-title">Send welcome email</span>
+                                            <span class="vs-pb-apply-task-date">Dec 1</span>
+                                            <span class="vs-pb-apply-task-role">Agent</span>
+                                        </div>
+                                        <div class="vs-pb-apply-task critical">
+                                            <input type="checkbox" checked>
+                                            <span class="vs-pb-apply-task-title">Collect earnest money</span>
+                                            <span class="vs-pb-priority critical">Critical</span>
+                                            <span class="vs-pb-apply-task-date">Dec 4</span>
+                                            <span class="vs-pb-apply-task-role">TC</span>
+                                        </div>
+                                        <div class="vs-pb-apply-task">
+                                            <input type="checkbox" checked>
+                                            <span class="vs-pb-apply-task-title">Send contract to lender</span>
+                                            <span class="vs-pb-apply-task-date">Dec 2</span>
+                                            <span class="vs-pb-apply-task-role">Agent</span>
+                                        </div>
+                                        <div class="vs-pb-apply-task">
+                                            <input type="checkbox" checked>
+                                            <span class="vs-pb-apply-task-title">Schedule inspection</span>
+                                            <span class="vs-pb-apply-task-date">Dec 3</span>
+                                            <span class="vs-pb-apply-task-role">Buyer</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-pb-apply-footer">
+                                        <button class="vs-pb-btn-secondary">Cancel</button>
+                                        <button class="vs-pb-btn-primary">Apply 20 Tasks</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 5: Applied Tasks on Transaction -->
+                        <div class="video-scene" data-start="76" data-end="95">
+                            <div class="vs-pb-transaction">
+                                <div class="vs-pb-transaction-header">
+                                    <div class="vs-pb-transaction-title">Transaction Tasks</div>
+                                    <div class="vs-pb-transaction-property">1847 Maple Creek Drive</div>
+                                </div>
+                                <div class="vs-pb-transaction-phases">
+                                    <div class="vs-pb-tx-phase">
+                                        <div class="vs-pb-tx-phase-header">
+                                            <span class="vs-pb-tx-phase-dot blue"></span>
+                                            <span>Contract Execution</span>
+                                            <span class="vs-pb-tx-phase-progress">2/4 complete</span>
+                                        </div>
+                                        <div class="vs-pb-tx-tasks">
+                                            <div class="vs-pb-tx-task completed">
+                                                <span class="vs-pb-tx-check">✓</span>
+                                                <span class="vs-pb-tx-task-title">Send welcome email</span>
+                                                <span class="vs-pb-tx-task-date">Dec 1</span>
+                                            </div>
+                                            <div class="vs-pb-tx-task completed">
+                                                <span class="vs-pb-tx-check">✓</span>
+                                                <span class="vs-pb-tx-task-title">Send contract to lender</span>
+                                                <span class="vs-pb-tx-task-date">Dec 2</span>
+                                            </div>
+                                            <div class="vs-pb-tx-task pending critical">
+                                                <span class="vs-pb-tx-check empty"></span>
+                                                <span class="vs-pb-tx-task-title">Collect earnest money</span>
+                                                <span class="vs-pb-priority critical">Critical</span>
+                                                <span class="vs-pb-tx-task-date due-soon">Dec 4</span>
+                                            </div>
+                                            <div class="vs-pb-tx-task pending">
+                                                <span class="vs-pb-tx-check empty"></span>
+                                                <span class="vs-pb-tx-task-title">Open escrow</span>
+                                                <span class="vs-pb-tx-task-date">Dec 2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vs-pb-tx-phase">
+                                        <div class="vs-pb-tx-phase-header">
+                                            <span class="vs-pb-tx-phase-dot purple"></span>
+                                            <span>Due Diligence</span>
+                                            <span class="vs-pb-tx-phase-progress">0/5 complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 6: Progress Dashboard -->
+                        <div class="video-scene" data-start="95" data-end="114">
+                            <div class="vs-pb-progress">
+                                <div class="vs-pb-progress-header">
+                                    <div class="vs-pb-progress-title">Playbook Progress</div>
+                                    <div class="vs-pb-progress-playbook">Standard Buyer Transaction</div>
+                                </div>
+                                <div class="vs-pb-progress-body">
+                                    <div class="vs-pb-progress-circle">
+                                        <div class="vs-pb-circle-outer">
+                                            <div class="vs-pb-circle-inner">
+                                                <span class="vs-pb-circle-percent">35%</span>
+                                                <span class="vs-pb-circle-label">Complete</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vs-pb-progress-stats">
+                                        <div class="vs-pb-stat">
+                                            <span class="vs-pb-stat-num green">7</span>
+                                            <span class="vs-pb-stat-label">Tasks Completed</span>
+                                        </div>
+                                        <div class="vs-pb-stat">
+                                            <span class="vs-pb-stat-num orange">3</span>
+                                            <span class="vs-pb-stat-label">Due This Week</span>
+                                        </div>
+                                        <div class="vs-pb-stat">
+                                            <span class="vs-pb-stat-num gray">10</span>
+                                            <span class="vs-pb-stat-label">Remaining</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-pb-progress-phases">
+                                        <div class="vs-pb-progress-phase">
+                                            <span class="vs-pb-progress-phase-name">Contract Execution</span>
+                                            <div class="vs-pb-progress-bar">
+                                                <div class="vs-pb-progress-fill" style="width: 100%"></div>
+                                            </div>
+                                            <span class="vs-pb-progress-phase-pct">100%</span>
+                                        </div>
+                                        <div class="vs-pb-progress-phase">
+                                            <span class="vs-pb-progress-phase-name">Due Diligence</span>
+                                            <div class="vs-pb-progress-bar">
+                                                <div class="vs-pb-progress-fill" style="width: 60%"></div>
+                                            </div>
+                                            <span class="vs-pb-progress-phase-pct">60%</span>
+                                        </div>
+                                        <div class="vs-pb-progress-phase">
+                                            <span class="vs-pb-progress-phase-name">Financing</span>
+                                            <div class="vs-pb-progress-bar">
+                                                <div class="vs-pb-progress-fill" style="width: 20%"></div>
+                                            </div>
+                                            <span class="vs-pb-progress-phase-pct">20%</span>
+                                        </div>
+                                        <div class="vs-pb-progress-phase">
+                                            <span class="vs-pb-progress-phase-name">Pre-Closing</span>
+                                            <div class="vs-pb-progress-bar">
+                                                <div class="vs-pb-progress-fill" style="width: 0%"></div>
+                                            </div>
+                                            <span class="vs-pb-progress-phase-pct">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Analytics Demo Scenes -->
+                    <div class="video-scenes" data-demo="analytics" style="display: none;">
+                        <!-- Scene 1: Dashboard Overview -->
+                        <div class="video-scene active" data-start="0" data-end="17">
+                            <div class="vs-an-dashboard">
+                                <div class="vs-an-header">
+                                    <div class="vs-an-title">Team Analytics</div>
+                                    <div class="vs-an-subtitle">Colorado Springs Realty • December 2025</div>
+                                </div>
+                                <div class="vs-an-metrics">
+                                    <div class="vs-an-metric blue">
+                                        <div class="vs-an-metric-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                            </svg>
+                                        </div>
+                                        <div class="vs-an-metric-value">$14.2M</div>
+                                        <div class="vs-an-metric-label">Pipeline Value</div>
+                                    </div>
+                                    <div class="vs-an-metric green">
+                                        <div class="vs-an-metric-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M3 3v18h18"/><path d="M18 17l-5-5-4 4-3-3"/>
+                                            </svg>
+                                        </div>
+                                        <div class="vs-an-metric-value">$485K</div>
+                                        <div class="vs-an-metric-label">Avg Deal Size</div>
+                                    </div>
+                                    <div class="vs-an-metric purple">
+                                        <div class="vs-an-metric-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+                                            </svg>
+                                        </div>
+                                        <div class="vs-an-metric-value">$3.8M</div>
+                                        <div class="vs-an-metric-label">Closing in 30 Days</div>
+                                    </div>
+                                    <div class="vs-an-metric orange">
+                                        <div class="vs-an-metric-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="vs-an-metric-value">32</div>
+                                        <div class="vs-an-metric-label">Avg Days to Close</div>
+                                    </div>
+                                </div>
+                                <div class="vs-an-conversion">
+                                    <div class="vs-an-conv-item">
+                                        <span class="vs-an-conv-value">47</span>
+                                        <span class="vs-an-conv-label">Total Transactions</span>
+                                    </div>
+                                    <div class="vs-an-conv-item">
+                                        <span class="vs-an-conv-value green">87%</span>
+                                        <span class="vs-an-conv-label">Conversion Rate</span>
+                                    </div>
+                                    <div class="vs-an-conv-item">
+                                        <span class="vs-an-conv-value red">4%</span>
+                                        <span class="vs-an-conv-label">Cancellation Rate</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 2: Agent Leaderboard -->
+                        <div class="video-scene" data-start="17" data-end="33">
+                            <div class="vs-an-leaderboard">
+                                <div class="vs-an-lb-header">
+                                    <div class="vs-an-lb-title">Agent Leaderboard</div>
+                                    <div class="vs-an-lb-subtitle">Top Performers by Closed Volume</div>
+                                </div>
+                                <div class="vs-an-lb-list">
+                                    <div class="vs-an-lb-item gold">
+                                        <span class="vs-an-lb-rank">1</span>
+                                        <div class="vs-an-lb-agent">
+                                            <span class="vs-an-lb-name">Sarah Mitchell</span>
+                                            <span class="vs-an-lb-team">Mountain Team</span>
+                                        </div>
+                                        <div class="vs-an-lb-stats">
+                                            <span class="vs-an-lb-volume">$2.4M</span>
+                                            <span class="vs-an-lb-deals">8 deals</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-an-lb-item silver">
+                                        <span class="vs-an-lb-rank">2</span>
+                                        <div class="vs-an-lb-agent">
+                                            <span class="vs-an-lb-name">James Rodriguez</span>
+                                            <span class="vs-an-lb-team">Downtown Team</span>
+                                        </div>
+                                        <div class="vs-an-lb-stats">
+                                            <span class="vs-an-lb-volume">$1.9M</span>
+                                            <span class="vs-an-lb-deals">6 deals</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-an-lb-item bronze">
+                                        <span class="vs-an-lb-rank">3</span>
+                                        <div class="vs-an-lb-agent">
+                                            <span class="vs-an-lb-name">Emily Chen</span>
+                                            <span class="vs-an-lb-team">Northside Team</span>
+                                        </div>
+                                        <div class="vs-an-lb-stats">
+                                            <span class="vs-an-lb-volume">$1.7M</span>
+                                            <span class="vs-an-lb-deals">5 deals</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-an-lb-item">
+                                        <span class="vs-an-lb-rank">4</span>
+                                        <div class="vs-an-lb-agent">
+                                            <span class="vs-an-lb-name">Michael Park</span>
+                                            <span class="vs-an-lb-team">Downtown Team</span>
+                                        </div>
+                                        <div class="vs-an-lb-stats">
+                                            <span class="vs-an-lb-volume">$1.2M</span>
+                                            <span class="vs-an-lb-deals">4 deals</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 3: Team Performance -->
+                        <div class="video-scene" data-start="33" data-end="50">
+                            <div class="vs-an-teams">
+                                <div class="vs-an-teams-header">
+                                    <div class="vs-an-teams-title">Team Performance</div>
+                                </div>
+                                <div class="vs-an-teams-grid">
+                                    <div class="vs-an-team-card">
+                                        <div class="vs-an-team-name">Mountain Team</div>
+                                        <div class="vs-an-team-stats">
+                                            <div class="vs-an-team-stat">
+                                                <span class="vs-an-team-stat-val">12</span>
+                                                <span class="vs-an-team-stat-lbl">Agents</span>
+                                            </div>
+                                            <div class="vs-an-team-stat">
+                                                <span class="vs-an-team-stat-val">18</span>
+                                                <span class="vs-an-team-stat-lbl">Active</span>
+                                            </div>
+                                            <div class="vs-an-team-stat">
+                                                <span class="vs-an-team-stat-val">$4.8M</span>
+                                                <span class="vs-an-team-stat-lbl">Pipeline</span>
+                                            </div>
+                                        </div>
+                                        <div class="vs-an-team-bar">
+                                            <div class="vs-an-team-bar-fill" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vs-an-team-card">
+                                        <div class="vs-an-team-name">Downtown Team</div>
+                                        <div class="vs-an-team-stats">
+                                            <div class="vs-an-team-stat">
+                                                <span class="vs-an-team-stat-val">8</span>
+                                                <span class="vs-an-team-stat-lbl">Agents</span>
+                                            </div>
+                                            <div class="vs-an-team-stat">
+                                                <span class="vs-an-team-stat-val">14</span>
+                                                <span class="vs-an-team-stat-lbl">Active</span>
+                                            </div>
+                                            <div class="vs-an-team-stat">
+                                                <span class="vs-an-team-stat-val">$3.6M</span>
+                                                <span class="vs-an-team-stat-lbl">Pipeline</span>
+                                            </div>
+                                        </div>
+                                        <div class="vs-an-team-bar">
+                                            <div class="vs-an-team-bar-fill" style="width: 65%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vs-an-team-card">
+                                        <div class="vs-an-team-name">Northside Team</div>
+                                        <div class="vs-an-team-stats">
+                                            <div class="vs-an-team-stat">
+                                                <span class="vs-an-team-stat-val">6</span>
+                                                <span class="vs-an-team-stat-lbl">Agents</span>
+                                            </div>
+                                            <div class="vs-an-team-stat">
+                                                <span class="vs-an-team-stat-val">9</span>
+                                                <span class="vs-an-team-stat-lbl">Active</span>
+                                            </div>
+                                            <div class="vs-an-team-stat">
+                                                <span class="vs-an-team-stat-val">$2.1M</span>
+                                                <span class="vs-an-team-stat-lbl">Pipeline</span>
+                                            </div>
+                                        </div>
+                                        <div class="vs-an-team-bar">
+                                            <div class="vs-an-team-bar-fill" style="width: 45%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 4: AI Weekly Summary -->
+                        <div class="video-scene" data-start="50" data-end="66">
+                            <div class="vs-an-ai">
+                                <div class="vs-an-ai-header">
+                                    <div class="vs-an-ai-title">AI Weekly Summary</div>
+                                    <div class="vs-an-ai-powered">Powered by ChatGPT & Claude</div>
+                                </div>
+                                <div class="vs-an-ai-body">
+                                    <div class="vs-an-ai-date">Dec 8 - Dec 14, 2025</div>
+                                    <div class="vs-an-ai-content">
+                                        <p><strong>Strong week for the brokerage.</strong> Pipeline grew 12% to $14.2M with 5 new contracts. Sarah Mitchell led closings with 2 deals totaling $890K.</p>
+                                        <p><strong>Watch items:</strong> 3 transactions have overdue inspection deadlines. Downtown Team has 2 deals at risk of falling through.</p>
+                                        <p><strong>Recommended actions:</strong></p>
+                                        <ul>
+                                            <li>Team Leaders: Follow up on overdue inspections</li>
+                                            <li>Agents: Push 4 deals in final approval to close</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 5: At-Risk Transactions -->
+                        <div class="video-scene" data-start="66" data-end="83">
+                            <div class="vs-an-risk">
+                                <div class="vs-an-risk-header">
+                                    <div class="vs-an-risk-title">At-Risk Transactions</div>
+                                    <div class="vs-an-risk-count">3 items need attention</div>
+                                </div>
+                                <div class="vs-an-risk-list">
+                                    <div class="vs-an-risk-item critical">
+                                        <div class="vs-an-risk-badge">Overdue</div>
+                                        <div class="vs-an-risk-details">
+                                            <div class="vs-an-risk-address">2847 Oak Valley Court</div>
+                                            <div class="vs-an-risk-issue">Inspection deadline passed 3 days ago</div>
+                                            <div class="vs-an-risk-agent">Agent: James Rodriguez</div>
+                                        </div>
+                                    </div>
+                                    <div class="vs-an-risk-item warning">
+                                        <div class="vs-an-risk-badge">Due Today</div>
+                                        <div class="vs-an-risk-details">
+                                            <div class="vs-an-risk-address">1592 Pine Ridge Drive</div>
+                                            <div class="vs-an-risk-issue">Appraisal deadline due today</div>
+                                            <div class="vs-an-risk-agent">Agent: Emily Chen</div>
+                                        </div>
+                                    </div>
+                                    <div class="vs-an-risk-item warning">
+                                        <div class="vs-an-risk-badge">Due Today</div>
+                                        <div class="vs-an-risk-details">
+                                            <div class="vs-an-risk-address">3721 Sunset Boulevard</div>
+                                            <div class="vs-an-risk-issue">Financing contingency expires</div>
+                                            <div class="vs-an-risk-agent">Agent: Michael Park</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scene 6: Trend Chart -->
+                        <div class="video-scene" data-start="83" data-end="100">
+                            <div class="vs-an-chart">
+                                <div class="vs-an-chart-header">
+                                    <div class="vs-an-chart-title">Monthly Closed Volume</div>
+                                    <div class="vs-an-chart-range">Last 6 Months</div>
+                                </div>
+                                <div class="vs-an-chart-body">
+                                    <div class="vs-an-chart-bars">
+                                        <div class="vs-an-bar-group">
+                                            <div class="vs-an-bar" style="height: 45%"></div>
+                                            <span class="vs-an-bar-label">Jul</span>
+                                            <span class="vs-an-bar-value">$1.8M</span>
+                                        </div>
+                                        <div class="vs-an-bar-group">
+                                            <div class="vs-an-bar" style="height: 55%"></div>
+                                            <span class="vs-an-bar-label">Aug</span>
+                                            <span class="vs-an-bar-value">$2.2M</span>
+                                        </div>
+                                        <div class="vs-an-bar-group">
+                                            <div class="vs-an-bar" style="height: 65%"></div>
+                                            <span class="vs-an-bar-label">Sep</span>
+                                            <span class="vs-an-bar-value">$2.6M</span>
+                                        </div>
+                                        <div class="vs-an-bar-group">
+                                            <div class="vs-an-bar" style="height: 50%"></div>
+                                            <span class="vs-an-bar-label">Oct</span>
+                                            <span class="vs-an-bar-value">$2.0M</span>
+                                        </div>
+                                        <div class="vs-an-bar-group">
+                                            <div class="vs-an-bar" style="height: 80%"></div>
+                                            <span class="vs-an-bar-label">Nov</span>
+                                            <span class="vs-an-bar-value">$3.2M</span>
+                                        </div>
+                                        <div class="vs-an-bar-group highlight">
+                                            <div class="vs-an-bar" style="height: 100%"></div>
+                                            <span class="vs-an-bar-label">Dec</span>
+                                            <span class="vs-an-bar-value">$4.1M</span>
+                                        </div>
+                                    </div>
+                                    <div class="vs-an-chart-summary">
+                                        <span class="vs-an-chart-total">$15.9M Total</span>
+                                        <span class="vs-an-chart-trend up">↑ 28% vs last period</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Controls -->
+                <div class="video-controls">
+                    <button class="video-play-btn" id="video-play-btn">
+                        <svg class="play-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                        <svg class="pause-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                            <rect x="6" y="4" width="4" height="16"/>
+                            <rect x="14" y="4" width="4" height="16"/>
+                        </svg>
+                    </button>
+                    <div class="video-progress-container">
+                        <div class="video-progress-bar" id="video-progress">
+                            <div class="video-progress-fill" id="video-progress-fill"></div>
+                            <div class="video-progress-handle" id="video-progress-handle"></div>
+                        </div>
+                    </div>
+                    <div class="video-time" id="video-time">0:00 / 0:00</div>
+                </div>
+            </div>
+
+            <div class="video-modal-title" id="video-modal-title">Transaction Automation Demo</div>
+        </div>
+        <audio id="demo-audio" preload="none"></audio>
     </div>
 
     <script src="script.js"></script>

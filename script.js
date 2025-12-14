@@ -384,6 +384,249 @@ const addPortalTabFunctionality = () => {
     });
 };
 
+// Video Demo Player with Audio Sync
+const addVideoPlayer = () => {
+    const videoModal = document.getElementById('video-modal');
+    const videoScreen = document.getElementById('video-screen');
+    const audio = document.getElementById('demo-audio');
+    const playBtn = document.getElementById('video-play-btn');
+    const progressFill = document.getElementById('video-progress-fill');
+    const progressHandle = document.getElementById('video-progress-handle');
+    const progressBar = document.getElementById('video-progress');
+    const timeDisplay = document.getElementById('video-time');
+    const modalTitle = document.getElementById('video-modal-title');
+    const closeBtn = document.querySelector('.video-modal-close');
+    const playIcon = playBtn?.querySelector('.play-icon');
+    const pauseIcon = playBtn?.querySelector('.pause-icon');
+
+    const featureCards = document.querySelectorAll('.feature-card-video');
+
+    if (!videoModal || !audio) return;
+
+    let currentDemo = null;
+    let isPlaying = false;
+
+    // Format time as M:SS
+    const formatTime = (seconds) => {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    };
+
+    // Update progress bar and time
+    const updateProgress = () => {
+        if (!audio.duration) return;
+        const percent = (audio.currentTime / audio.duration) * 100;
+        progressFill.style.width = `${percent}%`;
+        progressHandle.style.left = `${percent}%`;
+        timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+
+        // Update scenes based on audio time
+        updateScenes(audio.currentTime);
+    };
+
+    // Update which scene is active based on audio time
+    const updateScenes = (currentTime) => {
+        const scenesContainer = videoScreen.querySelector(`.video-scenes[data-demo="${currentDemo}"]`);
+        if (!scenesContainer) return;
+
+        const scenes = scenesContainer.querySelectorAll('.video-scene');
+        scenes.forEach(scene => {
+            const start = parseFloat(scene.dataset.start);
+            const end = parseFloat(scene.dataset.end);
+            if (currentTime >= start && currentTime < end) {
+                if (!scene.classList.contains('active')) {
+                    scenes.forEach(s => s.classList.remove('active'));
+                    scene.classList.add('active');
+                }
+            }
+        });
+    };
+
+    // Toggle play/pause
+    const togglePlay = () => {
+        if (isPlaying) {
+            audio.pause();
+            isPlaying = false;
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+        } else {
+            audio.play();
+            isPlaying = true;
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'block';
+        }
+    };
+
+    let hasAudio = false;
+    let manualTime = 0;
+    let totalDuration = 0;
+
+    // Get total duration from scenes
+    const getTotalDuration = (demoType) => {
+        const scenesContainer = videoScreen.querySelector(`.video-scenes[data-demo="${demoType}"]`);
+        if (!scenesContainer) return 60;
+        const scenes = scenesContainer.querySelectorAll('.video-scene');
+        let maxEnd = 0;
+        scenes.forEach(scene => {
+            const end = parseFloat(scene.dataset.end) || 0;
+            if (end > maxEnd) maxEnd = end;
+        });
+        return maxEnd || 60;
+    };
+
+    // Open video modal
+    const openVideo = (demoType, audioSrc, title) => {
+        currentDemo = demoType;
+        hasAudio = audioSrc && audioSrc.length > 0;
+        modalTitle.textContent = title;
+
+        // Show correct scenes container
+        videoScreen.querySelectorAll('.video-scenes').forEach(container => {
+            container.style.display = container.dataset.demo === demoType ? 'block' : 'none';
+        });
+
+        // Reset scenes to first one
+        const scenesContainer = videoScreen.querySelector(`.video-scenes[data-demo="${demoType}"]`);
+        if (scenesContainer) {
+            scenesContainer.querySelectorAll('.video-scene').forEach((scene, i) => {
+                scene.classList.toggle('active', i === 0);
+            });
+        }
+
+        // Reset progress
+        progressFill.style.width = '0%';
+        progressHandle.style.left = '0%';
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+        isPlaying = false;
+        manualTime = 0;
+
+        // Show modal
+        videoModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        if (hasAudio) {
+            audio.src = audioSrc;
+            timeDisplay.textContent = '0:00 / 0:00';
+            // Auto-play after short delay
+            setTimeout(() => {
+                audio.play();
+                isPlaying = true;
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+            }, 500);
+        } else {
+            // No audio - setup manual navigation
+            totalDuration = getTotalDuration(demoType);
+            timeDisplay.textContent = `0:00 / ${formatTime(totalDuration)}`;
+            // Hide play button for no-audio demos
+            playBtn.style.opacity = '0.5';
+            playBtn.style.pointerEvents = 'none';
+        }
+    };
+
+    // Close video modal
+    const closeVideo = () => {
+        if (hasAudio) {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+        isPlaying = false;
+        videoModal.classList.remove('active');
+        document.body.style.overflow = '';
+        // Reset play button state
+        playBtn.style.opacity = '1';
+        playBtn.style.pointerEvents = 'auto';
+    };
+
+    // Seek on progress bar click
+    const seekTo = (e) => {
+        const rect = progressBar.getBoundingClientRect();
+        const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+
+        if (hasAudio) {
+            audio.currentTime = percent * audio.duration;
+        } else {
+            // Manual seek for no-audio demos
+            manualTime = percent * totalDuration;
+            progressFill.style.width = `${percent * 100}%`;
+            progressHandle.style.left = `${percent * 100}%`;
+            timeDisplay.textContent = `${formatTime(manualTime)} / ${formatTime(totalDuration)}`;
+            updateScenes(manualTime);
+        }
+    };
+
+    // Drag support for progress bar
+    let isDragging = false;
+
+    const handleDrag = (e) => {
+        if (!isDragging) return;
+        seekTo(e);
+    };
+
+    progressBar?.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        seekTo(e);
+    });
+
+    document.addEventListener('mousemove', handleDrag);
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+
+    // Event listeners
+    playBtn?.addEventListener('click', togglePlay);
+    closeBtn?.addEventListener('click', closeVideo);
+    progressBar?.addEventListener('click', seekTo);
+
+    audio.addEventListener('timeupdate', updateProgress);
+    audio.addEventListener('loadedmetadata', () => {
+        timeDisplay.textContent = `0:00 / ${formatTime(audio.duration)}`;
+    });
+    audio.addEventListener('ended', () => {
+        isPlaying = false;
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+    });
+
+    // Close on overlay click
+    videoModal.addEventListener('click', (e) => {
+        if (e.target === videoModal) {
+            closeVideo();
+        }
+    });
+
+    // Close on escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+            closeVideo();
+        }
+        // Space to toggle play
+        if (e.key === ' ' && videoModal.classList.contains('active')) {
+            e.preventDefault();
+            togglePlay();
+        }
+    });
+
+    // Feature card click handlers
+    featureCards.forEach(card => {
+        const playVideoBtn = card.querySelector('.play-video-btn');
+        const openHandler = () => {
+            const demoType = card.dataset.video;
+            const audioSrc = card.dataset.audio;
+            const title = card.dataset.title;
+            openVideo(demoType, audioSrc, title);
+        };
+
+        card.addEventListener('click', openHandler);
+        playVideoBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openHandler();
+        });
+    });
+};
+
 // Initialize all features when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     addFadeInAnimation();
@@ -392,6 +635,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addPlaceholderEffects();
     addModalFunctionality();
     addPortalTabFunctionality();
+    addVideoPlayer();
 });
 
 // Add smooth reveal on page load
