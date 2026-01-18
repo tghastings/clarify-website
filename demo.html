@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarify.RE - AI-Powered Real Estate Transaction Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff25bd;
+            --primary-dark: #e01ba6;
+            --primary-light: #ff5cd0;
+            --secondary: #3b82f6;
+            --accent: #34d399;
+            --accent-light: #6ee7b7;
+            --dark-bg: #0a0a0f;
+            --dark-card: #12121a;
+            --dark-border: #1f1f2e;
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+            --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #ff25bd 100%);
+            --gradient-glow: linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(255, 37, 189, 0.3) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Animated Background Grid */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(255, 37, 189, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 37, 189, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        /* Floating Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: float 8s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--primary);
+            top: -200px;
+            right: -200px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--secondary);
+            bottom: -150px;
+            left: -150px;
+            animation-delay: -4s;
+        }
+
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -2s;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(20px, 10px) scale(1.02); }
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 60px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .logo-text span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 37, 189, 0.1);
+            border: 1px solid rgba(255, 37, 189, 0.3);
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--primary-light);
+        }
+
+        .badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        /* Hero Section */
+        .hero {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: fadeInLeft 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-title .gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        /* Feature Pills */
+        .feature-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+            animation: fadeInUp 0.6s ease-out both;
+            transition: all 0.3s ease;
+        }
+
+        .pill:nth-child(1) { animation-delay: 0.5s; }
+        .pill:nth-child(2) { animation-delay: 0.6s; }
+        .pill:nth-child(3) { animation-delay: 0.7s; }
+        .pill:nth-child(4) { animation-delay: 0.8s; }
+
+        .pill:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 37, 189, 0.2);
+        }
+
+        .pill-icon {
+            font-size: 18px;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* CTA Buttons */
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            animation: fadeInUp 0.8s ease-out 0.9s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            box-shadow: 0 10px 40px rgba(255, 37, 189, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(255, 37, 189, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--dark-border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            background: rgba(255, 37, 189, 0.1);
+        }
+
+        /* App Preview */
+        .hero-preview {
+            position: relative;
+            animation: fadeInRight 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .app-window {
+            background: var(--dark-card);
+            border-radius: 20px;
+            border: 1px solid var(--dark-border);
+            overflow: hidden;
+            box-shadow:
+                0 50px 100px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+            transform: perspective(1500px) rotateY(-5deg) rotateX(2deg);
+            transition: transform 0.5s ease;
+        }
+
+        .app-window:hover {
+            transform: perspective(1500px) rotateY(0deg) rotateX(0deg);
+        }
+
+        .window-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--dark-border);
+        }
+
+        .window-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .window-dot.red { background: #ff5f57; }
+        .window-dot.yellow { background: #ffbd2e; }
+        .window-dot.green { background: #28c840; }
+
+        .window-content {
+            padding: 24px;
+            min-height: 400px;
+        }
+
+        /* Dashboard Preview */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+            height: 100%;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-item.active {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .sidebar-item:not(.active):hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Transaction Cards */
+        .transaction-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--dark-border);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            animation: slideIn 0.5s ease-out both;
+            transition: all 0.3s ease;
+        }
+
+        .transaction-card:nth-child(1) { animation-delay: 1s; }
+        .transaction-card:nth-child(2) { animation-delay: 1.2s; }
+        .transaction-card:nth-child(3) { animation-delay: 1.4s; }
+
+        .transaction-card:hover {
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .property-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            background: var(--gradient-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .property-info {
+            flex: 1;
+        }
+
+        .property-address {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .property-price {
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-badge.pending {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+        }
+
+        .status-badge.verified {
+            background: rgba(52, 211, 153, 0.2);
+            color: var(--accent);
+        }
+
+        .status-badge.review {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--secondary);
+        }
+
+        /* AI Analysis Animation */
+        .ai-analysis {
+            background: rgba(255, 37, 189, 0.05);
+            border: 1px solid rgba(255, 37, 189, 0.2);
+            border-radius: 12px;
+            padding: 16px;
+            animation: fadeInUp 0.8s ease-out 1.6s both;
+        }
+
+        .ai-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .ai-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--gradient-primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 37, 189, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(255, 37, 189, 0.6); }
+        }
+
+        .ai-title {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .ai-subtitle {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .ai-progress {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .ai-progress-bar {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+            animation: progress 3s ease-in-out infinite;
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            50% { width: 100%; }
+            100% { width: 0%; }
+        }
+
+        /* Floating Cards */
+        .floating-card {
+            position: absolute;
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            animation: floatCard 6s ease-in-out infinite;
+        }
+
+        .floating-card-1 {
+            top: -30px;
+            right: -40px;
+            animation-delay: 0s;
+        }
+
+        .floating-card-2 {
+            bottom: 60px;
+            left: -60px;
+            animation-delay: -3s;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+
+        .floating-stat {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .stat-icon.green {
+            background: rgba(52, 211, 153, 0.2);
+        }
+
+        .stat-icon.pink {
+            background: rgba(255, 37, 189, 0.2);
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        /* Stats Row */
+        .stats-row {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid var(--dark-border);
+            animation: fadeInUp 0.8s ease-out 1s both;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Trusted By */
+        .trusted-by {
+            margin-top: auto;
+            padding-top: 60px;
+            text-align: center;
+            animation: fadeInUp 1s ease-out 1.2s both;
+        }
+
+        .trusted-title {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+
+        .trusted-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            opacity: 0.5;
+        }
+
+        .trusted-logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-preview {
+                order: -1;
+            }
+
+            .app-window {
+                transform: none;
+            }
+
+            .floating-card {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                flex-direction: row;
+                overflow-x: auto;
+            }
+
+            .stats-row {
+                flex-wrap: wrap;
+                gap: 24px;
+            }
+
+            .stat-item {
+                flex: 1;
+                min-width: 100px;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .trusted-logos {
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+        }
+
+        /* Sparkle Animation */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .hero-preview .sparkle:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+        .hero-preview .sparkle:nth-child(2) { top: 30%; right: 10%; animation-delay: 0.5s; }
+        .hero-preview .sparkle:nth-child(3) { bottom: 20%; left: 30%; animation-delay: 1s; }
+        .hero-preview .sparkle:nth-child(4) { top: 50%; right: 25%; animation-delay: 1.5s; }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <img src="images/clarify-re.png" alt="Clarify.RE Logo">
+                <div class="logo-text">Clarify<span>.RE</span></div>
+            </div>
+            <div class="badge">Beta Access Open</div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Real Estate Transactions,<br>
+                    <span class="gradient">Simplified by AI</span>
+                </h1>
+                <p class="hero-subtitle">
+                    The AI-powered platform that saves you hours, reduces compliance risk,
+                    and gives your clients a beautiful, seamless experience from contract to closing.
+                </p>
+
+                <div class="feature-pills">
+                    <div class="pill">
+                        <span class="pill-icon">&#129302;</span>
+                        Dual AI Verification
+                    </div>
+                    <div class="pill">
+                        <span class="pill-icon">&#128196;</span>
+                        Smart Contract Parsing
+                    </div>
+                    <div class="pill">
+                        <span class="pill-icon">&#9989;</span>
+                        Compliance Automation
+                    </div>
+                    <div class="pill">
+                        <span class="pill-icon">&#127968;</span>
+                        Client Portal
+                    </div>
+                </div>
+
+                <div class="cta-group">
+                    <a href="#" class="btn btn-primary">
+                        Request Early Access
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        Watch Demo
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <div class="stat-number">60%</div>
+                        <div class="stat-text">Fewer False Positives</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15min</div>
+                        <div class="stat-text">Saved Per Transaction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99.2%</div>
+                        <div class="stat-text">Compliance Accuracy</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-preview">
+                <!-- Sparkles -->
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+
+                <!-- Floating Cards -->
+                <div class="floating-card floating-card-1">
+                    <div class="floating-stat">
+                        <div class="stat-icon green">&#9989;</div>
+                        <div>
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Contracts Verified Today</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="floating-card floating-card-2">
+                    <div class="floating-stat">
+                        <div class="stat-icon pink">&#129302;</div>
+                        <div>
+                            <div class="stat-value">2 AIs</div>
+                            <div class="stat-label">Consensus Checking</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- App Window -->
+                <div class="app-window">
+                    <div class="window-header">
+                        <div class="window-dot red"></div>
+                        <div class="window-dot yellow"></div>
+                        <div class="window-dot green"></div>
+                    </div>
+                    <div class="window-content">
+                        <div class="dashboard">
+                            <div class="sidebar">
+                                <div class="sidebar-item active">
+                                    &#128200; Dashboard
+                                </div>
+                                <div class="sidebar-item">
+                                    &#128196; Transactions
+                                </div>
+                                <div class="sidebar-item">
+                                    &#128101; Clients
+                                </div>
+                                <div class="sidebar-item">
+                                    &#9989; Compliance
+                                </div>
+                                <div class="sidebar-item">
+                                    &#128202; Analytics
+                                </div>
+                            </div>
+                            <div class="main-content">
+                                <div class="transaction-card">
+                                    <div class="property-img">&#127968;</div>
+                                    <div class="property-info">
+                                        <div class="property-address">742 Evergreen Terrace</div>
+                                        <div class="property-price">$485,000</div>
+                                    </div>
+                                    <div class="status-badge verified">Verified</div>
+                                </div>
+                                <div class="transaction-card">
+                                    <div class="property-img">&#127969;</div>
+                                    <div class="property-info">
+                                        <div class="property-address">123 Ocean View Dr</div>
+                                        <div class="property-price">$725,000</div>
+                                    </div>
+                                    <div class="status-badge pending">Pending</div>
+                                </div>
+                                <div class="transaction-card">
+                                    <div class="property-img">&#127960;</div>
+                                    <div class="property-info">
+                                        <div class="property-address">456 Mountain Ridge Ln</div>
+                                        <div class="property-price">$1,250,000</div>
+                                    </div>
+                                    <div class="status-badge review">AI Review</div>
+                                </div>
+                                <div class="ai-analysis">
+                                    <div class="ai-header">
+                                        <div class="ai-icon">&#10024;</div>
+                                        <div>
+                                            <div class="ai-title">Dual AI Analysis Running</div>
+                                            <div class="ai-subtitle">Claude + GPT-4 consensus check</div>
+                                        </div>
+                                    </div>
+                                    <div class="ai-progress">
+                                        <div class="ai-progress-bar"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trusted By -->
+        <div class="trusted-by">
+            <div class="trusted-title">Trusted by leading brokerages</div>
+            <div class="trusted-logos">
+                <div class="trusted-logo">RE/MAX</div>
+                <div class="trusted-logo">Coldwell Banker</div>
+                <div class="trusted-logo">Keller Williams</div>
+                <div class="trusted-logo">Century 21</div>
+                <div class="trusted-logo">Berkshire Hathaway</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

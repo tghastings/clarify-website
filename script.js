@@ -992,6 +992,29 @@ const addScrollSpy = () => {
     updateActiveLink();
 };
 
+// Hero Video Player
+const initHeroVideo = () => {
+    const overlay = document.getElementById('videoOverlay');
+    const playBtn = document.getElementById('videoPlayBtn');
+    const video = document.getElementById('heroVideo');
+
+    if (!overlay || !playBtn || !video) return;
+
+    const playVideo = () => {
+        overlay.classList.add('hidden');
+        video.controls = true;
+        video.play();
+    };
+
+    overlay.addEventListener('click', playVideo);
+
+    // Show overlay again when video ends
+    video.addEventListener('ended', () => {
+        overlay.classList.remove('hidden');
+        video.controls = false;
+    });
+};
+
 // Initialize all features when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     addFadeInAnimation();
@@ -1003,6 +1026,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addVideoPlayer();
     addFeatureShowcase();
     addScrollSpy();
+    initHeroVideo();
 });
 
 // Add smooth reveal on page load
