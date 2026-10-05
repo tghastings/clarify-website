@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Clarify.RE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .support-hero {
+            padding: 9rem 0 3rem;
+            text-align: center;
+        }
+        .support-eyebrow {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        .support-hero h1 {
+            font-size: 3.25rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .support-lead {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--color-gray-600);
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+        .support-hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+        .support-promises {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+            color: var(--color-gray-600);
+            font-size: 0.95rem;
+        }
+        .support-promises li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .support-promises svg { color: var(--color-accent); }
+
+        .support-topics { padding: 3rem 0 4rem; }
+        .support-topics .section-header { margin-bottom: var(--spacing-xl); }
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+        .support-card {
+            display: flex;
+            flex-direction: column;
+            padding: var(--spacing-lg);
+            background: var(--color-gray-100);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-xl);
+            text-decoration: none;
+            transition: all var(--transition-base);
+        }
+        .support-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 10px 40px rgba(255, 37, 189, 0.2);
+            transform: translateY(-4px);
+        }
+        .support-card .feature-icon { width: 48px; height: 48px; }
+        .support-card h3 {
+            font-size: 1.15rem;
+            color: var(--color-gray-900);
+            margin-bottom: 0.5rem;
+        }
+        .support-card p {
+            color: var(--color-gray-600);
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+            flex: 1;
+        }
+        .support-card-link {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--color-primary);
+        }
+        .support-card-link::after { content: " \2192"; }
+
+        .support-faq { padding: 4rem 0; border-top: 1px solid var(--color-gray-200); }
+        .support-faq-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--spacing-2xl);
+            align-items: start;
+        }
+        .support-faq-intro .section-title { text-align: left; }
+        .support-faq-intro .section-subtitle { text-align: left; margin: 0; }
+        .support-faq-list details {
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+        .support-faq-list summary {
+            cursor: pointer;
+            list-style: none;
+            padding: 1.25rem 2.5rem 1.25rem 0;
+            font-weight: 600;
+            color: var(--color-gray-900);
+            position: relative;
+        }
+        .support-faq-list summary::-webkit-details-marker { display: none; }
+        .support-faq-list summary::after {
+            content: "+";
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--color-primary);
+            transition: transform var(--transition-fast);
+        }
+        .support-faq-list details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+        .support-faq-list details p {
+            color: var(--color-gray-600);
+            line-height: 1.7;
+            padding-bottom: 1.25rem;
+            margin: 0;
+        }
+        .support-faq-list a, .support-cta-hours a { color: var(--color-primary); text-decoration: underline; }
+
+        .support-cta { padding: 2rem 0 6rem; }
+        .support-cta-box {
+            text-align: center;
+            padding: 3.5rem 2rem;
+            border-radius: var(--radius-2xl);
+            background: var(--gradient-primary);
+            box-shadow: var(--shadow-glow);
+        }
+        .support-cta-box h2 { color: #ffffff; font-size: 2rem; margin-bottom: 0.5rem; }
+        .support-cta-box p { color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 1.5rem; }
+        .support-cta-box .btn-white { display: inline-flex; }
+        .support-cta-hours { font-size: 0.9rem !important; opacity: 0.85; margin: 1.5rem 0 0 !important; }
+
+        @media (max-width: 900px) {
+            .support-grid { grid-template-columns: repeat(2, 1fr); }
+            .support-faq-layout { grid-template-columns: 1fr; gap: var(--spacing-lg); }
+        }
+        @media (max-width: 600px) {
+            .support-hero { padding-top: 7rem; }
+            .support-hero h1 { font-size: 2.25rem; }
+            .support-grid { grid-template-columns: 1fr; }
+            .support-promises { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <img src="images/clarify-re.png" alt="Clarify.RE" class="logo-img">
+                    <span class="logo-text">Clarify<span class="logo-accent">.RE</span></span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="nav-desktop">
+                    <div class="nav-links">
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#how-it-works">How It Works</a>
+                        <a href="index.html#solutions">Solutions</a>
+                        <a href="index.html#pricing">Pricing</a>
+                    </div>
+                    <div class="nav-actions">
+                        <a href="https://app.clarify.re/login" class="btn-ghost">Sign In</a>
+                        <a href="mailto:hello@clarify.re?subject=Waitlist%20Request" class="btn-primary">
+                            Request Early Access
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false">
+                    <span class="hamburger-icon">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-content">
+            <nav class="mobile-nav-links">
+                <a href="index.html#features" class="mobile-nav-link">
+                    <span class="mobile-nav-label">Features</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 4l6 6-6 6"/>
+                    </svg>
+                </a>
+                <a href="index.html#how-it-works" class="mobile-nav-link">
+                    <span class="mobile-nav-label">How It Works</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 4l6 6-6 6"/>
+                    </svg>
+                </a>
+                <a href="index.html#solutions" class="mobile-nav-link">
+                    <span class="mobile-nav-label">Solutions</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 4l6 6-6 6"/>
+                    </svg>
+                </a>
+                <a href="index.html#pricing" class="mobile-nav-link">
+                    <span class="mobile-nav-label">Pricing</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 4l6 6-6 6"/>
+                    </svg>
+                </a>
+            </nav>
+            <div class="mobile-nav-actions">
+                <a href="mailto:hello@clarify.re?subject=Waitlist%20Request" class="btn-primary btn-mobile-cta">
+                    Request Early Access
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <a href="https://app.clarify.re/login" class="mobile-nav-signin">Already have an account? <span>Sign In</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Support Hero -->
+    <section class="support-hero">
+        <div class="container">
+            <span class="support-eyebrow">Support</span>
+            <h1>How can we help?</h1>
+            <p class="support-lead">Real people, no ticket queue, no bots. Email us and a member of the Clarify.RE team will write back, usually within one business day.</p>
+            <div class="support-hero-actions">
+                <a href="mailto:hello@clarify.re?subject=Support%20Request" class="btn-primary btn-large">
+                    Email hello@clarify.re
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <a href="https://app.clarify.re/login" class="btn-secondary btn-large">Sign in to your account</a>
+            </div>
+            <ul class="support-promises">
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    Replies within one business day
+                </li>
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    Answered by the people who build the product
+                </li>
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    Active-transaction issues jump the line
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Topic Cards -->
+    <section class="support-topics">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What do you need help with?</h2>
+                <p class="section-subtitle">Pick a topic and we will pre-fill the subject line so your email lands with the right person.</p>
+            </div>
+            <div class="support-grid">
+                <a href="mailto:hello@clarify.re?subject=Account%20%26%20Sign%20In" class="support-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                    <h3>Account &amp; sign in</h3>
+                    <p>Password resets, locked accounts, changing your email, or adding teammates.</p>
+                    <span class="support-card-link">Email about this</span>
+                </a>
+                <a href="mailto:hello@clarify.re?subject=Billing%20%26%20Plans" class="support-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+                    </div>
+                    <h3>Billing &amp; plans</h3>
+                    <p>Invoices, upgrading or downgrading, cancellations, and questions about pricing.</p>
+                    <span class="support-card-link">Email about this</span>
+                </a>
+                <a href="chatgpt.html" class="support-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3>Clarify.RE in ChatGPT</h3>
+                    <p>Connecting the app, disconnecting it, how your data is handled, and common fixes.</p>
+                    <span class="support-card-link">Read the guide</span>
+                </a>
+                <a href="mailto:hello@clarify.re?subject=Bug%20Report&body=What%20I%20was%20trying%20to%20do%3A%0A%0AWhat%20happened%20instead%3A%0A%0ABrowser%20or%20device%3A%0A%0AAccount%20email%3A%0A" class="support-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2l1.88 1.88M14.12 3.88L16 2M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6z"/><path d="M12 20v-9M6.53 9C4.6 8.8 3 7.1 3 5M6 13H2M3 21c0-2.1 1.7-3.9 3.8-4M20.97 5c0 2.1-1.6 3.8-3.5 4M22 13h-4M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg>
+                    </div>
+                    <h3>Report a bug</h3>
+                    <p>Something broken? Tell us what you expected and what happened. Screenshots help.</p>
+                    <span class="support-card-link">Email about this</span>
+                </a>
+                <a href="mailto:hello@clarify.re?subject=Security%20Report" class="support-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Security</h3>
+                    <p>Found a vulnerability? Email us privately before disclosing it, and we will respond fast.</p>
+                    <span class="support-card-link">Email about this</span>
+                </a>
+                <a href="mailto:hello@clarify.re?subject=Feature%20Request" class="support-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+                    </div>
+                    <h3>Feature request</h3>
+                    <p>We build alongside agents, TCs, and brokers. Tell us what would make your day easier.</p>
+                    <span class="support-card-link">Email about this</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Answers -->
+    <section class="support-faq">
+        <div class="container">
+            <div class="support-faq-layout">
+                <div class="support-faq-intro">
+                    <h2 class="section-title">Quick answers</h2>
+                    <p class="section-subtitle">The questions we get most. If yours is not here, just email us.</p>
+                </div>
+                <div class="support-faq-list">
+                    <details>
+                        <summary>How do I reset my password?</summary>
+                        <p>Go to <a href="https://app.clarify.re/login">app.clarify.re/login</a> and use the "Forgot password" link. If the reset email does not arrive within a few minutes, check your spam folder, then <a href="mailto:hello@clarify.re?subject=Password%20Reset%20Help">email us</a>.</p>
+                    </details>
+                    <details>
+                        <summary>How do I update my account or billing details?</summary>
+                        <p>Sign in and open your account settings. For plan changes or invoice questions, email <a href="mailto:hello@clarify.re?subject=Billing%20%26%20Plans">hello@clarify.re</a>.</p>
+                    </details>
+                    <details>
+                        <summary>How do I cancel my subscription?</summary>
+                        <p>Email <a href="mailto:hello@clarify.re?subject=Cancel%20Subscription">hello@clarify.re</a> from the address on your account. You keep access through the end of your current billing period. No hoops, no retention calls.</p>
+                    </details>
+                    <details>
+                        <summary>How do I delete my account and data?</summary>
+                        <p>Email <a href="mailto:hello@clarify.re?subject=Account%20Deletion%20Request">hello@clarify.re</a> and we will delete your account and associated data. Our <a href="privacy.html">Privacy Policy</a> explains what is retained and for how long.</p>
+                    </details>
+                    <details>
+                        <summary>How do I use Clarify.RE inside ChatGPT?</summary>
+                        <p>Open the Clarify.RE app in ChatGPT and sign in with your Clarify.RE credentials. The full walkthrough, including how to disconnect, is on the <a href="chatgpt.html">Clarify.RE for ChatGPT</a> page.</p>
+                    </details>
+                    <details>
+                        <summary>Does Clarify.RE give legal or compliance advice?</summary>
+                        <p>No. Clarify.RE is software for organizing and managing transactions. It is not a brokerage, law firm, or regulator. Confirm legal and compliance questions with your broker or attorney.</p>
+                    </details>
+                    <details>
+                        <summary>What should I include in my email?</summary>
+                        <p>The email on your account, what you were trying to do, what happened instead, and a screenshot if you have one. Please leave out client financial documents, Social Security numbers, and other sensitive data unless we ask for them through a secure channel.</p>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Still stuck -->
+    <section class="support-cta">
+        <div class="container">
+            <div class="support-cta-box">
+                <h2>Still stuck?</h2>
+                <p>Email us. There are no silly questions, and you will hear back from a human.</p>
+                <a href="mailto:hello@clarify.re?subject=Support%20Request" class="btn-white btn-large">hello@clarify.re</a>
+                <p class="support-cta-hours">Monday to Friday, 9am to 5pm Mountain Time. Messages sent outside those hours are answered the next business day.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="images/clarify-re.png" alt="Clarify.RE" class="logo-img">
+                        <span class="logo-text">Clarify<span class="logo-accent">.RE</span></span>
+                    </a>
+                    <p>AI-powered real estate transaction management for modern professionals.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#how-it-works">How It Works</a>
+                        <a href="index.html#pricing">Pricing</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact</h4>
+                        <a href="mailto:hello@clarify.re">hello@clarify.re</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy</a>
+                        <a href="terms.html">Terms</a>
+                        <a href="support.html">Support</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Clarify.RE. All rights reserved.</p>
+                <div class="footer-social">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarify.RE for ChatGPT - Clarify.RE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .legal-content {
+            padding: 8rem 0 4rem;
+            min-height: 100vh;
+        }
+        .legal-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .legal-content .last-updated {
+            color: var(--color-gray-500);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+        .legal-content .intro {
+            color: var(--color-gray-600);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-gray-300);
+        }
+        .legal-content h2 {
+            font-size: 1.5rem;
+            color: var(--color-gray-900);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .legal-content h3 {
+            font-size: 1.1rem;
+            color: var(--color-gray-800);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .legal-content p {
+            color: var(--color-gray-600);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .legal-content ul {
+            color: var(--color-gray-600);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        .legal-content li {
+            margin-bottom: 0.5rem;
+        }
+        .legal-content .highlight-box {
+            background: var(--color-gray-200);
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .legal-content .highlight-box p {
+            margin-bottom: 0;
+        }
+        .legal-content .highlight-box-green {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        .legal-content .highlight-box-green p {
+            color: #10b981;
+        }
+        .legal-content a {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <img src="images/clarify-re.png" alt="Clarify.RE" class="logo-img">
+                    <span class="logo-text">Clarify<span class="logo-accent">.RE</span></span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="nav-desktop">
+                    <div class="nav-links">
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#how-it-works">How It Works</a>
+                        <a href="index.html#solutions">Solutions</a>
+                        <a href="index.html#pricing">Pricing</a>
+                    </div>
+                    <div class="nav-actions">
+                        <a href="https://app.clarify.re/login" class="btn-ghost">Sign In</a>
+                        <a href="mailto:hello@clarify.re?subject=Waitlist%20Request" class="btn-primary">
+                            Request Early Access
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false">
+                    <span class="hamburger-icon">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-content">
+            <nav class="mobile-nav-links">
+                <a href="index.html#features" class="mobile-nav-link">
+                    <span class="mobile-nav-label">Features</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 4l6 6-6 6"/>
+                    </svg>
+                </a>
+                <a href="index.html#how-it-works" class="mobile-nav-link">
+                    <span class="mobile-nav-label">How It Works</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 4l6 6-6 6"/>
+                    </svg>
+                </a>
+                <a href="index.html#solutions" class="mobile-nav-link">
+                    <span class="mobile-nav-label">Solutions</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 4l6 6-6 6"/>
+                    </svg>
+                </a>
+                <a href="index.html#pricing" class="mobile-nav-link">
+                    <span class="mobile-nav-label">Pricing</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 4l6 6-6 6"/>
+                    </svg>
+                </a>
+            </nav>
+            <div class="mobile-nav-actions">
+                <a href="mailto:hello@clarify.re?subject=Waitlist%20Request" class="btn-primary btn-mobile-cta">
+                    Request Early Access
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <a href="https://app.clarify.re/login" class="mobile-nav-signin">Already have an account? <span>Sign In</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ChatGPT Content -->
+    <section class="legal-content">
+        <div class="container">
+            <h1>Clarify.RE for ChatGPT</h1>
+            <p class="last-updated">Last Updated: October 2026</p>
+
+            <p class="intro">
+                Clarify.RE is available as an app inside ChatGPT, allowing you to look up transaction details, check deadlines, and review task status using natural language. This page explains how to connect, how your data is handled, and how to resolve common issues.
+            </p>
+
+            <div class="highlight-box highlight-box-green">
+                <p><strong>Need help?</strong> Email <a href="mailto:hello@clarify.re?subject=ChatGPT%20App%20Support">hello@clarify.re</a> or visit our <a href="support.html">Support</a> page.</p>
+            </div>
+
+            <h2>1. Getting Started</h2>
+            <ul>
+                <li>You must have an active Clarify.RE account. If you do not have one yet, <a href="mailto:hello@clarify.re?subject=Waitlist%20Request">request early access</a>.</li>
+                <li>In ChatGPT, open the Clarify.RE app and follow the prompt to sign in with your Clarify.RE credentials.</li>
+                <li>Once connected, you can ask ChatGPT questions about your transactions, such as "What deadlines are coming up this week?" or "What is the status of the inspection for 123 Main Street?"</li>
+            </ul>
+
+            <h2>2. Disconnecting the Integration</h2>
+            <p>You can disconnect Clarify.RE from ChatGPT at any time:</p>
+            <ul>
+                <li>In ChatGPT, open your settings, locate the Clarify.RE app, and remove or disconnect it.</li>
+                <li>To revoke access from the Clarify.RE side, or if you need help disconnecting, email <a href="mailto:hello@clarify.re?subject=Disconnect%20ChatGPT%20Integration">hello@clarify.re</a> and we will revoke the connection for you.</li>
+            </ul>
+
+            <h2>3. Data and Privacy in ChatGPT</h2>
+            <p>When you use Clarify.RE through ChatGPT, only the information needed to answer your request is shared with the integration. We do not sell your data, and the same protections described in our <a href="privacy.html">Privacy Policy</a> apply. Please note that OpenAI's own terms and privacy practices govern how ChatGPT handles your conversations.</p>
+
+            <h2>4. Common ChatGPT Integration Issues</h2>
+            <ul>
+                <li><strong>"I can't sign in."</strong> Confirm you can sign in at <a href="https://app.clarify.re/login">app.clarify.re</a> first. If that works, try disconnecting and reconnecting the app in ChatGPT.</li>
+                <li><strong>"ChatGPT says it can't find my transaction."</strong> Make sure the transaction exists in your Clarify.RE account and try referring to it by its full property address.</li>
+                <li><strong>"The information looks out of date."</strong> Ask ChatGPT to check again. If the problem persists, sign out of the integration and sign back in.</li>
+                <li><strong>Anything else:</strong> Email us with a description of what you asked and the response you received.</li>
+            </ul>
+
+            <div class="highlight-box" style="margin-top: 3rem;">
+                <h3 style="margin-top: 0;">Related Pages</h3>
+                <ul style="margin-bottom: 0;">
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">User Agreement</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="images/clarify-re.png" alt="Clarify.RE" class="logo-img">
+                        <span class="logo-text">Clarify<span class="logo-accent">.RE</span></span>
+                    </a>
+                    <p>AI-powered real estate transaction management for modern professionals.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#how-it-works">How It Works</a>
+                        <a href="index.html#pricing">Pricing</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact</h4>
+                        <a href="mailto:hello@clarify.re">hello@clarify.re</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy</a>
+                        <a href="terms.html">Terms</a>
+                        <a href="support.html">Support</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Clarify.RE. All rights reserved.</p>
+                <div class="footer-social">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
